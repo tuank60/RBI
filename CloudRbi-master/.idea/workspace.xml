@@ -1,0 +1,1164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cabab71a-8481-4181-86d9-840fbd700d74" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/RbiCloud$Postgresql.coverage" NAME="Postgresql Coverage Results" MODIFIED="1525057421699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cloud/process/RBI" />
+    <SUITE FILE_PATH="coverage/RbiCloud$export_data.coverage" NAME="export_data Coverage Results" MODIFIED="1524628467056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cloud/process/File" />
+    <SUITE FILE_PATH="coverage/RbiCloud$hello.coverage" NAME="hello Coverage Results" MODIFIED="1523599146374" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cloud/process/WebUI" />
+    <SUITE FILE_PATH="coverage/RbiCloud$test.coverage" NAME="test Coverage Results" MODIFIED="1524818789099" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cloud/process/RBI" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <expand>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="rbi-cloud@localhost" type="e3449647:DbNodeDescriptor" />
+      </path>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="rbi-cloud@localhost" type="e3449647:DbNodeDescriptor" />
+        <item name="rbi-cloud" type="e3449647:DbNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cloud/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="32" column="78" lean-forward="false" selection-start-line="32" selection-start-column="78" selection-end-line="32" selection-end-column="78" />
+              <folding>
+                <element signature="e#1291#1415#0" expanded="false" />
+                <element signature="e#1448#1702#0" expanded="false" />
+                <element signature="e#2252#2316#0" expanded="false" />
+                <element signature="e#2350#2414#0" expanded="false" />
+                <element signature="e#2447#2510#0" expanded="false" />
+                <element signature="e#2546#2612#0" expanded="false" />
+                <element signature="e#2647#2712#0" expanded="false" />
+                <element signature="e#2748#2824#0" expanded="false" />
+                <element signature="e#2911#2959#0" expanded="false" />
+                <element signature="e#3058#4347#0" expanded="false" />
+                <element signature="e#3178#3514#0" expanded="false" />
+                <element signature="e#4387#5618#0" expanded="false" />
+                <element signature="e#4400#5457#0" expanded="false" />
+                <element signature="e#4534#5457#0" expanded="false" />
+                <element signature="e#5013#5457#0" expanded="false" />
+                <element signature="e#5663#7330#0" expanded="false" />
+                <element signature="e#5676#7164#0" expanded="false" />
+                <element signature="e#6239#7164#0" expanded="false" />
+                <element signature="e#6784#7164#0" expanded="false" />
+                <element signature="e#7372#8288#0" expanded="false" />
+                <element signature="e#7385#8144#0" expanded="false" />
+                <element signature="e#7767#7924#0" expanded="false" />
+                <element signature="e#7798#7924#0" expanded="false" />
+                <element signature="e#7975#8144#0" expanded="false" />
+                <element signature="e#8006#8079#0" expanded="false" />
+                <element signature="e#8328#9128#0" expanded="false" />
+                <element signature="e#8341#8976#0" expanded="false" />
+                <element signature="e#8419#8976#0" expanded="false" />
+                <element signature="e#8769#8976#0" expanded="false" />
+                <element signature="e#9175#10248#0" expanded="false" />
+                <element signature="e#9188#10080#0" expanded="false" />
+                <element signature="e#9453#10080#0" expanded="false" />
+                <element signature="e#9863#10080#0" expanded="false" />
+                <element signature="e#10291#11226#0" expanded="false" />
+                <element signature="e#10304#11081#0" expanded="false" />
+                <element signature="e#10695#10858#0" expanded="false" />
+                <element signature="e#10726#10858#0" expanded="false" />
+                <element signature="e#10909#11081#0" expanded="false" />
+                <element signature="e#10940#11015#0" expanded="false" />
+                <element signature="e#11268#11978#0" expanded="false" />
+                <element signature="e#11281#11824#0" expanded="false" />
+                <element signature="e#11359#11824#0" expanded="false" />
+                <element signature="e#11642#11824#0" expanded="false" />
+                <element signature="e#12028#12939#0" expanded="false" />
+                <element signature="e#12041#12767#0" expanded="false" />
+                <element signature="e#12261#12767#0" expanded="false" />
+                <element signature="e#12606#12767#0" expanded="false" />
+                <element signature="e#12984#14026#0" expanded="false" />
+                <element signature="e#12997#13852#0" expanded="false" />
+                <element signature="e#13472#13625#0" expanded="false" />
+                <element signature="e#13503#13625#0" expanded="false" />
+                <element signature="e#13676#13852#0" expanded="false" />
+                <element signature="e#13707#13779#0" expanded="false" />
+                <element signature="e#14070#16335#0" expanded="false" />
+                <element signature="e#14083#16083#0" expanded="false" />
+                <element signature="e#14446#16083#0" expanded="false" />
+                <element signature="e#15274#16083#0" expanded="false" />
+                <element signature="e#16381#19282#0" expanded="false" />
+                <element signature="e#16394#19028#0" expanded="false" />
+                <element signature="e#17448#19028#0" expanded="false" />
+                <element signature="e#18293#19028#0" expanded="false" />
+                <element signature="e#19328#20382#0" expanded="false" />
+                <element signature="e#19341#20199#0" expanded="false" />
+                <element signature="e#19817#19970#0" expanded="false" />
+                <element signature="e#19848#19970#0" expanded="false" />
+                <element signature="e#20021#20199#0" expanded="false" />
+                <element signature="e#20052#20124#0" expanded="false" />
+                <element signature="e#20427#22573#0" expanded="false" />
+                <element signature="e#20440#22311#0" expanded="false" />
+                <element signature="e#20800#20871#0" expanded="false" />
+                <element signature="e#20921#22311#0" expanded="false" />
+                <element signature="e#21623#22311#0" expanded="false" />
+                <element signature="e#22619#24560#0" expanded="false" />
+                <element signature="e#22632#24284#0" expanded="false" />
+                <element signature="e#23291#24284#0" expanded="false" />
+                <element signature="e#23924#24284#0" expanded="false" />
+                <element signature="e#24605#27987#0" expanded="false" />
+                <element signature="e#24618#27614#0" expanded="false" />
+                <element signature="e#24930#26131#0" expanded="false" />
+                <element signature="e#25318#25442#0" expanded="false" />
+                <element signature="e#25477#25555#0" expanded="false" />
+                <element signature="e#25838#26012#0" expanded="false" />
+                <element signature="e#26694#27614#0" expanded="false" />
+                <element signature="e#26740#26919#0" expanded="false" />
+                <element signature="e#26776#26843#0" expanded="false" />
+                <element signature="e#27098#27381#0" expanded="false" />
+                <element signature="e#27134#27381#0" expanded="false" />
+                <element signature="e#27191#27381#0" expanded="false" />
+                <element signature="e#27416#27614#0" expanded="false" />
+                <element signature="e#27452#27538#0" expanded="false" />
+                <element signature="e#27724#27986#0" expanded="false" />
+                <element signature="e#28031#49974#0" expanded="false" />
+                <element signature="e#28044#49776#0" expanded="false" />
+                <element signature="e#28052#28334#0" expanded="false" />
+                <element signature="e#28772#49776#0" expanded="false" />
+                <element signature="e#50014#70635#0" expanded="false" />
+                <element signature="e#50027#70413#0" expanded="false" />
+                <element signature="e#50528#70413#0" expanded="false" />
+                <element signature="e#70449#70481#0" expanded="false" />
+                <element signature="e#70692#92299#0" expanded="false" />
+                <element signature="e#70700#70990#0" expanded="false" />
+                <element signature="e#71919#92299#0" expanded="false" />
+                <element signature="e#92335#92365#0" expanded="false" />
+                <element signature="e#92440#93123#0" expanded="false" />
+                <element signature="e#93164#114349#0" expanded="false" />
+                <element signature="e#93177#113509#0" expanded="false" />
+                <element signature="e#94377#113509#0" expanded="false" />
+                <element signature="e#113616#114348#0" expanded="false" />
+                <element signature="e#114391#115946#0" expanded="false" />
+                <element signature="e#114404#115419#0" expanded="false" />
+                <element signature="e#115523#115945#0" expanded="false" />
+                <element signature="e#116008#118984#0" expanded="false" />
+                <element signature="e#118809#118984#0" expanded="false" />
+                <element signature="e#119020#119050#0" expanded="false" />
+                <element signature="e#119117#119276#0" expanded="false" />
+                <element signature="e#119325#126914#0" expanded="false" />
+                <element signature="e#119352#126880#0" expanded="false" />
+                <element signature="e#119824#122657#0" expanded="false" />
+                <element signature="e#122692#125715#0" expanded="false" />
+                <element signature="e#125742#126880#0" expanded="false" />
+                <element signature="e#126955#129451#0" expanded="false" />
+                <element signature="e#126968#129417#0" expanded="false" />
+                <element signature="e#127352#127662#0" expanded="false" />
+                <element signature="e#127683#128683#0" expanded="false" />
+                <element signature="e#128705#129024#0" expanded="false" />
+                <element signature="e#129121#129335#0" expanded="false" />
+                <element signature="e#129495#129585#0" expanded="false" />
+                <element signature="e#129619#130356#0" expanded="false" />
+                <element signature="e#129632#130208#0" expanded="false" />
+                <element signature="e#129754#130208#0" expanded="false" />
+                <element signature="e#130398#131163#0" expanded="false" />
+                <element signature="e#131019#131049#0" expanded="false" />
+                <element signature="e#132677#132800#0" expanded="false" />
+                <element signature="e#132830#133354#0" expanded="false" />
+                <element signature="e#133393#134573#0" expanded="false" />
+                <element signature="e#135932#137253#0" expanded="false" />
+                <element signature="e#137305#158912#0" expanded="false" />
+                <element signature="e#137313#137603#0" expanded="false" />
+                <element signature="e#138532#158912#0" expanded="false" />
+                <element signature="e#158948#158978#0" expanded="false" />
+                <element signature="e#159039#159722#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RbiCloud/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="28" column="21" lean-forward="false" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CitizenHome.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/CitizenUI/CitizenHome.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="529">
+              <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="baseCitizen.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseCitizen.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="225" lean-forward="false" selection-start-line="15" selection-start-column="225" selection-end-line="15" selection-end-column="225" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="baseFacility.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseFacility.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="baseManager.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManager.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="210" lean-forward="false" selection-start-line="14" selection-start-column="210" selection-end-line="14" selection-end-column="210" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Massages_sent.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseMassages/Massages_sent.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="42" lean-forward="false" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseMassages.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseMassages/BaseMassages.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" column="19" lean-forward="false" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>ExternalCoating</find>
+      <find>date</find>
+      <find>GET_RELEASE_PHASE</find>
+      <find>print</find>
+      <find>Tbl52CaPropertiesLevel1</find>
+      <find>ART</find>
+      <find>api</find>
+      <find>RUN</find>
+      <find>tox</find>
+      <find>pof</find>
+      <find>detection</find>
+      <find>b_cont</find>
+      <find>b_con</find>
+      <find>Mecha</find>
+      <find>DF_CUI</find>
+      <find>DF_CLSCC</find>
+      <find>DF_EXTERN_CLSCC</find>
+      <find>fast</find>
+      <find>GET_AGE</find>
+      <find>fibre</find>
+      <find>GET_AG</find>
+      <find>YEAR_IN_SERVICE</find>
+      <find>acid</find>
+      <find>treat</find>
+      <find>header</find>
+      <find>.form-con</find>
+      <find>rbi</find>
+      <find>home</find>
+      <find>equipm</find>
+      <find>txt</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/cloud/process/RBI/test.py" />
+        <option value="$PROJECT_DIR$/cloud/static/css/404.css" />
+        <option value="$PROJECT_DIR$/templates/404/404.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html" />
+        <option value="$PROJECT_DIR$/cloud/process/File/import_data.py" />
+        <option value="$PROJECT_DIR$/runtime.txt" />
+        <option value="$PROJECT_DIR$/RbiCloud/wsgi.py" />
+        <option value="$PROJECT_DIR$/cloud/process/RBI/fastCalulate.py" />
+        <option value="$PROJECT_DIR$/cloud/process/File/export_data.py" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/facility/uploadData.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/component/componentListDisplay.html" />
+        <option value="$PROJECT_DIR$/database/Read Me" />
+        <option value="$PROJECT_DIR$/Read Me" />
+        <option value="$PROJECT_DIR$/templates/ReadMe" />
+        <option value="$PROJECT_DIR$/ReadMe" />
+        <option value="$PROJECT_DIR$/cloud/process/RBI/CA_CAL.py" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalNormalEdit.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalNormalNew.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalTankEdit.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalTankNew.html" />
+        <option value="$PROJECT_DIR$/cloud/process/RBI/Postgresql.py" />
+        <option value="$PROJECT_DIR$/cloud/process/ReadMe" />
+        <option value="$PROJECT_DIR$/cloud/process/RBI/DM_CAL.py" />
+        <option value="$PROJECT_DIR$/templates/BaseUI/BaseWeb/base.html" />
+        <option value="$PROJECT_DIR$/templates/CitizenUI/CitizenHome.html" />
+        <option value="$PROJECT_DIR$/templates/Home/index.html" />
+        <option value="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseFacility.html" />
+        <option value="$PROJECT_DIR$/cloud/static/css/base.css" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/facility/facilityListDisplay.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentListDisplay.html" />
+        <option value="$PROJECT_DIR$/cloud/static/css/business.css" />
+        <option value="$PROJECT_DIR$/templates/BaseUI/BaseForum/forumposts.html" />
+        <option value="$PROJECT_DIR$/cloud/static/css/index.css" />
+        <option value="$PROJECT_DIR$/cloud/static/css/forum.css" />
+        <option value="$PROJECT_DIR$/templates/BaseUI/BaseForum/forumhome.html" />
+        <option value="$PROJECT_DIR$/RbiCloud/settings.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/console.sql" />
+        <option value="$PROJECT_DIR$/cloud/__init__.py" />
+        <option value="$PROJECT_DIR$/cloud/static/css/email.css" />
+        <option value="$PROJECT_DIR$/cloud/models.py" />
+        <option value="$PROJECT_DIR$/templates/BaseUI/BaseMassages/Massages_to.html" />
+        <option value="$PROJECT_DIR$/templates/BaseUI/BaseMassages/BaseMassages.html" />
+        <option value="$PROJECT_DIR$/templates/BaseUI/BaseMassages/data.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/risk_summary/dfFull.html" />
+        <option value="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseRiskSummary.html" />
+        <option value="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseBusiness.html" />
+        <option value="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManager.html" />
+        <option value="$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseCitizen.html" />
+        <option value="$PROJECT_DIR$/templates/BaseUI/BaseMassages/Massages_sent.html" />
+        <option value="$PROJECT_DIR$/RbiCloud/urls.py" />
+        <option value="$PROJECT_DIR$/cloud/views.py" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="784" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
+              <item name="cloud" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
+              <item name="cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
+              <item name="cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
+              <item name="RbiCloud" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="BaseUI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="BaseUI" type="462c0819:PsiDirectoryNode" />
+              <item name="BaseCitizen" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="BaseUI" type="462c0819:PsiDirectoryNode" />
+              <item name="BaseFacility" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="BaseUI" type="462c0819:PsiDirectoryNode" />
+              <item name="BaseManager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="BaseUI" type="462c0819:PsiDirectoryNode" />
+              <item name="BaseMassages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="CitizenUI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="FacilityUI" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\DJANGO\CloudRbi-master\CloudRbi-master\templates\BaseUI" />
+      <recent name="E:\CloudRbi\templates\FacilityUI\facility" />
+      <recent name="E:\RbiCloud\cloud\static\image\logo" />
+      <recent name="E:\RbiCloud\cloud\static\image\loading" />
+      <recent name="E:\RbiCloud\templates\FacilityUI\facility" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\DJANGO\CloudRbi-master\CloudRbi-master\cloud\static\image\logo" />
+      <recent name="E:\DJANGO\CloudRbi-master\CloudRbi-master\cloud\static\css" />
+      <recent name="E:\CloudRbi\database\mysql" />
+      <recent name="E:\CloudRbi\database\postgresql" />
+      <recent name="E:\CloudRbi\templates\BaseUI\BaseFacility" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Django server.RbiCloud">
+    <configuration name="Postgresql" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cloud/process/RBI" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RbiCloud" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cloud/process/RBI/Postgresql.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="RbiCloud" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="RbiCloud.settings" />
+      </envs>
+      <option name="SDK_HOME" value="C:\python\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RbiCloud" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8088" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="--insecure" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+    </configuration>
+    <configuration name="Test: cloud.static.css.base.css" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RbiCloud" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="cloud.static.css.base.css" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+    </configuration>
+    <configuration name="export_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cloud/process/File" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RbiCloud" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cloud/process/File/export_data.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="hello" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cloud/process/WebUI" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RbiCloud" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cloud/process/WebUI/hello.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cloud/process/RBI" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RbiCloud" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cloud/process/RBI/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <list size="6">
+      <item index="0" class="java.lang.String" itemvalue="Django server.RbiCloud" />
+      <item index="1" class="java.lang.String" itemvalue="Django tests.Test: cloud.static.css.base.css" />
+      <item index="2" class="java.lang.String" itemvalue="Python.hello" />
+      <item index="3" class="java.lang.String" itemvalue="Python.export_data" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Postgresql" />
+      <item index="5" class="java.lang.String" itemvalue="Python.test" />
+    </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Django tests.Test: cloud.static.css.base.css" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Postgresql" />
+        <item index="2" class="java.lang.String" itemvalue="Python.test" />
+        <item index="3" class="java.lang.String" itemvalue="Python.export_data" />
+        <item index="4" class="java.lang.String" itemvalue="Python.hello" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cabab71a-8481-4181-86d9-840fbd700d74" name="Default" comment="" />
+      <created>1522316815488</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1522316815488</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23298033" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32405892" sideWeight="0.1068814" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12405446" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3207856" sideWeight="0.8931186" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.4969743" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32733223" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32405892" sideWeight="0.1068814" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3207856" sideWeight="0.8931186" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.4969743" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17776097" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13086233" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32733223" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="14" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/5f816ffe-0fd8-40b7-91dd-fb86bf424a4f/console.sql" />
+    <entry file="das://table:/1a7dffa0/5f816ffe-0fd8-40b7-91dd-fb86bf424a4f/rbi.auth_user" />
+    <entry file="das://table:/1a7dffa0/5f816ffe-0fd8-40b7-91dd-fb86bf424a4f/rbi.rbi_user" />
+    <entry file="das://table:/1a7dffa0/5f816ffe-0fd8-40b7-91dd-fb86bf424a4f/rbi.django_session" />
+    <entry file="das://table:/1a7dffa0/5f816ffe-0fd8-40b7-91dd-fb86bf424a4f/rbi.rw_equipment" />
+    <entry file="das://table:/1a7dffa0/5f816ffe-0fd8-40b7-91dd-fb86bf424a4f/rbi.facility" />
+    <entry file="das://table:/1a7dffa0/5f816ffe-0fd8-40b7-91dd-fb86bf424a4f/rbi.equipment_master" />
+    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseEquipment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentListDisplay.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="61" lean-forward="false" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/facility/facilityListDisplay.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="14" column="40" lean-forward="true" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/static/css/business.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204">
+          <caret line="138" column="16" lean-forward="false" selection-start-line="138" selection-start-column="16" selection-end-line="138" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/1a7dffa0/5f816ffe-0fd8-40b7-91dd-fb86bf424a4f/rbi.z_user" />
+    <entry file="das://table:/1a7dffa0/5f816ffe-0fd8-40b7-91dd-fb86bf424a4f/rbi.z_posts" />
+    <entry file="das://table:/1a7dffa0/5f816ffe-0fd8-40b7-91dd-fb86bf424a4f/rbi.z_comment" />
+    <entry file="file://$PROJECT_DIR$/cloud/static/css/base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="29" lean-forward="false" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/static/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="69" column="25" lean-forward="false" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/static/css/forum.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1377">
+          <caret line="81" column="15" lean-forward="false" selection-start-line="81" selection-start-column="15" selection-end-line="81" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseForum/forumposts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="63" column="34" lean-forward="false" selection-start-line="63" selection-start-column="34" selection-end-line="63" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/1a7dffa0/5f816ffe-0fd8-40b7-91dd-fb86bf424a4f/rbi.z_notification" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3fbc586a-b41c-484b-85d1-718e86eee661/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b889815b/3fbc586a-b41c-484b-85d1-718e86eee661/rbi-cloud.z_comment" />
+    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseForum/forumhome.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="45" column="191" lean-forward="false" selection-start-line="45" selection-start-column="191" selection-end-line="45" selection-end-column="191" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/python/Lib/site-packages/django/db/backends/mysql/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ReadMe">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RbiCloud/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1479">
+          <caret line="87" column="27" lean-forward="false" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="28" lean-forward="false" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/ReadMe">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="65" lean-forward="false" selection-start-line="7" selection-start-column="64" selection-end-line="7" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/static/css/email.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1564">
+          <caret line="92" column="1" lean-forward="false" selection-start-line="92" selection-start-column="1" selection-end-line="92" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/3c1c657a/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.auth_user" />
+    <entry file="file://$PROJECT_DIR$/templates/Home/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="66" lean-forward="false" selection-start-line="36" selection-start-column="66" selection-end-line="36" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/3c1c657a/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.z_user" />
+    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseWeb/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="63" lean-forward="false" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/3c1c657a/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.zm_people_sent" />
+    <entry file="das://table:/3c1c657a/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.zm_people_to" />
+    <entry file="file://$PROJECT_DIR$/cloud/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="1070" column="48" lean-forward="false" selection-start-line="1070" selection-start-column="48" selection-end-line="1070" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseMassages/data.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="1576" column="13" lean-forward="true" selection-start-line="1576" selection-start-column="13" selection-end-line="1576" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/proposal/proposalNormalEdit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="31" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="1577" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseRiskSummary.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/dfFull.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="34" lean-forward="true" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.z_user">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseMassages/BaseMassages.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="19" lean-forward="false" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseBusiness.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="65" column="43" lean-forward="false" selection-start-line="65" selection-start-column="43" selection-end-line="65" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseFacility.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.zm_people_to">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseMassages/Massages_sent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="42" lean-forward="false" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="32" column="78" lean-forward="false" selection-start-line="32" selection-start-column="78" selection-end-line="32" selection-end-column="78" />
+          <folding>
+            <element signature="e#1291#1415#0" expanded="false" />
+            <element signature="e#1448#1702#0" expanded="false" />
+            <element signature="e#2252#2316#0" expanded="false" />
+            <element signature="e#2350#2414#0" expanded="false" />
+            <element signature="e#2447#2510#0" expanded="false" />
+            <element signature="e#2546#2612#0" expanded="false" />
+            <element signature="e#2647#2712#0" expanded="false" />
+            <element signature="e#2748#2824#0" expanded="false" />
+            <element signature="e#2911#2959#0" expanded="false" />
+            <element signature="e#3058#4347#0" expanded="false" />
+            <element signature="e#3178#3514#0" expanded="false" />
+            <element signature="e#4387#5618#0" expanded="false" />
+            <element signature="e#4400#5457#0" expanded="false" />
+            <element signature="e#4534#5457#0" expanded="false" />
+            <element signature="e#5013#5457#0" expanded="false" />
+            <element signature="e#5663#7330#0" expanded="false" />
+            <element signature="e#5676#7164#0" expanded="false" />
+            <element signature="e#6239#7164#0" expanded="false" />
+            <element signature="e#6784#7164#0" expanded="false" />
+            <element signature="e#7372#8288#0" expanded="false" />
+            <element signature="e#7385#8144#0" expanded="false" />
+            <element signature="e#7767#7924#0" expanded="false" />
+            <element signature="e#7798#7924#0" expanded="false" />
+            <element signature="e#7975#8144#0" expanded="false" />
+            <element signature="e#8006#8079#0" expanded="false" />
+            <element signature="e#8328#9128#0" expanded="false" />
+            <element signature="e#8341#8976#0" expanded="false" />
+            <element signature="e#8419#8976#0" expanded="false" />
+            <element signature="e#8769#8976#0" expanded="false" />
+            <element signature="e#9175#10248#0" expanded="false" />
+            <element signature="e#9188#10080#0" expanded="false" />
+            <element signature="e#9453#10080#0" expanded="false" />
+            <element signature="e#9863#10080#0" expanded="false" />
+            <element signature="e#10291#11226#0" expanded="false" />
+            <element signature="e#10304#11081#0" expanded="false" />
+            <element signature="e#10695#10858#0" expanded="false" />
+            <element signature="e#10726#10858#0" expanded="false" />
+            <element signature="e#10909#11081#0" expanded="false" />
+            <element signature="e#10940#11015#0" expanded="false" />
+            <element signature="e#11268#11978#0" expanded="false" />
+            <element signature="e#11281#11824#0" expanded="false" />
+            <element signature="e#11359#11824#0" expanded="false" />
+            <element signature="e#11642#11824#0" expanded="false" />
+            <element signature="e#12028#12939#0" expanded="false" />
+            <element signature="e#12041#12767#0" expanded="false" />
+            <element signature="e#12261#12767#0" expanded="false" />
+            <element signature="e#12606#12767#0" expanded="false" />
+            <element signature="e#12984#14026#0" expanded="false" />
+            <element signature="e#12997#13852#0" expanded="false" />
+            <element signature="e#13472#13625#0" expanded="false" />
+            <element signature="e#13503#13625#0" expanded="false" />
+            <element signature="e#13676#13852#0" expanded="false" />
+            <element signature="e#13707#13779#0" expanded="false" />
+            <element signature="e#14070#16335#0" expanded="false" />
+            <element signature="e#14083#16083#0" expanded="false" />
+            <element signature="e#14446#16083#0" expanded="false" />
+            <element signature="e#15274#16083#0" expanded="false" />
+            <element signature="e#16381#19282#0" expanded="false" />
+            <element signature="e#16394#19028#0" expanded="false" />
+            <element signature="e#17448#19028#0" expanded="false" />
+            <element signature="e#18293#19028#0" expanded="false" />
+            <element signature="e#19328#20382#0" expanded="false" />
+            <element signature="e#19341#20199#0" expanded="false" />
+            <element signature="e#19817#19970#0" expanded="false" />
+            <element signature="e#19848#19970#0" expanded="false" />
+            <element signature="e#20021#20199#0" expanded="false" />
+            <element signature="e#20052#20124#0" expanded="false" />
+            <element signature="e#20427#22573#0" expanded="false" />
+            <element signature="e#20440#22311#0" expanded="false" />
+            <element signature="e#20800#20871#0" expanded="false" />
+            <element signature="e#20921#22311#0" expanded="false" />
+            <element signature="e#21623#22311#0" expanded="false" />
+            <element signature="e#22619#24560#0" expanded="false" />
+            <element signature="e#22632#24284#0" expanded="false" />
+            <element signature="e#23291#24284#0" expanded="false" />
+            <element signature="e#23924#24284#0" expanded="false" />
+            <element signature="e#24605#27987#0" expanded="false" />
+            <element signature="e#24618#27614#0" expanded="false" />
+            <element signature="e#24930#26131#0" expanded="false" />
+            <element signature="e#25318#25442#0" expanded="false" />
+            <element signature="e#25477#25555#0" expanded="false" />
+            <element signature="e#25838#26012#0" expanded="false" />
+            <element signature="e#26694#27614#0" expanded="false" />
+            <element signature="e#26740#26919#0" expanded="false" />
+            <element signature="e#26776#26843#0" expanded="false" />
+            <element signature="e#27098#27381#0" expanded="false" />
+            <element signature="e#27134#27381#0" expanded="false" />
+            <element signature="e#27191#27381#0" expanded="false" />
+            <element signature="e#27416#27614#0" expanded="false" />
+            <element signature="e#27452#27538#0" expanded="false" />
+            <element signature="e#27724#27986#0" expanded="false" />
+            <element signature="e#28031#49974#0" expanded="false" />
+            <element signature="e#28044#49776#0" expanded="false" />
+            <element signature="e#28052#28334#0" expanded="false" />
+            <element signature="e#28772#49776#0" expanded="false" />
+            <element signature="e#50014#70635#0" expanded="false" />
+            <element signature="e#50027#70413#0" expanded="false" />
+            <element signature="e#50528#70413#0" expanded="false" />
+            <element signature="e#70449#70481#0" expanded="false" />
+            <element signature="e#70692#92299#0" expanded="false" />
+            <element signature="e#70700#70990#0" expanded="false" />
+            <element signature="e#71919#92299#0" expanded="false" />
+            <element signature="e#92335#92365#0" expanded="false" />
+            <element signature="e#92440#93123#0" expanded="false" />
+            <element signature="e#93164#114349#0" expanded="false" />
+            <element signature="e#93177#113509#0" expanded="false" />
+            <element signature="e#94377#113509#0" expanded="false" />
+            <element signature="e#113616#114348#0" expanded="false" />
+            <element signature="e#114391#115946#0" expanded="false" />
+            <element signature="e#114404#115419#0" expanded="false" />
+            <element signature="e#115523#115945#0" expanded="false" />
+            <element signature="e#116008#118984#0" expanded="false" />
+            <element signature="e#118809#118984#0" expanded="false" />
+            <element signature="e#119020#119050#0" expanded="false" />
+            <element signature="e#119117#119276#0" expanded="false" />
+            <element signature="e#119325#126914#0" expanded="false" />
+            <element signature="e#119352#126880#0" expanded="false" />
+            <element signature="e#119824#122657#0" expanded="false" />
+            <element signature="e#122692#125715#0" expanded="false" />
+            <element signature="e#125742#126880#0" expanded="false" />
+            <element signature="e#126955#129451#0" expanded="false" />
+            <element signature="e#126968#129417#0" expanded="false" />
+            <element signature="e#127352#127662#0" expanded="false" />
+            <element signature="e#127683#128683#0" expanded="false" />
+            <element signature="e#128705#129024#0" expanded="false" />
+            <element signature="e#129121#129335#0" expanded="false" />
+            <element signature="e#129495#129585#0" expanded="false" />
+            <element signature="e#129619#130356#0" expanded="false" />
+            <element signature="e#129632#130208#0" expanded="false" />
+            <element signature="e#129754#130208#0" expanded="false" />
+            <element signature="e#130398#131163#0" expanded="false" />
+            <element signature="e#131019#131049#0" expanded="false" />
+            <element signature="e#132677#132800#0" expanded="false" />
+            <element signature="e#132830#133354#0" expanded="false" />
+            <element signature="e#133393#134573#0" expanded="false" />
+            <element signature="e#135932#137253#0" expanded="false" />
+            <element signature="e#137305#158912#0" expanded="false" />
+            <element signature="e#137313#137603#0" expanded="false" />
+            <element signature="e#138532#158912#0" expanded="false" />
+            <element signature="e#158948#158978#0" expanded="false" />
+            <element signature="e#159039#159722#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RbiCloud/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="28" column="21" lean-forward="false" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/CitizenUI/CitizenHome.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseCitizen.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="225" lean-forward="false" selection-start-line="15" selection-start-column="225" selection-end-line="15" selection-end-column="225" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManager.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="210" lean-forward="false" selection-start-line="14" selection-start-column="210" selection-end-line="14" selection-end-column="210" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
