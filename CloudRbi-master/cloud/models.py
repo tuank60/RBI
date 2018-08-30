@@ -258,6 +258,8 @@ class Facility(models.Model):
     facilityname = models.CharField(db_column='FacilityName', max_length=100)  # Field name made lowercase.
     managementfactor = models.FloatField(db_column='ManagementFactor')  # Field name made lowercase.
     create = models.DateTimeField(db_column='Create', default= datetime.datetime.now())
+    # userID = models.IntegerField(db_column='userID', blank=True, null=False)
+    # userID = models.ForeignKey('ZUser',on_delete=models.CASCADE, db_column='userID')
     def __str__(self):
         return self.facilityname
     class Meta:
@@ -696,6 +698,7 @@ class Sites(models.Model):
     siteid = models.AutoField(db_column='SiteID', primary_key=True)  # Field name made lowercase.
     sitename = models.CharField(db_column='SiteName', max_length=100, blank=True, null=True)  # Field name made lowercase.
     create = models.DateTimeField(db_column='Create', default= datetime.datetime.now())
+    userID = models.ForeignKey('ZUser', on_delete=models.CASCADE, db_column='userID')
     def __str__(self):
         return self.sitename
     # def get_absolute_url(self):
@@ -1014,13 +1017,26 @@ class ZUser(models.Model):
     adress = models.CharField(max_length=200, blank=True, null=True)
     username = models.CharField(max_length=40, blank=True, null=True)
     password = models.CharField(max_length=40, blank=True, null=True)
-    active = models.IntegerField(blank=True, null=True)
+    active = models.IntegerField(blank=True,null=False,default='0')
     other_info = models.IntegerField(blank=True, null=True)
     kind = models.CharField(max_length=20, blank=True, null=True)
+    date_joined = models.DateTimeField(default=datetime.datetime.now())
 
     class Meta:
         managed = False
         db_table = 'z_user'
+
+
+class ZProfilebisiness(models.Model):
+    id= models.AutoField(primary_key=True,blank=True,null=False)
+    user = models.ForeignKey(ZUser, on_delete=models.CASCADE)
+    organization_detail = models.CharField(blank=True,null=True, max_length=1000)
+    image_name = models.CharField(blank=True, null=True, max_length=200, default='noavatar')
+
+    class Meta:
+        managed = True
+        db_table = 'z_profile_business'
+
 
 class ZPosts(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -1068,6 +1084,7 @@ class Emailsent(models.Model):
     subject = models.TextField(db_column='subject', blank=True, null=False)
     Emails=models.TextField(blank=True,null=False,db_column='emailsent')
     Emailt = models.TextField(blank=True, null=False, db_column='emailto')
+    # date = models.DateTimeField(db_column='date', default=datetime.datetime.now())
     # date = models.DateTimeField(db_column='date', default=datetime.datetime.now())
     class Meta:
         managed = False

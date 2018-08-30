@@ -1,4 +1,4 @@
-{% extends 'BaseUI/BaseFacility/baseRiskSummary.html' %}
+{% extends 'BaseUI/BaseManager/baseRiskSummaryMana.html' %}
 {% load staticfiles %}
 {% load static %}
 
@@ -15,11 +15,11 @@
 {% endblock %}
 
 <!----------------BLOCK MENU--------------->
-{% block pof %}{% url 'damgeFactor' proposalID %}{% endblock %}
-{% block ca%}{% url 'fullyConsequence' proposalID %}{% endblock %}
-{% block matrix %}{% url 'riskMatrix' proposalID %}{% endblock %}
-{% block chart %}{% url 'riskChart' proposalID %}{% endblock %}
-{% block backProposal %}{% url 'proposalDisplay' componentID %}{% endblock %}
+{% block pof %}{% url 'damgeFactorMana' proposalID %}{% endblock %}
+{% block ca%}{% url 'fullyConsequenceMana' proposalID %}{% endblock %}
+{% block matrix %}{% url 'riskMatrixMana' proposalID %}{% endblock %}
+{% block chart %}{% url 'riskChartMana' proposalID %}{% endblock %}
+{% block backProposal %}{% url 'proposalDisplayMana' componentID %}{% endblock %}
 <!---------------END BLOCK--------------->
 
 {% block data-content %}

@@ -7,8 +7,8 @@ application = get_wsgi_application()
 
 from PIL.PngImagePlugin import _idat
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import render, redirect
-from django.http import Http404
+from django.shortcuts import render, redirect, render_to_response
+from django.http import Http404,HttpResponse
 from cloud import models
 from dateutil.relativedelta import relativedelta
 from cloud.process.RBI import DM_CAL,CA_CAL,pofConvert
@@ -22,9 +22,21 @@ from django.conf import settings
 from cloud.process.File import import_data as ExcelImport
 from cloud.process.RBI import fastCalulate as ReCalculate
 from django.db.models import Q
-from django.contrib.auth import login
+
+
+from django.views.decorators.csrf import csrf_protect
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.encoding import force_bytes, force_text
+from cloud.tokens import gen_token
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
+from  django.contrib.auth import login
+import time
 
 # Create your views here.
+
+################ Base ####################
 def Base_citizen(request):
     try:
         count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email), Q(Is_see=0)).count()
@@ -32,9 +44,9 @@ def Base_citizen(request):
         Http404
     return render(request,'BaseUI/BaseCitizen/baseCitizen.html',{'count':count})
 def citizen_home(request):
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),Q(Is_see=0)).count()
     if request.session['kind']=='citizen':
-        return render(request, 'CitizenUI/CitizenHome.html',{'info':request.session})
-
+        return render(request, 'CitizenUI/CitizenHome.html',{'info':request.session,'count':count})
 def base_manager(request):
     try:
         count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),Q(Is_see=0)).count()
@@ -44,8 +56,6 @@ def base_manager(request):
 def base_business(request):
     try:
         count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email), Q(Is_see=0)).count()
-        print(models.ZUser.objects.filter(id=request.session['id'])[0].email)
-        print(count)
     except Exception as e:
         print(e)
         Http404
@@ -64,11 +74,14 @@ def base_designcode(request):
     return render(request, 'BaseUI/BaseFacility/baseDesigncode.html')
 def base_manufacture(request):
     return render(request, 'FacilityUI/manufacture/manufactureListDisplay.html')
+
 ################## 404 Error ###########################
 def handler404(request):
     return render(request, '404/404.html', locals())
+
 ################ Business UI Control ###################
 def ListFacilities(request, siteID):
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email), Q(Is_see=0)).count()
     try:
         risk = []
 
@@ -101,7 +114,7 @@ def ListFacilities(request, siteID):
             return redirect('facilitiesDisplay', siteID)
     except:
         raise Http404
-    return render(request, 'FacilityUI/facility/facilityListDisplay.html', {'obj': users,'siteID':siteID})
+    return render(request, 'FacilityUI/facility/facilityListDisplay.html', {'obj': users,'siteID':siteID,'count':count})
 def NewFacilities(request,siteID):
     try:
         error = {}
@@ -2611,6 +2624,7 @@ def FullyConsequence(request, proposalID):
 def RiskChart(request, proposalID):
     try:
         rwAssessment = models.RwAssessment.objects.get(id= proposalID)
+        print(rwAssessment)
         rwFullpof = models.RwFullPof.objects.get(id= proposalID)
         rwFullcof = models.RwFullFcof.objects.get(id= proposalID)
         risk = rwFullpof.pofap1 * rwFullcof.fcofvalue
@@ -2677,39 +2691,45 @@ def uploadInspPlan(request, siteID):
         raise Http404
     return render(request, 'FacilityUI/facility/uploadData.html' ,{'siteID': siteID, 'showcontent': showcontent})
 
+############### Dang Nhap Dang Suat #################
 def signin(request):
     error = ''
-    if request.session.has_key('id'):
-        if request.session['kind']=='citizen':
-            return redirect('citizenHome')
-        elif request.session['kind']=='factory':
-            return redirect('facilitiesDisplay',3)
-        elif request.session['kind']=='manager':
-            return  redirect('manager')
-    else:
-        if request.method=='POST':
-            xuser=request.POST.get('txtuser')
-            xpass=request.POST.get('txtpass')
-            data=models.ZUser.objects.filter(Q(username=xuser),Q(password=xpass),Q(active=1))
-            if data.count():
-                request.session['id']=data[0].id
-                request.session['name']=data[0].name
-                request.session['kind']=data[0].kind
-                request.session['phone']=data[0].phone
-                request.session['address'] = data[0].adress
-                request.session['email'] = data[0].email
-                request.session['other_info'] = data[0].other_info
-                request.session.set_expiry(0)
-                if request.session['kind']=='citizen':
-                    return redirect('citizenHome')
-                elif request.session['kind']=='factory':
-                    return redirect('facilitiesDisplay',3)
+    try:
+        if request.session.has_key('id'):
+            if request.session['kind']=='citizen':
+                return redirect('citizenHome')
+            elif request.session['kind']=='factory':
+                facilityID1 = models.Sites.objects.filter(userID_id=request.session['id'])[0].siteid
+                return redirect('facilitiesDisplay',facilityID1)
+            elif request.session['kind']=='manager':
+                return redirect('manager',3)
+        else:
+            if request.method=='POST':
+                xuser=request.POST.get('txtuser')
+                xpass=request.POST.get('txtpass')
+                data=models.ZUser.objects.filter(Q(username=xuser),Q(password=xpass),Q(active=1))
+                if data.count():
+                    request.session['id']=data[0].id
+                    request.session['name']=data[0].name
+                    request.session['kind']=data[0].kind
+                    request.session['phone']=data[0].phone
+                    request.session['address'] = data[0].adress
+                    request.session['email'] = data[0].email
+                    request.session['other_info'] = data[0].other_info
+                    request.session.set_expiry(0)
+                    if request.session['kind']=='citizen':
+                        return redirect('citizenHome')
+                    elif request.session['kind']=='factory':
+                        facilityID = models.Sites.objects.filter(userID_id=request.session['id'])[0].siteid
+                        return redirect('facilitiesDisplay',facilityID)
+                    else:
+                        return redirect('manager',3)
                 else:
-                    return redirect('manager')
-            else:
-                error="Tài khoản hoặc mật khẩu không đúng"
-        return render(request,'Home/index.html',{'error':error})
-
+                    error="Tài khoản hoặc mật khẩu không đúng"
+            return render(request,'Home/index.html',{'error':error})
+    except Exception as e:
+        print(e)
+        raise Http404
 def logout(request):
     try:
         del request.session['id']
@@ -2717,6 +2737,8 @@ def logout(request):
     except:
         pass
     return redirect('home')
+
+################## Forum Dien Dan ###################
 def base_forum(request):
     if request.session.has_key('id'):
         if 'btnsend' in request.POST:
@@ -2725,15 +2747,34 @@ def base_forum(request):
             xtag=request.POST.get('txttag')
             a=models.ZPosts(title=xtitle,tag=xtag,content=xcontent,time=datetime.now(),id_user=request.session['id'],views=0)
             a.save()
+        mang=[]
         data=models.ZPosts.objects.all()
-        return render(request,'BaseUI/BaseForum/forumhome.html',{'data':data})
+        for dataposts in data:
+            posts={}
+            posts['id']=dataposts.id
+            posts['id_user']=dataposts.id_user
+            posts['title']=dataposts.title
+            posts['content']=dataposts.content
+            posts['time']=dataposts.time
+            posts['tag']=dataposts.tag
+            posts['views']=dataposts.views
+            posts['reply']=models.ZComment.objects.all().filter(id_posts=dataposts.id).count()
+            mang.append(posts)
+        noti=models.ZNotification.objects.all().filter(id_user=request.session['id'])
+        countnoti=noti.filter(state=0).count()
+        return render(request,'BaseUI/BaseForum/forumhome.html',{'data':mang, 'noti':noti, 'countnoti':countnoti})
     else:
         return redirect('home')
-
 def posts_forum(request,postID):
     a=models.ZPosts.objects.filter(id=postID)[0]
     a.views+=1
     a.save()
+    nameuserpost=models.ZUser.objects.all().filter(id=a.id_user)[0].name
+    if request.session['id']==a.id_user:
+        noti=models.ZNotification.objects.all().filter(link=postID)
+        for notifi in noti:
+            notifi.state=1
+            notifi.save()
     if 'btncomment' in request.POST:
         xcontent=request.POST.get('txtcomment')
         data=models.ZComment(content=xcontent,time=datetime.now(),id_posts=postID,id_user=request.session['id'])
@@ -2742,19 +2783,21 @@ def posts_forum(request,postID):
         id_user=models.ZPosts.objects.all().filter(id=postID)[0].id_user #Lấy ID người đăng bài
         title_post = models.ZPosts.objects.all().filter(id=postID)[0].title
         if request.session['id']!=id_user:
-            noti=models.ZNotification(id_user=id_user,subject=request.session['name'],content=' đã phản hồi bài viết ', object=title_post,link=postID)
+            noti=models.ZNotification(id_user=id_user,subject=request.session['name'],content=' đã phản hồi bài viết ', object=title_post,link=postID,time=datetime.now())
             noti.save()
 
     comment=models.ZComment.objects.all().filter(id_posts=postID)#Lấy dữ liệu comment của this post
-    mang=[]
+    datacmt=[]
     for data in comment:
         cmt={}
         cmt['name']=models.ZUser.objects.all().filter(id=data.id_user)[0].name
         cmt['content']=data.content
-        mang.append(cmt)#mang chua Du lieu cac comment
+        datacmt.append(cmt)#mang chua Du lieu cac comment
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    return render(request,'BaseUI/BaseForum/forumposts.html',{'data':a,'nameuserpost':nameuserpost,'datacmt':datacmt,'session':request.session,'noti':noti, 'countnoti':countnoti})
 
-    return render(request,'BaseUI/BaseForum/forumposts.html',{'data':a,'datacmt':mang,'session':request.session})
-
+################## Tin nhan Email ###################
 def MassagesHome(request):
     datacontent = models.Emailto.objects.filter(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email)
     try:
@@ -2781,7 +2824,6 @@ def MassagesHome(request):
         print(e)
         Http404
     return render(request,'BaseUI/BaseMassages/BaseMassages.html',{'datacontent':datacontent})
-
 def Email_Massage_sent(request):
     datacontent = models.Emailsent.objects.filter(Emails=models.ZUser.objects.filter(id=request.session['id'])[0].email)
     try:
@@ -2809,8 +2851,611 @@ def Email_Massage_sent(request):
         Http404
     return render(request, 'BaseUI/BaseMassages/Massages_sent.html', {'datacontent':datacontent})
 
+################# Help #############
+def Help(requset):
+    print('aa')
+    return render(requset,'help/help.html')
 
-def dataa(request, proposalID):
+################ Dang ki tai khoan ####################
+def AccountCitizen(request):
+    infor = {}
+    try:
+        if request.method == "POST":
+            user = request.POST.get('username')
+            name = request.POST.get('name')
+            # last_name = request.POST.get('txtlname')
+            password = request.POST.get('txtpass')
+            repassword = request.POST.get('repass')
+            phone = request.POST.get('txtmobile')
+            email = request.POST.get('txtmail')
+            addr = request.POST.get('txtadd')
+            kind = 'citizen'
+            desc = request.POST.get('CompanyInformation')
+            # print(companyName + " " + user + " " + email)
+            if password == repassword:
+                authUser = models.ZUser.objects.filter(Q(username=user) | Q(email=email))
+                print("ok")
+                if authUser.count() > 0:
+                    infor['exist'] = "This User Name or E-mail was taken"
+                    print(infor['exist'])
+                else:
+                    try:
+                        authUser1 = models.ZUser(username=user, phone=phone, adress=addr, email=email, name=name,
+                                                 kind=kind, password=password)
+                        authUser1.save()
+                        print(authUser1.username)
+                        # profile = models.ZProfilebisiness(user_id=authUser1.id, organization_detail=desc)
+                        # profile.save()
+                    except Exception as e:
+                        print(e)
+                    current_site = get_current_site(request)
+                    print("a")
+                    email_subject = "Activate your block account"
+                    message = render_to_string('Home/Account/activateEmail.html', {
+                        'user': authUser1,
+                        'domain': current_site.domain,
+                        'uid': urlsafe_base64_encode(force_bytes(authUser1.pk)).decode(),
+                        'token': gen_token.make_token(authUser1)
+                    })
+                    print('ok')
+                    to_email = email
+                    Email = EmailMessage(email_subject, message, to=[to_email])
+                    Email.send()
+                    print("sended")
+                    # return HttpResponse("Please confirm in your e-mail")
+                    return render_to_response('response/complete_regiatration.html')
+            else:
+                infor['match'] = "The password is not match"
+    except Exception as e:
+        print(e)
+    return render(request, 'Home/Account/sigup_citizen.html')
+def AccountBusiness(request):
+    infor = {}
+    try:
+        if request.method == "POST":
+            companyName = request.POST.get('companyname_business')
+            user = request.POST.get('username')
+            # first_name = request.POST.get('first_name')
+            # last_name = request.POST.get('last_name')
+            name=request.POST.get('name')
+            password = request.POST.get('password')
+            repassword = request.POST.get('repassword')
+            phone = request.POST.get('phone')
+            email = request.POST.get('txtmail')
+            addr = request.POST.get('txtadd')
+            kind='factory'
+            desc = request.POST.get('CompanyInformation')
+            print(companyName + " " + user + " " + email)
+            if password == repassword:
+                authUser = models.ZUser.objects.filter(Q(username=user) | Q(email=email))
+                print("ok")
+                if authUser.count() > 0:
+                    infor['exist'] = "This User Name or E-mail was taken"
+                    print(infor['exist'])
+                else:
+                    try:
+                        authUser1 = models.ZUser(username=user,phone=phone,adress=addr ,email=email,name=name,kind=kind ,password=password)
+                        authUser1.save()
+                        print(authUser1.username)
+                        fa = models.Sites(sitename=companyName, userID_id=authUser1.id)
+                        fa.save()
+                    except Exception as e:
+                        print(e)
+                    current_site = get_current_site(request)
+                    print("a")
+                    email_subject = "Activate your block account"
+                    message = render_to_string('Home/Account/activateEmail.html', {
+                        'user': authUser1,
+                        'domain': current_site.domain,
+                        'uid': urlsafe_base64_encode(force_bytes(authUser1.pk)).decode(),
+                        'token': gen_token.make_token(authUser1)
+                    })
+                    print('ok')
+                    to_email = email
+                    Email = EmailMessage(email_subject, message, to=[to_email])
+                    Email.send()
+                    print("sended")
+                    # return HttpResponse("Please confirm in your e-mail")
+                    return render_to_response('response/complete_regiatration.html')
+            else:
+                infor['match'] = "The password is not match"
+    except Exception as e:
+        print(e)
+    return render(request, 'Home/Account/signup_business.html')
+def AccountManagement(request):
+    infor = {}
+    try:
+        if request.method == "POST":
+            org_name = request.POST.get('org_name_mng')
+            user = request.POST.get('username_mng')
+            # first_name = request.POST.get('first_name')
+            # last_name = request.POST.get('last_name')
+            name = request.POST.get('name')
+            password = request.POST.get('pass_mng')
+            repassword = request.POST.get('repass_mng')
+            phone = request.POST.get('phone_mng')
+            email = request.POST.get('email_mng')
+            addr = request.POST.get('addr_mng')
+            web = request.POST.get('web_mng')
+            desc = request.POST.get('desc')
+            kind='manager'
+            print(org_name + " " + user + " " + email)
+            if password == repassword:
+                authUser = models.ZUser.objects.filter(Q(username=user) | Q(email=email))
+                print("ok")
+                if authUser.count() > 0:
+                    infor['exist'] = "This User Name or E-mail was taken"
+                    print(infor['exist'])
+                else:
+                    try:
+                        authUser1 = models.ZUser(username=user, phone=phone, adress=addr, email=email, name=name,
+                                                 kind=kind, password=password)
+                        authUser1.save()
+                        print(authUser1.username)
+                        # profile = models.ZProfilebisiness(user_id=authUser1.id, organization_detail=desc)
+                        # profile.save()
+                    except Exception as e:
+                        print(e)
+                    current_site = get_current_site(request)
+                    print("a")
+                    email_subject = "Activate your block account"
+                    message = render_to_string('Home/Account/activateEmail.html', {
+                        'user': authUser1,
+                        'domain': current_site.domain,
+                        'uid': urlsafe_base64_encode(force_bytes(authUser1.pk)).decode(),
+                        'token': gen_token.make_token(authUser1)
+                    })
+                    print('ok')
+                    to_email = email
+                    Email = EmailMessage(email_subject, message, to=[to_email])
+                    Email.send()
+                    print("sended")
+                    # return HttpResponse("Please confirm in your e-mail")
+                    return render_to_response('response/complete_regiatration.html')
+            else:
+                infor['match'] = "The password is not match"
+    except Exception as e:
+        print(e)
+    return render(request, 'Home/Account/signup_management.html')
+def activate(request, uidb64, token):
+    try:
+        # uid = force_text(urlsafe_base64_decode(uidb64))
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = models.ZUser.objects.get(pk=uid)
+        print("1")
+    except(TypeError, ValueError, OverflowError, models.ZUser.DoesNotExist):
+        user = None
+    print(gen_token.check_token(user, token))
+    print("2")
+    if user is not None and gen_token.check_token(user, token):
+        user.active = True
+        user.save()
+        # login(request, user)
+        # return HttpResponse("Activate is complete! Thanks for use our services")
+        print("aaaaaa")
+        return render_to_response('response/totally_complete.html')
+    else:
+        print(user.username)
+        return HttpResponse("Can't activate now, please try again later or contact us")
+
+################ Business UI Control ###################
+def ManagerHome(request, siteID):
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email), Q(Is_see=0)).count()
+    try:
+        risk = []
+
+        data = models.Sites.objects.all()
+        # print(data.facilityname)
+        for a in data:
+            dataF = {}
+            # risTarget = models.FacilityRiskTarget.objects.get(facilityid= a.facilityid)
+            dataF['ID'] = a.siteid
+            dataF['SideName'] = a.sitename
+            # dataF['ManagementFactor'] = a.managementfactor
+            # dataF['RiskTarget'] = risTarget.risktarget_fc
+            risk.append(dataF)
+
+        ## so doi tuong co tren 1 trang web ##
+        pagiFaci = Paginator(risk, 25)
+        pageFaci = request.GET.get('page',1)
+        try:
+            users = pagiFaci.page(pageFaci)
+        except PageNotAnInteger:
+            users = pagiFaci.page(1)
+        except EmptyPage:
+            users = pageFaci.page(pagiFaci.num_pages)
+        #########################################
+        # if '_edit' in request.POST:
+        #     for a in data:
+        #         if(request.POST.get('%d' %a.siteid)):
+        #             return redirect('facilitiesEdit', a.siteid)
+        if '_delete' in request.POST:
+            for a in data:
+                if(request.POST.get('%d' %a.siteid)):
+                    a.delete()
+            return redirect('facilitiesDisplay', siteID)
+    except:
+        raise Http404
+    return render(request, 'ManagerUI/Business_List.html', {'obj': users,'siteID':siteID,'count':count})
+def ListFacilitiesMana(request, siteID):
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email), Q(Is_see=0)).count()
+    try:
+        risk = []
+
+        data= models.Facility.objects.filter(siteid= siteID)
+        for a in data:
+            dataF = {}
+            risTarget = models.FacilityRiskTarget.objects.get(facilityid= a.facilityid)
+            dataF['ID'] = a.facilityid
+            dataF['FacilitiName'] = a.facilityname
+            dataF['ManagementFactor'] = a.managementfactor
+            dataF['RiskTarget'] = risTarget.risktarget_fc
+            risk.append(dataF)
+
+        pagiFaci = Paginator(risk, 25)
+        pageFaci = request.GET.get('page',1)
+        try:
+            users = pagiFaci.page(pageFaci)
+        except PageNotAnInteger:
+            users = pagiFaci.page(1)
+        except EmptyPage:
+            users = pageFaci.page(pagiFaci.num_pages)
+        if '_edit' in request.POST:
+            for a in data:
+                if(request.POST.get('%d' %a.facilityid)):
+                    return redirect('facilitiesEdit', a.facilityid)
+        if '_delete' in request.POST:
+            for a in data:
+                if(request.POST.get('%d' %a.facilityid)):
+                    a.delete()
+            return redirect('facilitiesDisplay', siteID)
+    except:
+        raise Http404
+    return render(request, 'ManagerUI/facility_List.html', {'obj': users,'siteID':siteID,'count':count})
+def ListEquipmentMana(request, facilityID):
+    try:
+        faci = models.Facility.objects.get(facilityid= facilityID)
+        data = models.EquipmentMaster.objects.filter(facilityid= facilityID)
+        pagiEquip = Paginator(data,25)
+        pageEquip = request.GET.get('page',1)
+        try:
+            obj = pagiEquip.page(pageEquip)
+        except PageNotAnInteger:
+            obj = pagiEquip.page(1)
+        except EmptyPage:
+            obj = pageEquip.page(pagiEquip.num_pages)
+        if '_edit' in request.POST:
+            for a in data:
+                if request.POST.get('%d' %a.equipmentid):
+                    return redirect('equipmentEdit', equipmentID= a.equipmentid)
+        if '_delete' in request.POST:
+            for a in data:
+                if request.POST.get('%d' %a.equipmentid):
+                    a.delete()
+            return redirect('equipmentDisplay' , facilityID= facilityID)
+    except:
+        raise Http404
+    return render(request, 'ManagerUI/Equipment_List.html', {'obj':obj, 'facilityID':facilityID, 'siteID':faci.siteid_id})
+def ListComponentMana(request, equipmentID):
+    try:
+        eq = models.EquipmentMaster.objects.get(equipmentid= equipmentID)
+        data = models.ComponentMaster.objects.filter(equipmentid= equipmentID)
+        pagiComp = Paginator(data,25)
+        pageComp = request.GET.get('page',1)
+        try:
+            obj = pagiComp.page(pageComp)
+        except PageNotAnInteger:
+            obj= pagiComp.page(1)
+        except EmptyPage:
+            obj = pageComp.page(pagiComp.num_pages)
+        if '_edit' in request.POST:
+            for a in data:
+                if request.POST.get('%a' %a.componentid):
+                    return redirect('componentEdit', componentID= a.componentid)
+        if '_delete' in request.POST:
+            for a in data:
+                if request.POST.get('%d' %a.componentid):
+                    a.delete()
+            return  redirect('componentDisplay', equipmentID= equipmentID)
+    except:
+        raise Http404
+    return render(request, 'ManagerUI/component_List.html', {'obj':obj, 'equipmentID':equipmentID, 'facilityID': eq.facilityid_id})
+def ListProposalMana(request, componentID):
+    try:
+        rwass = models.RwAssessment.objects.filter(componentid= componentID)
+        data = []
+        comp = models.ComponentMaster.objects.get(componentid= componentID)
+        equip = models.EquipmentMaster.objects.get(equipmentid= comp.equipmentid_id)
+        tank = [8,12,14,15]
+        for a in rwass:
+            df = models.RwFullPof.objects.filter(id= a.id)
+            fc = models.RwFullFcof.objects.filter(id= a.id)
+            dm = models.RwDamageMechanism.objects.filter(id_dm= a.id)
+            obj1 = {}
+            obj1['id'] = a.id
+            obj1['name'] = a.proposalname
+            obj1['lastinsp'] = a.assessmentdate.strftime('%Y-%m-%d')
+            if df.count() != 0:
+                obj1['df'] = round(df[0].totaldfap1, 2)
+                obj1['gff'] = df[0].gfftotal
+                obj1['fms'] = df[0].fms
+            else:
+                obj1['df'] = 0
+                obj1['gff'] = 0
+                obj1['fms'] = 0
+            if fc.count() != 0:
+                obj1['fc'] = round(fc[0].fcofvalue, 2)
+            else:
+                obj1['fc'] = 0
+            if dm.count() != 0:
+                obj1['duedate'] = dm[0].inspduedate.date().strftime('%Y-%m-%d')
+            else:
+                obj1['duedate'] = (a.assessmentdate.date() + relativedelta(years=15)).strftime('%Y-%m-%d')
+                obj1['lastinsp'] = equip.commissiondate.date().strftime('%Y-%m-%d')
+            obj1['risk'] = round(obj1['df'] * obj1['gff'] * obj1['fms'] * obj1['fc'], 2)
+            data.append(obj1)
+        pagidata = Paginator(data,25)
+        pagedata = request.GET.get('page',1)
+        try:
+            obj = pagidata.page(pagedata)
+        except PageNotAnInteger:
+            obj = pagidata.page(1)
+        except EmptyPage:
+            obj = pagedata.page(pagidata.num_pages)
+
+        if comp.componenttypeid_id in tank:
+            istank = 1
+        else:
+            istank = 0
+        if comp.componenttypeid_id == 8 or comp.componenttypeid_id == 14:
+            isshell = 1
+        else:
+            isshell = 0
+        if request.POST:
+            if '_delete' in request.POST:
+                for a in rwass:
+                    if request.POST.get('%d' %a.id):
+                        a.delete()
+                return redirect('proposalDisplay', componentID=componentID)
+            elif '_cancel' in request.POST:
+                return redirect('proposalDisplay', componentID=componentID)
+            elif '_edit' in request.POST:
+                for a in rwass:
+                    if request.POST.get('%d' %a.id):
+                        if istank:
+                            return redirect('tankEdit', proposalID= a.id)
+                        else:
+                            return redirect('prosalEdit', proposalID= a.id)
+            else:
+                for a in rwass:
+                    if request.POST.get('%d' %a.id):
+                        ReCalculate.ReCalculate(a.id)
+                return redirect('proposalDisplay', componentID=componentID)
+    except:
+        raise Http404
+    return render(request, 'ManagerUI/proposal_List.html', {'obj':obj, 'istank': istank, 'isshell':isshell,
+                                                                            'componentID':componentID,
+                                                                            'equipmentID':comp.equipmentid_id})
+def FullyDamageFactorMana(request, proposalID):
+    try:
+        df = models.RwFullPof.objects.get(id= proposalID)
+        rwAss = models.RwAssessment.objects.get(id= proposalID)
+        data={}
+        component = models.ComponentMaster.objects.get(componentid=rwAss.componentid_id)
+        if component.componenttypeid_id == 8 or component.componenttypeid_id == 12 or component.componenttypeid_id == 14 or component.componenttypeid_id == 15:
+            isTank = 1
+        else:
+            isTank = 0
+        if component.componenttypeid_id == 8 or component.componenttypeid_id == 14:
+            isShell = 1
+        else:
+            isShell = 0
+        data['thinningType'] = df.thinningtype
+        data['gfftotal'] = df.gfftotal
+        data['fms'] = df.fms
+        data['thinningap1'] = roundData.roundDF(df.thinningap1)
+        data['thinningap2'] = roundData.roundDF(df.thinningap2)
+        data['thinningap3'] = roundData.roundDF(df.thinningap3)
+        data['sccap1'] = roundData.roundDF(df.sccap1)
+        data['sccap2'] = roundData.roundDF(df.sccap2)
+        data['sccap3'] = roundData.roundDF(df.sccap3)
+        data['externalap1'] = roundData.roundDF(df.externalap1)
+        data['externalap2'] = roundData.roundDF(df.externalap2)
+        data['externalap3'] = roundData.roundDF(df.externalap3)
+        data['htha_ap1'] = roundData.roundDF(df.htha_ap1)
+        data['htha_ap2'] = roundData.roundDF(df.htha_ap2)
+        data['htha_ap3'] = roundData.roundDF(df.htha_ap3)
+        data['brittleap1'] = roundData.roundDF(df.brittleap1)
+        data['brittleap2'] = roundData.roundDF(df.brittleap2)
+        data['brittleap3'] = roundData.roundDF(df.brittleap3)
+        data['fatigueap1'] = roundData.roundDF(df.fatigueap1)
+        data['fatigueap2'] = roundData.roundDF(df.fatigueap2)
+        data['fatigueap3'] = roundData.roundDF(df.fatigueap3)
+        data['thinninggeneralap1'] = roundData.roundDF(df.thinninggeneralap1)
+        data['thinninggeneralap2'] = roundData.roundDF(df.thinninggeneralap2)
+        data['thinninggeneralap3'] = roundData.roundDF(df.thinninggeneralap3)
+        data['thinninglocalap1'] = roundData.roundDF(df.thinninglocalap1)
+        data['thinninglocalap2'] = roundData.roundDF(df.thinninglocalap2)
+        data['thinninglocalap3'] = roundData.roundDF(df.thinninglocalap3)
+        data['totaldfap1'] = roundData.roundDF(df.totaldfap1)
+        data['totaldfap2'] = roundData.roundDF(df.totaldfap2)
+        data['totaldfap3'] = roundData.roundDF(df.totaldfap3)
+        data['pofap1'] = roundData.roundPoF(df.pofap1)
+        data['pofap2'] = roundData.roundPoF(df.pofap2)
+        data['pofap3'] = roundData.roundPoF(df.pofap3)
+        data['pofap1category'] = df.pofap1category
+        data['pofap2category'] = df.pofap2category
+        data['pofap3category'] = df.pofap3category
+        if request.method == 'POST':
+            df.thinningtype = request.POST.get('thinningType')
+            df.save()
+            ReCalculate.ReCalculate(proposalID)
+            return redirect('damgeFactor', proposalID)
+    except Exception as e:
+        print(e)
+        raise Http404
+    return render(request, 'ManagerUI/RiskSummaryMana/FullDF.html', {'obj':data, 'assess': rwAss, 'isTank': isTank,
+                                                                   'isShell': isShell, 'proposalID':proposalID})
+def FullyConsequenceMana(request, proposalID):
+    data = {}
+    try:
+        rwAss = models.RwAssessment.objects.get(id=proposalID)
+        component = models.ComponentMaster.objects.get(componentid=rwAss.componentid_id)
+        if component.componenttypeid_id == 12 or component.componenttypeid_id == 15:
+            isBottom = 1
+        else:
+            isBottom = 0
+        if component.componenttypeid_id == 8 or component.componenttypeid_id == 14:
+            isShell = 1
+        else:
+            isShell = 0
+        if isBottom:
+            bottomConsequences = models.RwCaTank.objects.get(id=proposalID)
+            data['hydraulic_water'] = roundData.roundFC(bottomConsequences.hydraulic_water)
+            data['hydraulic_fluid'] = roundData.roundFC(bottomConsequences.hydraulic_fluid)
+            data['seepage_velocity'] = roundData.roundFC(bottomConsequences.seepage_velocity)
+            data['flow_rate_d1'] = roundData.roundFC(bottomConsequences.flow_rate_d1)
+            data['flow_rate_d4'] = roundData.roundFC(bottomConsequences.flow_rate_d4)
+            data['leak_duration_d1'] = roundData.roundFC(bottomConsequences.leak_duration_d1)
+            data['leak_duration_d4'] = roundData.roundFC(bottomConsequences.leak_duration_d4)
+            data['release_volume_leak_d1'] = roundData.roundFC(bottomConsequences.release_volume_leak_d1)
+            data['release_volume_leak_d4'] = roundData.roundFC(bottomConsequences.release_volume_leak_d4)
+            data['release_volume_rupture'] = roundData.roundFC(bottomConsequences.release_volume_rupture)
+            data['time_leak_ground'] = roundData.roundFC(bottomConsequences.time_leak_ground)
+            data['volume_subsoil_leak_d1'] = roundData.roundFC(bottomConsequences.volume_subsoil_leak_d1)
+            data['volume_subsoil_leak_d4'] = roundData.roundFC(bottomConsequences.volume_subsoil_leak_d4)
+            data['volume_ground_water_leak_d1'] = roundData.roundFC(bottomConsequences.volume_ground_water_leak_d1)
+            data['volume_ground_water_leak_d4'] = roundData.roundFC(bottomConsequences.volume_ground_water_leak_d4)
+            data['barrel_dike_rupture'] = roundData.roundFC(bottomConsequences.barrel_dike_rupture)
+            data['barrel_onsite_rupture'] = roundData.roundFC(bottomConsequences.barrel_onsite_rupture)
+            data['barrel_offsite_rupture'] = roundData.roundFC(bottomConsequences.barrel_offsite_rupture)
+            data['barrel_water_rupture'] = roundData.roundFC(bottomConsequences.barrel_water_rupture)
+            data['fc_environ_leak'] = roundData.roundMoney(bottomConsequences.fc_environ_leak)
+            data['fc_environ_rupture'] = roundData.roundMoney(bottomConsequences.fc_environ_rupture)
+            data['fc_environ'] = roundData.roundMoney(bottomConsequences.fc_environ)
+            data['material_factor'] = bottomConsequences.material_factor
+            data['component_damage_cost'] = roundData.roundMoney(bottomConsequences.component_damage_cost)
+            data['business_cost'] = roundData.roundMoney(bottomConsequences.business_cost)
+            data['consequence'] = roundData.roundMoney(bottomConsequences.consequence)
+            data['consequencecategory'] = bottomConsequences.consequencecategory
+            return render(request, 'ManagerUI/RiskSummaryMana/fullyBottomConsequenceMana.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss})
+        elif isShell:
+            shellConsequences = models.RwCaTank.objects.get(id=proposalID)
+            data['flow_rate_d1'] = roundData.roundFC(shellConsequences.flow_rate_d1)
+            data['flow_rate_d2'] = roundData.roundFC(shellConsequences.flow_rate_d2)
+            data['flow_rate_d3'] = roundData.roundFC(shellConsequences.flow_rate_d3)
+            data['flow_rate_d4'] = roundData.roundFC(shellConsequences.flow_rate_d4)
+            data['leak_duration_d1'] = roundData.roundFC(shellConsequences.leak_duration_d1)
+            data['leak_duration_d2'] = roundData.roundFC(shellConsequences.leak_duration_d2)
+            data['leak_duration_d3'] = roundData.roundFC(shellConsequences.leak_duration_d3)
+            data['leak_duration_d4'] = roundData.roundFC(shellConsequences.leak_duration_d4)
+            data['release_volume_leak_d1'] = roundData.roundFC(shellConsequences.release_volume_leak_d1)
+            data['release_volume_leak_d2'] = roundData.roundFC(shellConsequences.release_volume_leak_d2)
+            data['release_volume_leak_d3'] = roundData.roundFC(shellConsequences.release_volume_leak_d3)
+            data['release_volume_leak_d4'] = roundData.roundFC(shellConsequences.release_volume_leak_d4)
+            data['release_volume_rupture'] = roundData.roundFC(shellConsequences.release_volume_rupture)
+            data['time_leak_ground'] = roundData.roundFC(shellConsequences.time_leak_ground)
+            data['volume_subsoil_leak_d1'] = roundData.roundFC(shellConsequences.volume_subsoil_leak_d1)
+            data['volume_subsoil_leak_d4'] = roundData.roundFC(shellConsequences.volume_subsoil_leak_d4)
+            data['volume_ground_water_leak_d1'] = roundData.roundFC(shellConsequences.volume_ground_water_leak_d1)
+            data['volume_ground_water_leak_d4'] = roundData.roundFC(shellConsequences.volume_ground_water_leak_d4)
+            data['barrel_dike_rupture'] = roundData.roundFC(shellConsequences.barrel_dike_rupture)
+            data['barrel_onsite_rupture'] = roundData.roundFC(shellConsequences.barrel_onsite_rupture)
+            data['barrel_offsite_rupture'] = roundData.roundFC(shellConsequences.barrel_offsite_rupture)
+            data['barrel_water_rupture'] = roundData.roundFC(shellConsequences.barrel_water_rupture)
+            data['fc_environ_leak'] = roundData.roundMoney(shellConsequences.fc_environ_leak)
+            data['fc_environ_rupture'] = roundData.roundMoney(shellConsequences.fc_environ_rupture)
+            data['fc_environ'] = roundData.roundMoney(shellConsequences.fc_environ)
+            data['component_damage_cost'] = roundData.roundMoney(shellConsequences.component_damage_cost)
+            data['business_cost'] = roundData.roundMoney(shellConsequences.business_cost)
+            data['consequence'] = roundData.roundMoney(shellConsequences.consequence)
+            data['consequencecategory'] = shellConsequences.consequencecategory
+            return render(request, 'ManagerUI/RiskSummaryMana/fullySellConsequenceMana.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss})
+        else:
+            ca = models.RwCaLevel1.objects.get(id= proposalID)
+            inputCa = models.RwInputCaLevel1.objects.get(id= proposalID)
+            data['production_cost'] = roundData.roundMoney(inputCa.production_cost)
+            data['equipment_cost'] = roundData.roundMoney(inputCa.equipment_cost)
+            data['personal_density'] = inputCa.personal_density
+            data['evironment_cost'] = roundData.roundMoney(inputCa.evironment_cost)
+            data['ca_cmd'] = roundData.roundFC(ca.ca_cmd)
+            data['ca_inj_flame'] = roundData.roundFC(ca.ca_inj_flame)
+            data['fc_cmd'] = roundData.roundMoney(ca.fc_cmd)
+            data['fc_affa'] = roundData.roundMoney(ca.fc_affa)
+            data['fc_prod'] = roundData.roundMoney(ca.fc_prod)
+            data['fc_inj'] = roundData.roundMoney(ca.fc_inj)
+            data['fc_envi'] = roundData.roundMoney(ca.fc_envi)
+            data['fc_total'] = roundData.roundMoney(ca.fc_total)
+            data['fcof_category'] = ca.fcof_category
+            return render(request, 'ManagerUI/RiskSummaryMana/fullyNormalConsequenceMana.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss})
+    except:
+        raise Http404
+def RiskChartMana(request, proposalID):
+    try:
+        rwAssessment = models.RwAssessment.objects.get(id= proposalID)
+        print(rwAssessment)
+        rwFullpof = models.RwFullPof.objects.get(id= proposalID)
+        rwFullcof = models.RwFullFcof.objects.get(id= proposalID)
+        risk = rwFullpof.pofap1 * rwFullcof.fcofvalue
+        chart = models.RwDataChart.objects.get(id= proposalID)
+        assessmentDate = rwAssessment.assessmentdate
+        dataChart = [risk, chart.riskage1, chart.riskage2, chart.riskage3, chart.riskage4, chart.riskage5, chart.riskage6,
+                     chart.riskage7, chart.riskage8, chart.riskage9, chart.riskage9, chart.riskage10, chart.riskage11,
+                     chart.riskage12, chart.riskage13, chart.riskage14, chart.riskage15]
+        dataLabel = [date2Str.date2str(assessmentDate), date2Str.date2str(date2Str.dateFuture(assessmentDate,1)),
+                     date2Str.date2str(date2Str.dateFuture(assessmentDate, 2)),date2Str.date2str(date2Str.dateFuture(assessmentDate,3)),
+                     date2Str.date2str(date2Str.dateFuture(assessmentDate, 4)),date2Str.date2str(date2Str.dateFuture(assessmentDate,5)),
+                     date2Str.date2str(date2Str.dateFuture(assessmentDate, 6)),date2Str.date2str(date2Str.dateFuture(assessmentDate,7)),
+                     date2Str.date2str(date2Str.dateFuture(assessmentDate, 8)),date2Str.date2str(date2Str.dateFuture(assessmentDate,9)),
+                     date2Str.date2str(date2Str.dateFuture(assessmentDate, 10)),date2Str.date2str(date2Str.dateFuture(assessmentDate,11)),
+                     date2Str.date2str(date2Str.dateFuture(assessmentDate, 12)),date2Str.date2str(date2Str.dateFuture(assessmentDate,13)),
+                     date2Str.date2str(date2Str.dateFuture(assessmentDate, 14))]
+        dataTarget = [chart.risktarget,chart.risktarget,chart.risktarget,chart.risktarget,chart.risktarget,chart.risktarget,
+                      chart.risktarget,chart.risktarget,chart.risktarget,chart.risktarget,chart.risktarget,chart.risktarget,
+                      chart.risktarget,chart.risktarget,chart.risktarget,chart.risktarget]
+        endLabel = date2Str.date2str(date2Str.dateFuture(assessmentDate, 15))
+        content = {'label': dataLabel, 'data':dataChart, 'target':dataTarget, 'endLabel':endLabel, 'proposalname':rwAssessment.proposalname,
+                   'proposalID':rwAssessment.id, 'componentID':rwAssessment.componentid_id}
+        return render(request, 'ManagerUI/RiskSummaryMana/riskChartMana.html', content)
+    except:
+        raise Http404
+def RiskMatrixMana(request, proposalID):
+    try:
+        locatAPI1 = {}
+        locatAPI2 = {}
+        locatAPI3 = {}
+        locatAPI1['x'] = 0
+        locatAPI1['y'] = 500
+
+        locatAPI2['x'] = 0
+        locatAPI2['y'] = 500
+
+        locatAPI3['x'] = 0
+        locatAPI3['y'] = 500
+
+        df = models.RwFullPof.objects.get(id=proposalID)
+        ca = models.RwFullFcof.objects.get(id=proposalID)
+        rwAss = models.RwAssessment.objects.get(id=proposalID)
+        component = models.ComponentMaster.objects.get(componentid=rwAss.componentid_id)
+        if component.componenttypeid_id == 8 or component.componenttypeid_id == 12 or component.componenttypeid_id == 14 or component.componenttypeid_id == 15:
+            isTank = 1
+        else:
+            isTank = 0
+
+        if component.componenttypeid_id == 8 or component.componenttypeid_id == 14:
+            isShell = 1
+        else:
+            isShell = 0
+        Ca = round(ca.fcofvalue, 2)
+        DF1 = round(df.totaldfap1, 2)
+        DF2 = round(df.totaldfap2, 2)
+        DF3 = round(df.totaldfap3, 2)
+    except:
+        raise Http404
+    return render(request, 'ManagerUI/RiskSummaryMana/RiskMatrixMana.html',{'API1':location.locat(df.totaldfap1, ca.fcofvalue), 'API2':location.locat(df.totaldfap2, ca.fcofvalue),
+                                                                      'API3':location.locat(df.totaldfap3, ca.fcofvalue),'DF1': DF1,'DF2': DF2,'DF3': DF3, 'ca':Ca,
+                                                                      'ass':rwAss,'isTank': isTank, 'isShell': isShell, 'df':df, 'proposalID':proposalID})
+def Inputdata(request, proposalID):
     try:
         Fluid = ["Acid", "AlCl3", "C1-C2", "C13-C16", "C17-C25", "C25+", "C3-C4", "C5", "C6-C8", "C9-C12", "CO", "DEE",
                  "EE", "EEA", "EG", "EO", "H2", "H2S", "HCl", "HF", "Methanol", "Nitric Acid", "NO2", "Phosgene", "PO",
@@ -3315,13 +3960,14 @@ def dataa(request, proposalID):
 
             #Customize code here
             ReCalculate.ReCalculate(proposalID)
-            return redirect('damgeFactor', proposalID= proposalID)
+            return redirect('inputdata', proposalID= proposalID)
     except Exception as e:
         print(e)
         raise Http404
-    return render(request, 'BaseUI/BaseMassages/data.html', {'api':Fluid, 'rwAss':rwassessment, 'rwEq':rwequipment,
+    return render(request, 'BaseUI/BaseManager/Inputdata.html', {'api':Fluid, 'rwAss':rwassessment, 'rwEq':rwequipment,
                                                                            'rwComp':rwcomponent, 'rwStream':rwstream, 'rwExcot':rwexcor,
                                                                            'rwCoat':rwcoat, 'rwMaterial':rwmaterial, 'rwInputCa':rwinputca,
                                                                            'assDate':assDate, 'extDate':extDate,
                                                                            'componentID': rwassessment.componentid_id,
                                                                            'equipmentID': rwassessment.equipmentid_id})
+
