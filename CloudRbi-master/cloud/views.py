@@ -3038,7 +3038,7 @@ def activate(request, uidb64, token):
         print(user.username)
         return HttpResponse("Can't activate now, please try again later or contact us")
 
-################ Business UI Control ###################
+################ Manager UI Control ###################
 def ManagerHome(request, siteID):
     count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email), Q(Is_see=0)).count()
     try:
