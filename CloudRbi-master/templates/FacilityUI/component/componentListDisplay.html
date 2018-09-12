@@ -1,5 +1,9 @@
 {% extends 'BaseUI/BaseFacility/baseComponent.html' %}
 
+{% block library %}
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
 <!--------------- BLOCK MENU ------------>
 {% block listcomp %}{% url 'componentDisplay' equipmentID %}{% endblock %}
 {% block newcomp %}{% url 'componentNew' equipmentID %}{% endblock %}
@@ -9,6 +13,10 @@
 {% block data-content %}
     <form method="post">
     {% csrf_token %}
+        <div>
+            {% if faci %}<a href="{% url 'equipmentDisplay' faci.facilityid %}">{{ faci.facilityname }}</a>{% endif %} <span class="glyphicon glyphicon-arrow-right"></span>
+            {% if eq %}<a href="{% url 'componentDisplay' eq.equipmentid %}">{{ eq.equipmentname }}</a>{% endif %}
+        </div>
         <div style="text-align: center">
             <caption><b>List of Component</b></caption>
             <br><br>

@@ -9,6 +9,9 @@
 {% block data-content %}
     <form method="post">
     {% csrf_token %}
+        <div>
+            {% if faci %}<a href="{% url 'equipmentDisplay' faci.facilityid %}">{{ faci.facilityname }}</a>{% endif %}
+        </div>
         <div style="text-align: center">
             <caption><b style="font-size: 22px;color: #444444">List of Equipments</b></caption>
             <br><br>

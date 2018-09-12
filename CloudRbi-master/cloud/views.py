@@ -38,15 +38,10 @@ import time
 
 ################ Base ####################
 def Base_citizen(request):
-    try:
-        count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email), Q(Is_see=0)).count()
-    except:
-        Http404
-    return render(request,'BaseUI/BaseCitizen/baseCitizen.html',{'count':count})
-def citizen_home(request):
-    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),Q(Is_see=0)).count()
-    if request.session['kind']=='citizen':
-        return render(request, 'CitizenUI/CitizenHome.html',{'info':request.session,'count':count})
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email), Q(Is_see=0)).count()
+    if request.session['kind'] == 'citizen':
+        return render(request,'BaseUI/BaseCitizen/baseCitizen.html',{'info':request.session,'count':count})
+
 def base_manager(request):
     try:
         count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),Q(Is_see=0)).count()
@@ -54,12 +49,9 @@ def base_manager(request):
         Http404
     return render(request, 'BaseUI/BaseManager/baseManager.html',{'count':count})
 def base_business(request):
-    try:
-        count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email), Q(Is_see=0)).count()
-    except Exception as e:
-        print(e)
-        Http404
-    return render(request,'BaseUI/BaseFacility/baseBusiness.html',{'count':count})
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email), Q(Is_see=0)).count()
+    if request.session['kind'] == 'factory':
+        return render(request,'BaseUI/BaseFacility/baseBusiness.html',{'info':request.session,'count':count})
 def business_home(request):
     return render(request, 'BaseUI/BaseFacility/baseFacility.html')
 def base_equipment(request):
@@ -114,7 +106,7 @@ def ListFacilities(request, siteID):
             return redirect('facilitiesDisplay', siteID)
     except:
         raise Http404
-    return render(request, 'FacilityUI/facility/facilityListDisplay.html', {'obj': users,'siteID':siteID,'count':count})
+    return render(request, 'FacilityUI/facility/facilityListDisplay.html', {'obj': users,'siteID':siteID,'count':count,'info':request.session})
 def NewFacilities(request,siteID):
     try:
         error = {}
@@ -137,7 +129,7 @@ def NewFacilities(request,siteID):
                 return redirect('facilitiesDisplay',siteID=siteID)
     except:
         raise Http404
-    return render(request, 'FacilityUI/facility/facilityNew.html', {'site':site, 'error':error, 'data':data, 'siteID':siteID})
+    return render(request, 'FacilityUI/facility/facilityNew.html', {'site':site, 'error':error, 'data':data, 'siteID':siteID,'info':request.session})
 def EditFacilities(request,facilityID):
     try:
         error = {}
@@ -310,9 +302,10 @@ def ListEquipment(request, facilityID):
                 if request.POST.get('%d' %a.equipmentid):
                     a.delete()
             return redirect('equipmentDisplay' , facilityID= facilityID)
-    except:
+    except Exception as e:
+        print(e)
         raise Http404
-    return render(request, 'FacilityUI/equipment/equipmentListDisplay.html', {'obj':obj, 'facilityID':facilityID, 'siteID':faci.siteid_id})
+    return render(request, 'FacilityUI/equipment/equipmentListDisplay.html', {'obj':obj, 'facilityID':facilityID, 'siteID':faci.siteid_id,'faci':faci,'info':request.session})
 def NewEquipment(request, facilityID):
     try:
         data = {}
@@ -342,7 +335,7 @@ def NewEquipment(request, facilityID):
                 return redirect('equipmentDisplay', facilityID= facilityID)
     except:
         raise Http404
-    return render(request, 'FacilityUI/equipment/equipmentNew.html', {'data':data, 'equipmenttype': equipmenttype, 'designcode':designcode, 'manufacture':manufacture, 'facilityID':facilityID, 'siteID':faci.siteid_id})
+    return render(request, 'FacilityUI/equipment/equipmentNew.html', {'data':data, 'equipmenttype': equipmenttype, 'designcode':designcode, 'manufacture':manufacture, 'facilityID':facilityID, 'siteID':faci.siteid_id,'info':request.session})
 def EditEquipment(request, equipmentID):
     try:
         error = {}
@@ -384,10 +377,11 @@ def EditEquipment(request, equipmentID):
                 return redirect('equipmentDisplay', facilityID=dataOld.facilityid_id)
     except:
         raise Http404
-    return render(request, 'FacilityUI/equipment/equipmentEdit.html', {'data': dataNew, 'error':error, 'designcode':designcode, 'manufacture':manufacture, 'facilityID':dataOld.facilityid_id, 'siteID':dataOld.siteid_id})
+    return render(request, 'FacilityUI/equipment/equipmentEdit.html', {'data': dataNew, 'error':error, 'designcode':designcode, 'manufacture':manufacture, 'facilityID':dataOld.facilityid_id, 'siteID':dataOld.siteid_id,'info':request.session})
 def ListComponent(request, equipmentID):
     try:
         eq = models.EquipmentMaster.objects.get(equipmentid= equipmentID)
+        faci = models.Facility.objects.get(facilityid=eq.facilityid_id)
         data = models.ComponentMaster.objects.filter(equipmentid= equipmentID)
         pagiComp = Paginator(data,25)
         pageComp = request.GET.get('page',1)
@@ -408,7 +402,7 @@ def ListComponent(request, equipmentID):
             return  redirect('componentDisplay', equipmentID= equipmentID)
     except:
         raise Http404
-    return render(request, 'FacilityUI/component/componentListDisplay.html', {'obj':obj, 'equipmentID':equipmentID, 'facilityID': eq.facilityid_id})
+    return render(request, 'FacilityUI/component/componentListDisplay.html', {'obj':obj, 'equipmentID':equipmentID, 'facilityID': eq.facilityid_id,'eq':eq,'faci':faci,'info':request.session})
 def NewComponent(request, equipmentID):
     try:
         eq = models.EquipmentMaster.objects.get(equipmentid= equipmentID)
@@ -482,6 +476,7 @@ def ListProposal(request, componentID):
         data = []
         comp = models.ComponentMaster.objects.get(componentid= componentID)
         equip = models.EquipmentMaster.objects.get(equipmentid= comp.equipmentid_id)
+        faci = models.Facility.objects.get(facilityid=equip.facilityid_id)
         tank = [8,12,14,15]
         for a in rwass:
             df = models.RwFullPof.objects.filter(id= a.id)
@@ -551,7 +546,7 @@ def ListProposal(request, componentID):
         raise Http404
     return render(request, 'FacilityUI/proposal/proposalListDisplay.html', {'obj':obj, 'istank': istank, 'isshell':isshell,
                                                                             'componentID':componentID,
-                                                                            'equipmentID':comp.equipmentid_id})
+                                                                            'equipmentID':comp.equipmentid_id,'comp':comp,'equip':equip,'faci':faci,'info':request.session})
 def NewProposal(request, componentID):
     try:
         Fluid = ["Acid", "AlCl3", "C1-C2", "C13-C16", "C17-C25", "C25+", "C3-C4", "C5", "C6-C8", "C9-C12", "CO", "DEE",
@@ -991,7 +986,7 @@ def NewProposal(request, componentID):
             return redirect('damgeFactor', proposalID= rwassessment.id)
     except Exception as e:
         raise Http404
-    return render(request, 'FacilityUI/proposal/proposalNormalNew.html',{'api':Fluid, 'componentID':componentID, 'equipmentID':comp.equipmentid_id})
+    return render(request, 'FacilityUI/proposal/proposalNormalNew.html',{'api':Fluid, 'componentID':componentID, 'equipmentID':comp.equipmentid_id,'info':request.session})
 def NewTank(request, componentID):
     try:
         comp = models.ComponentMaster.objects.get(componentid= componentID)
@@ -1420,7 +1415,7 @@ def NewTank(request, componentID):
     except Exception as e:
         # print(e)
         raise Http404
-    return render(request, 'FacilityUI/proposal/proposalTankNew.html', {'isshell':isshell, 'componentID':componentID, 'equipmentID':comp.equipmentid_id})
+    return render(request, 'FacilityUI/proposal/proposalTankNew.html', {'isshell':isshell, 'componentID':componentID, 'equipmentID':comp.equipmentid_id,'info':request.session})
 def EditProposal(request, proposalID):
     try:
         Fluid = ["Acid", "AlCl3", "C1-C2", "C13-C16", "C17-C25", "C25+", "C3-C4", "C5", "C6-C8", "C9-C12", "CO", "DEE",
@@ -1935,7 +1930,7 @@ def EditProposal(request, proposalID):
                                                                            'rwCoat':rwcoat, 'rwMaterial':rwmaterial, 'rwInputCa':rwinputca,
                                                                            'assDate':assDate, 'extDate':extDate,
                                                                            'componentID': rwassessment.componentid_id,
-                                                                           'equipmentID': rwassessment.equipmentid_id})
+                                                                           'equipmentID': rwassessment.equipmentid_id,'info':request.session})
 def EditTank(request, proposalID):
     try:
         rwassessment = models.RwAssessment.objects.get(id=proposalID)
@@ -2430,7 +2425,7 @@ def EditTank(request, proposalID):
                                                                          'rwCoat':rwcoat, 'rwMaterial':rwmaterial, 'rwInputCa':rwinputca,
                                                                          'assDate': assDate, 'extDate': extDate,
                                                                          'componentID': comp.componentid,
-                                                                         'equipmentID': comp.equipmentid_id})
+                                                                         'equipmentID': comp.equipmentid_id,'info':request.session})
 def RiskMatrix(request, proposalID):
     try:
         locatAPI1 = {}
@@ -2466,7 +2461,7 @@ def RiskMatrix(request, proposalID):
         raise Http404
     return render(request, 'FacilityUI/risk_summary/riskMatrix.html',{'API1':location.locat(df.totaldfap1, ca.fcofvalue), 'API2':location.locat(df.totaldfap2, ca.fcofvalue),
                                                                       'API3':location.locat(df.totaldfap3, ca.fcofvalue),'DF1': DF1,'DF2': DF2,'DF3': DF3, 'ca':Ca,
-                                                                      'ass':rwAss,'isTank': isTank, 'isShell': isShell, 'df':df, 'proposalID':proposalID})
+                                                                      'ass':rwAss,'isTank': isTank, 'isShell': isShell, 'df':df, 'proposalID':proposalID,'info':request.session})
 def FullyDamageFactor(request, proposalID):
     try:
         df = models.RwFullPof.objects.get(id= proposalID)
@@ -2526,7 +2521,7 @@ def FullyDamageFactor(request, proposalID):
         print(e)
         raise Http404
     return render(request, 'FacilityUI/risk_summary/dfFull.html', {'obj':data, 'assess': rwAss, 'isTank': isTank,
-                                                                   'isShell': isShell, 'proposalID':proposalID})
+                                                                   'isShell': isShell, 'proposalID':proposalID,'info':request.session})
 def FullyConsequence(request, proposalID):
     data = {}
     try:
@@ -2569,7 +2564,7 @@ def FullyConsequence(request, proposalID):
             data['business_cost'] = roundData.roundMoney(bottomConsequences.business_cost)
             data['consequence'] = roundData.roundMoney(bottomConsequences.consequence)
             data['consequencecategory'] = bottomConsequences.consequencecategory
-            return render(request, 'FacilityUI/risk_summary/fullyBottomConsequence.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss})
+            return render(request, 'FacilityUI/risk_summary/fullyBottomConsequence.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss,'info':request.session})
         elif isShell:
             shellConsequences = models.RwCaTank.objects.get(id=proposalID)
             data['flow_rate_d1'] = roundData.roundFC(shellConsequences.flow_rate_d1)
@@ -2601,7 +2596,7 @@ def FullyConsequence(request, proposalID):
             data['business_cost'] = roundData.roundMoney(shellConsequences.business_cost)
             data['consequence'] = roundData.roundMoney(shellConsequences.consequence)
             data['consequencecategory'] = shellConsequences.consequencecategory
-            return render(request, 'FacilityUI/risk_summary/fullyShellConsequence.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss})
+            return render(request, 'FacilityUI/risk_summary/fullyShellConsequence.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss,'info':request.session})
         else:
             ca = models.RwCaLevel1.objects.get(id= proposalID)
             inputCa = models.RwInputCaLevel1.objects.get(id= proposalID)
@@ -2618,7 +2613,7 @@ def FullyConsequence(request, proposalID):
             data['fc_envi'] = roundData.roundMoney(ca.fc_envi)
             data['fc_total'] = roundData.roundMoney(ca.fc_total)
             data['fcof_category'] = ca.fcof_category
-            return render(request, 'FacilityUI/risk_summary/fullyNormalConsequence.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss})
+            return render(request, 'FacilityUI/risk_summary/fullyNormalConsequence.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss,'info':request.session})
     except:
         raise Http404
 def RiskChart(request, proposalID):
@@ -2851,7 +2846,7 @@ def Email_Massage_sent(request):
         Http404
     return render(request, 'BaseUI/BaseMassages/Massages_sent.html', {'datacontent':datacontent})
 
-################# Help #############
+################# Help #################
 def Help(requset):
     print('aa')
     return render(requset,'help/help.html')
@@ -2939,6 +2934,8 @@ def AccountBusiness(request):
                         print(authUser1.username)
                         fa = models.Sites(sitename=companyName, userID_id=authUser1.id)
                         fa.save()
+                        bu = models.Zbusiness(compainfor=desc, namecompany= companyName, userID_id=authUser1.id)
+                        bu.save()
                     except Exception as e:
                         print(e)
                     current_site = get_current_site(request)
@@ -3045,17 +3042,11 @@ def ManagerHome(request, siteID):
         risk = []
 
         data = models.Sites.objects.all()
-        # print(data.facilityname)
         for a in data:
             dataF = {}
-            # risTarget = models.FacilityRiskTarget.objects.get(facilityid= a.facilityid)
             dataF['ID'] = a.siteid
             dataF['SideName'] = a.sitename
-            # dataF['ManagementFactor'] = a.managementfactor
-            # dataF['RiskTarget'] = risTarget.risktarget_fc
             risk.append(dataF)
-
-        ## so doi tuong co tren 1 trang web ##
         pagiFaci = Paginator(risk, 25)
         pageFaci = request.GET.get('page',1)
         try:
@@ -3081,8 +3072,10 @@ def ListFacilitiesMana(request, siteID):
     count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email), Q(Is_see=0)).count()
     try:
         risk = []
-
+        si=models.Sites.objects.get(siteid=siteID)
         data= models.Facility.objects.filter(siteid= siteID)
+        # print(data.site_id)
+        # si=models.Sites.objects.get(siteid=data.siteid_id)
         for a in data:
             dataF = {}
             risTarget = models.FacilityRiskTarget.objects.get(facilityid= a.facilityid)
@@ -3111,10 +3104,12 @@ def ListFacilitiesMana(request, siteID):
             return redirect('facilitiesDisplay', siteID)
     except:
         raise Http404
-    return render(request, 'ManagerUI/facility_List.html', {'obj': users,'siteID':siteID,'count':count})
+    return render(request, 'ManagerUI/facility_List.html', {'obj': users,'siteID':siteID,'count':count,'si':si})
 def ListEquipmentMana(request, facilityID):
     try:
         faci = models.Facility.objects.get(facilityid= facilityID)
+        # print(faci.si)
+        si=models.Sites.objects.get(siteid=faci.siteid_id)
         data = models.EquipmentMaster.objects.filter(facilityid= facilityID)
         pagiEquip = Paginator(data,25)
         pageEquip = request.GET.get('page',1)
@@ -3135,10 +3130,12 @@ def ListEquipmentMana(request, facilityID):
             return redirect('equipmentDisplay' , facilityID= facilityID)
     except:
         raise Http404
-    return render(request, 'ManagerUI/Equipment_List.html', {'obj':obj, 'facilityID':facilityID, 'siteID':faci.siteid_id})
+    return render(request, 'ManagerUI/Equipment_List.html', {'obj':obj, 'facilityID':facilityID, 'siteID':faci.siteid_id,'faci':faci,'si':si})
 def ListComponentMana(request, equipmentID):
     try:
         eq = models.EquipmentMaster.objects.get(equipmentid= equipmentID)
+        faci = models.Facility.objects.get(facilityid=eq.facilityid_id)
+        si=models.Sites.objects.get(siteid=faci.siteid_id)
         data = models.ComponentMaster.objects.filter(equipmentid= equipmentID)
         pagiComp = Paginator(data,25)
         pageComp = request.GET.get('page',1)
@@ -3159,13 +3156,15 @@ def ListComponentMana(request, equipmentID):
             return  redirect('componentDisplay', equipmentID= equipmentID)
     except:
         raise Http404
-    return render(request, 'ManagerUI/component_List.html', {'obj':obj, 'equipmentID':equipmentID, 'facilityID': eq.facilityid_id})
+    return render(request, 'ManagerUI/component_List.html', {'obj':obj, 'equipmentID':equipmentID, 'facilityID': eq.facilityid_id,'eq':eq,'faci':faci,'si':si})
 def ListProposalMana(request, componentID):
     try:
         rwass = models.RwAssessment.objects.filter(componentid= componentID)
         data = []
         comp = models.ComponentMaster.objects.get(componentid= componentID)
         equip = models.EquipmentMaster.objects.get(equipmentid= comp.equipmentid_id)
+        faci = models.Facility.objects.get(facilityid=equip.facilityid_id)
+        si=models.Sites.objects.get(siteid=faci.siteid_id)
         tank = [8,12,14,15]
         for a in rwass:
             df = models.RwFullPof.objects.filter(id= a.id)
@@ -3235,7 +3234,7 @@ def ListProposalMana(request, componentID):
         raise Http404
     return render(request, 'ManagerUI/proposal_List.html', {'obj':obj, 'istank': istank, 'isshell':isshell,
                                                                             'componentID':componentID,
-                                                                            'equipmentID':comp.equipmentid_id})
+                                                                            'equipmentID':comp.equipmentid_id,'comp':comp,'equip':equip,'faci':faci,'si':si})
 def FullyDamageFactorMana(request, proposalID):
     try:
         df = models.RwFullPof.objects.get(id= proposalID)
@@ -3970,4 +3969,27 @@ def Inputdata(request, proposalID):
                                                                            'assDate':assDate, 'extDate':extDate,
                                                                            'componentID': rwassessment.componentid_id,
                                                                            'equipmentID': rwassessment.equipmentid_id})
+
+################ Citizen UI control ###################
+def citizen_home(request):
+    try:
+        risk = []
+        count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),Q(Is_see=0)).count()
+        com = models.Zbusiness.objects.all()
+        for c in com :
+            dataF= {}
+            dataF['id']=c.id
+            dataF['namecompany']=c.namecompany
+            dataF['compainfor']=c.compainfor
+            us = models.ZUser.objects.get(id=c.userID_id)
+            dataF['phone']=us.phone
+            dataF['email']=us.email
+            dataF['name']=us.name
+            dataF['add']=us.adress
+            risk.append(dataF)
+        if request.session['kind']=='citizen':
+            return render(request, 'CitizenUI/CitizenHome.html',{'info':request.session,'count':count,'risk':risk})
+    except Exception as e:
+        print(e)
+
 

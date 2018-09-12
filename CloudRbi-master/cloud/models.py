@@ -1102,3 +1102,13 @@ class Emailto(models.Model):
     class Meta:
         managed = False
         db_table = 'zm_people_to'
+
+class Zbusiness(models.Model):
+    id = models.AutoField(primary_key=True, blank=True, null=False, db_column='id')
+    compainfor = models.TextField(db_column='compa_infor', blank=True, null=False)
+    namecompany = models.TextField(db_column='name_company',blank=True,null=False)
+    userID = models.ForeignKey('ZUser', on_delete=models.CASCADE, db_column='userID')
+
+    class Meta:
+        managed = False
+        db_table = 'z_business'

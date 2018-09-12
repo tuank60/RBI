@@ -13,6 +13,9 @@
 {% block data-content %}
     <form method="post">
         {% csrf_token %}
+        <div>
+            {% if si %}<a href="{% url 'facilitiesDisplayMana' si.siteid %}">{{ si.sitename }}</a>{% endif %} <span class="glyphicon glyphicon-arrow-right"></span>
+        </div>
         <div style="text-align: center">
             <caption><b style="font-size: 22px; color: #444444;">List of Facilities</b></caption>
             <br><br>

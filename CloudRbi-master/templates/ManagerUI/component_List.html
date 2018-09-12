@@ -9,6 +9,11 @@
 {% block data-content %}
     <form method="post">
     {% csrf_token %}
+        <div>
+            {% if si %}<a href="{% url 'facilitiesDisplayMana' si.siteid %}">{{ si.sitename }}</a>{% endif %} <span class="glyphicon glyphicon-arrow-right"></span>
+            {% if faci %}<a href="{% url 'equipmentDisplay' faci.facilityid %}">{{ faci.facilityname }}</a>{% endif %} <span class="glyphicon glyphicon-arrow-right"></span>
+            {% if eq %}<a href="{% url 'componentDisplay' eq.equipmentid %}">{{ eq.equipmentname }}</a>{% endif %}
+        </div>
         <div style="text-align: center">
             <caption><b>List of Component</b></caption>
             <br><br>

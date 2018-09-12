@@ -37,19 +37,7 @@
         <item name="" type="eadb38e5:DatabaseStructure$Root" />
         <item name="rbi-cloud@localhost" type="e3449647:DbNodeDescriptor" />
         <item name="rbi-cloud" type="e3449647:DbNodeDescriptor" />
-        <item name="auth_user" type="e3449647:DbNodeDescriptor" />
-      </path>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="rbi-cloud@localhost" type="e3449647:DbNodeDescriptor" />
-        <item name="rbi-cloud" type="e3449647:DbNodeDescriptor" />
-        <item name="facility" type="e3449647:DbNodeDescriptor" />
-      </path>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="rbi-cloud@localhost" type="e3449647:DbNodeDescriptor" />
-        <item name="rbi-cloud" type="e3449647:DbNodeDescriptor" />
-        <item name="sites" type="e3449647:DbNodeDescriptor" />
+        <item name="z_business" type="e3449647:DbNodeDescriptor" />
       </path>
     </expand>
     <select />
@@ -62,93 +50,95 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cloud/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="3040" column="24" lean-forward="false" selection-start-line="3040" selection-start-column="24" selection-end-line="3040" selection-end-column="24" />
+            <state relative-caret-position="245">
+              <caret line="3987" column="34" lean-forward="true" selection-start-line="3987" selection-start-column="34" selection-end-line="3987" selection-end-column="34" />
               <folding>
-                <element signature="e#1473#1727#0" expanded="false" />
-                <element signature="e#1759#2033#0" expanded="false" />
-                <element signature="e#2065#2319#0" expanded="false" />
-                <element signature="e#2352#2640#0" expanded="false" />
-                <element signature="e#2673#2736#0" expanded="false" />
-                <element signature="e#2770#2834#0" expanded="false" />
-                <element signature="e#2868#2932#0" expanded="false" />
-                <element signature="e#2965#3028#0" expanded="false" />
-                <element signature="e#3064#3130#0" expanded="false" />
-                <element signature="e#3165#3230#0" expanded="false" />
-                <element signature="e#3266#3342#0" expanded="false" />
-                <element signature="e#3578#5018#0" expanded="false" />
-                <element signature="e#5058#6289#0" expanded="false" />
-                <element signature="e#6334#8001#0" expanded="false" />
-                <element signature="e#8043#8959#0" expanded="false" />
-                <element signature="e#8999#9799#0" expanded="false" />
-                <element signature="e#9012#9647#0" expanded="false" />
-                <element signature="e#9846#10919#0" expanded="false" />
-                <element signature="e#10962#11897#0" expanded="false" />
-                <element signature="e#11939#12649#0" expanded="false" />
-                <element signature="e#12699#13610#0" expanded="false" />
-                <element signature="e#13655#14697#0" expanded="false" />
-                <element signature="e#14741#17006#0" expanded="false" />
-                <element signature="e#17052#19953#0" expanded="false" />
-                <element signature="e#19999#21053#0" expanded="false" />
-                <element signature="e#21098#23244#0" expanded="false" />
-                <element signature="e#23290#25231#0" expanded="false" />
-                <element signature="e#25276#28658#0" expanded="false" />
-                <element signature="e#28702#50645#0" expanded="false" />
-                <element signature="e#50685#71306#0" expanded="false" />
-                <element signature="e#71350#93795#0" expanded="false" />
-                <element signature="e#93835#115020#0" expanded="false" />
-                <element signature="e#115062#116617#0" expanded="false" />
-                <element signature="e#116666#119948#0" expanded="false" />
-                <element signature="e#119996#127585#0" expanded="false" />
-                <element signature="e#127626#130150#0" expanded="false" />
-                <element signature="e#130194#130284#0" expanded="false" />
-                <element signature="e#130318#131055#0" expanded="false" />
-                <element signature="e#131097#131862#0" expanded="false" />
-                <element signature="e#131943#133829#0" expanded="false" />
-                <element signature="e#133855#133978#0" expanded="false" />
-                <element signature="e#134063#135247#0" expanded="false" />
-                <element signature="e#135285#136948#0" expanded="false" />
-                <element signature="e#137035#138322#0" expanded="false" />
-                <element signature="e#138360#139681#0" expanded="false" />
-                <element signature="e#139743#139798#0" expanded="false" />
-                <element signature="e#139889#142437#0" expanded="false" />
-                <element signature="e#142472#145063#0" expanded="false" />
-                <element signature="e#145100#147805#0" expanded="false" />
-                <element signature="e#147848#148634#0" expanded="false" />
-                <element signature="e#148728#150255#0" expanded="false" />
-                <element signature="e#150301#151725#0" expanded="false" />
-                <element signature="e#151774#152799#0" expanded="false" />
-                <element signature="e#152849#153886#0" expanded="false" />
-                <element signature="e#153935#157301#0" expanded="false" />
-                <element signature="e#157354#160638#0" expanded="false" />
-                <element signature="e#157367#160343#0" expanded="false" />
-                <element signature="e#160690#168296#0" expanded="false" />
-                <element signature="e#168341#170871#0" expanded="false" />
-                <element signature="e#170917#172478#0" expanded="false" />
-                <element signature="e#170930#171945#0" expanded="false" />
-                <element signature="e#172519#194952#0" expanded="false" />
-                <element signature="e#172532#194137#0" expanded="false" />
+                <element signature="e#1791#2045#0" expanded="false" />
+                <element signature="e#2398#2461#0" expanded="false" />
+                <element signature="e#2495#2559#0" expanded="false" />
+                <element signature="e#2593#2657#0" expanded="false" />
+                <element signature="e#2690#2753#0" expanded="false" />
+                <element signature="e#2789#2855#0" expanded="false" />
+                <element signature="e#2890#2955#0" expanded="false" />
+                <element signature="e#2991#3067#0" expanded="false" />
+                <element signature="e#3303#4766#0" expanded="false" />
+                <element signature="e#4806#6060#0" expanded="false" />
+                <element signature="e#6105#7772#0" expanded="false" />
+                <element signature="e#7814#8730#0" expanded="false" />
+                <element signature="e#8770#9570#0" expanded="false" />
+                <element signature="e#8783#9418#0" expanded="false" />
+                <element signature="e#9617#10690#0" expanded="false" />
+                <element signature="e#10733#11668#0" expanded="false" />
+                <element signature="e#11710#12420#0" expanded="false" />
+                <element signature="e#12470#13381#0" expanded="false" />
+                <element signature="e#13426#14535#0" expanded="false" />
+                <element signature="e#14579#16867#0" expanded="false" />
+                <element signature="e#16913#19837#0" expanded="false" />
+                <element signature="e#19883#21052#0" expanded="false" />
+                <element signature="e#21097#23243#0" expanded="false" />
+                <element signature="e#23289#25230#0" expanded="false" />
+                <element signature="e#25275#28793#0" expanded="false" />
+                <element signature="e#28837#50803#0" expanded="false" />
+                <element signature="e#28850#50582#0" expanded="false" />
+                <element signature="e#50843#71487#0" expanded="false" />
+                <element signature="e#50856#71242#0" expanded="false" />
+                <element signature="e#71531#93999#0" expanded="false" />
+                <element signature="e#71544#93151#0" expanded="false" />
+                <element signature="e#94039#115247#0" expanded="false" />
+                <element signature="e#94052#114384#0" expanded="false" />
+                <element signature="e#115289#116867#0" expanded="false" />
+                <element signature="e#115302#116317#0" expanded="false" />
+                <element signature="e#116916#120221#0" expanded="false" />
+                <element signature="e#116929#119905#0" expanded="false" />
+                <element signature="e#120269#127927#0" expanded="false" />
+                <element signature="e#120296#127893#0" expanded="false" />
+                <element signature="e#127968#130492#0" expanded="false" />
+                <element signature="e#130536#130626#0" expanded="false" />
+                <element signature="e#130660#131397#0" expanded="false" />
+                <element signature="e#131439#132204#0" expanded="false" />
+                <element signature="e#132285#134171#0" expanded="false" />
+                <element signature="e#134197#134320#0" expanded="false" />
+                <element signature="e#134405#135589#0" expanded="false" />
+                <element signature="e#135627#137290#0" expanded="false" />
+                <element signature="e#137377#138664#0" expanded="false" />
+                <element signature="e#138702#140023#0" expanded="false" />
+                <element signature="e#140089#140144#0" expanded="false" />
+                <element signature="e#140235#142783#0" expanded="false" />
+                <element signature="e#142818#145556#0" expanded="false" />
+                <element signature="e#145593#148298#0" expanded="false" />
+                <element signature="e#148341#149127#0" expanded="false" />
+                <element signature="e#150500#152073#0" expanded="false" />
+                <element signature="e#152122#153251#0" expanded="false" />
+                <element signature="e#153301#154497#0" expanded="false" />
+                <element signature="e#154546#158092#0" expanded="false" />
+                <element signature="e#158145#161429#0" expanded="false" />
+                <element signature="e#158158#161134#0" expanded="false" />
+                <element signature="e#161481#169087#0" expanded="false" />
+                <element signature="e#169132#171662#0" expanded="false" />
+                <element signature="e#171708#173269#0" expanded="false" />
+                <element signature="e#171721#172736#0" expanded="false" />
+                <element signature="e#173310#195743#0" expanded="false" />
+                <element signature="e#173323#194928#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="baseCitizen.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseCitizen.html">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cloud/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="17171">
+              <caret line="1108" column="15" lean-forward="false" selection-start-line="1108" selection-start-column="4" selection-end-line="1108" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CitizenHome.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/CitizenUI/CitizenHome.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1921">
-              <caret line="113" column="8" lean-forward="true" selection-start-line="73" selection-start-column="2" selection-end-line="113" selection-end-column="8" />
-              <folding />
+      <file leaf-file-name="z_user" pinned="false" current-in-tab="false">
+        <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.z_user">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
@@ -156,9 +146,33 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RbiCloud/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1377">
-              <caret line="87" column="114" lean-forward="false" selection-start-line="87" selection-start-column="114" selection-end-line="87" selection-end-column="114" />
+            <state relative-caret-position="102">
+              <caret line="69" column="67" lean-forward="false" selection-start-line="69" selection-start-column="67" selection-end-line="69" selection-end-column="67" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CitizenHome.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/CitizenUI/CitizenHome.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-401">
+              <caret line="35" column="52" lean-forward="false" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
+              <folding>
+                <element signature="n#style#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#0;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#1;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#2;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#3;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#4;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -220,10 +234,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseBusiness.html" />
-        <option value="$PROJECT_DIR$/templates/BaseUI/BaseHelp/BaseHelp.html" />
-        <option value="$PROJECT_DIR$/templates/help/help.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI.html" />
         <option value="$PROJECT_DIR$/templates/ManagerUI/facilityList.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/facility/facilityListDisplay.html" />
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseMassages/BaseMassages.html" />
@@ -241,27 +251,20 @@
         <option value="$PROJECT_DIR$/templates/response/complete_regiatration.html" />
         <option value="$PROJECT_DIR$/templates/response/totally_complete.html" />
         <option value="$PROJECT_DIR$/templates/Home/Account/sigup_citizen.html" />
-        <option value="$PROJECT_DIR$/cloud/models.py" />
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManager.html" />
         <option value="$PROJECT_DIR$/templates/ManagerUI/ManagerHome.html" />
-        <option value="$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentListDisplay.html" />
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseEquipmentMana.html" />
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseManager/basefacilitymana.html" />
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseComponentMana.html" />
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseProposalMana.html" />
         <option value="$PROJECT_DIR$/templates/ManagerUI/Business_List.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/component_List.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/Equipment_List.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/facility_List.html" />
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseManager/Inputdata.html" />
-        <option value="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html" />
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseRiskSummary.html" />
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseRiskSummaryMana.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/risk_summary/dfFull.html" />
         <option value="$PROJECT_DIR$/templates/ManagerUI/FullDF.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/risk_summary/riskChart.html" />
         <option value="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/RiskMatrixMana.html" />
-        <option value="$PROJECT_DIR$/RbiCloud/urls.py" />
         <option value="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyBottomConsequence.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyNormalConsequence.html" />
         <option value="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/FullDF.html" />
@@ -269,8 +272,19 @@
         <option value="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyNormalConsequenceMana.html" />
         <option value="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullySellConsequenceMana.html" />
         <option value="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/riskChartMana.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentListDisplay.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/facility_List.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/Equipment_List.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/component_List.html" />
         <option value="$PROJECT_DIR$/templates/ManagerUI/proposal_List.html" />
+        <option value="$PROJECT_DIR$/RbiCloud/urls.py" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/component/componentListDisplay.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html" />
+        <option value="$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseCitizen.html" />
+        <option value="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseBusiness.html" />
+        <option value="$PROJECT_DIR$/cloud/models.py" />
         <option value="$PROJECT_DIR$/cloud/views.py" />
+        <option value="$PROJECT_DIR$/templates/CitizenUI/CitizenHome.html" />
       </list>
     </option>
   </component>
@@ -280,11 +294,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="784" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="26" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -362,6 +375,13 @@
               <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="BaseUI" type="462c0819:PsiDirectoryNode" />
+              <item name="BaseForum" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="BaseUI" type="462c0819:PsiDirectoryNode" />
               <item name="BaseManager" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -388,6 +408,20 @@
               <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="FacilityUI" type="462c0819:PsiDirectoryNode" />
+              <item name="component" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="FacilityUI" type="462c0819:PsiDirectoryNode" />
+              <item name="equipment" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="FacilityUI" type="462c0819:PsiDirectoryNode" />
               <item name="facility" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -408,6 +442,12 @@
               <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="Home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CloudRbi-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CloudRbi-master" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="ManagerUI" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -421,32 +461,32 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/RBI-master/CloudRbi-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../CloudRbi-master" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Pycharm\PycharmProject\rbi-cloud-master\CloudRbi-master\templates\ManagerUI\RiskSummaryMana" />
-      <recent name="E:\DJANGO\CloudRbi-master\CloudRbi-master\templates\BaseUI" />
-      <recent name="E:\CloudRbi\templates\FacilityUI\facility" />
-      <recent name="E:\RbiCloud\cloud\static\image\logo" />
-      <recent name="E:\RbiCloud\cloud\static\image\loading" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\DJANGO\CloudRbi-master\CloudRbi-master\cloud\static\image\logo" />
       <recent name="E:\DJANGO\CloudRbi-master\CloudRbi-master\cloud\static\css" />
       <recent name="E:\CloudRbi\database\mysql" />
       <recent name="E:\CloudRbi\database\postgresql" />
       <recent name="E:\CloudRbi\templates\BaseUI\BaseFacility" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Pycharm\PycharmProject\rbi-cloud-master\CloudRbi-master\templates\ManagerUI\RiskSummaryMana" />
+      <recent name="E:\DJANGO\CloudRbi-master\CloudRbi-master\templates\BaseUI" />
+      <recent name="E:\CloudRbi\templates\FacilityUI\facility" />
+      <recent name="E:\RbiCloud\cloud\static\image\logo" />
+      <recent name="E:\RbiCloud\cloud\static\image\loading" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -603,18 +643,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24281392" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32405892" sideWeight="0.1068814" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1376702" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23404256" sideWeight="0.8931186" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2700491" sideWeight="0.8931186" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.4969743" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24130106" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19288956" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -623,7 +664,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
@@ -658,167 +698,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="16" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.equipment_type">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.equipment_master">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cloud/tokens.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.facility_risk_target">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.facility">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/ManagerHome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="20" column="10" lean-forward="true" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/facility/facilityListDisplay.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="27" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="73" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseBusiness.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-935">
-          <caret line="5" column="11" lean-forward="true" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManager.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
-          <caret line="78" column="14" lean-forward="false" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentListDisplay.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseEquipment.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="15" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="13" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseManager/baseEquipmentMana.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="111" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="111" />
-          <folding>
-            <marker date="1535517668353" expanded="false" signature="422:428" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseManager/basefacilitymana.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="19" column="105" lean-forward="false" selection-start-line="19" selection-start-column="105" selection-end-line="19" selection-end-column="105" />
-          <folding>
-            <marker date="1535517790863" expanded="false" signature="586:592" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/component/componentListDisplay.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="47" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="70" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseComponent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="25" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="13" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseManager/baseComponentMana.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="75" lean-forward="false" selection-start-line="11" selection-start-column="75" selection-end-line="11" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/ReadMe">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RbiCloud/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cloud/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="28" lean-forward="false" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.sites">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.z_user">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -837,35 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cloud/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="90" column="46" lean-forward="false" selection-start-line="90" selection-start-column="46" selection-end-line="90" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/component_List.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="80" lean-forward="false" selection-start-line="18" selection-start-column="80" selection-end-line="18" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Equipment_List.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="74" lean-forward="false" selection-start-line="18" selection-start-column="74" selection-end-line="18" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Business_List.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="59" lean-forward="true" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseManager/baseProposalMana.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -880,28 +739,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/facility_List.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="64" lean-forward="false" selection-start-line="32" selection-start-column="64" selection-end-line="32" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="39" column="83" lean-forward="false" selection-start-line="39" selection-start-column="83" selection-end-line="39" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseFacility.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="41" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/dfFull.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -913,9 +750,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="115" lean-forward="false" selection-start-line="14" selection-start-column="115" selection-end-line="14" selection-end-column="115" />
-          <folding>
-            <element signature="e#861#867#0#HTML" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -923,7 +757,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="19" column="36" lean-forward="false" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -987,7 +820,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="19" column="40" lean-forward="false" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1005,112 +837,328 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RbiCloud/urls.py">
+    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.zm_people_sent">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.equipment_master">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/ManagerHome.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="87" column="114" lean-forward="false" selection-start-line="87" selection-start-column="114" selection-end-line="87" selection-end-column="114" />
+        <state relative-caret-position="264">
+          <caret line="20" column="10" lean-forward="true" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Business_List.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="81" lean-forward="false" selection-start-line="32" selection-start-column="60" selection-end-line="32" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/phrase.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="182" column="16" lean-forward="false" selection-start-line="182" selection-start-column="16" selection-end-line="182" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Equipment_List.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="163" lean-forward="false" selection-start-line="12" selection-start-column="163" selection-end-line="12" selection-end-column="163" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/component_List.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="163" lean-forward="false" selection-start-line="12" selection-start-column="163" selection-end-line="12" selection-end-column="163" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/ManagerUI/proposal_List.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="48" lean-forward="false" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
-          <folding>
-            <marker date="1535637726038" expanded="false" signature="835:853" ph="..." />
-            <marker date="1535637726038" expanded="false" signature="4191:4197" ph=" " />
-            <marker date="1535637726038" expanded="false" signature="4340:4346" ph=" " />
-            <marker date="1535637726038" expanded="false" signature="4516:4522" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cloud/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="3040" column="24" lean-forward="false" selection-start-line="3040" selection-start-column="24" selection-end-line="3040" selection-end-column="24" />
-          <folding>
-            <element signature="e#1473#1727#0" expanded="false" />
-            <element signature="e#1759#2033#0" expanded="false" />
-            <element signature="e#2065#2319#0" expanded="false" />
-            <element signature="e#2352#2640#0" expanded="false" />
-            <element signature="e#2673#2736#0" expanded="false" />
-            <element signature="e#2770#2834#0" expanded="false" />
-            <element signature="e#2868#2932#0" expanded="false" />
-            <element signature="e#2965#3028#0" expanded="false" />
-            <element signature="e#3064#3130#0" expanded="false" />
-            <element signature="e#3165#3230#0" expanded="false" />
-            <element signature="e#3266#3342#0" expanded="false" />
-            <element signature="e#3578#5018#0" expanded="false" />
-            <element signature="e#5058#6289#0" expanded="false" />
-            <element signature="e#6334#8001#0" expanded="false" />
-            <element signature="e#8043#8959#0" expanded="false" />
-            <element signature="e#8999#9799#0" expanded="false" />
-            <element signature="e#9012#9647#0" expanded="false" />
-            <element signature="e#9846#10919#0" expanded="false" />
-            <element signature="e#10962#11897#0" expanded="false" />
-            <element signature="e#11939#12649#0" expanded="false" />
-            <element signature="e#12699#13610#0" expanded="false" />
-            <element signature="e#13655#14697#0" expanded="false" />
-            <element signature="e#14741#17006#0" expanded="false" />
-            <element signature="e#17052#19953#0" expanded="false" />
-            <element signature="e#19999#21053#0" expanded="false" />
-            <element signature="e#21098#23244#0" expanded="false" />
-            <element signature="e#23290#25231#0" expanded="false" />
-            <element signature="e#25276#28658#0" expanded="false" />
-            <element signature="e#28702#50645#0" expanded="false" />
-            <element signature="e#50685#71306#0" expanded="false" />
-            <element signature="e#71350#93795#0" expanded="false" />
-            <element signature="e#93835#115020#0" expanded="false" />
-            <element signature="e#115062#116617#0" expanded="false" />
-            <element signature="e#116666#119948#0" expanded="false" />
-            <element signature="e#119996#127585#0" expanded="false" />
-            <element signature="e#127626#130150#0" expanded="false" />
-            <element signature="e#130194#130284#0" expanded="false" />
-            <element signature="e#130318#131055#0" expanded="false" />
-            <element signature="e#131097#131862#0" expanded="false" />
-            <element signature="e#131943#133829#0" expanded="false" />
-            <element signature="e#133855#133978#0" expanded="false" />
-            <element signature="e#134063#135247#0" expanded="false" />
-            <element signature="e#135285#136948#0" expanded="false" />
-            <element signature="e#137035#138322#0" expanded="false" />
-            <element signature="e#138360#139681#0" expanded="false" />
-            <element signature="e#139743#139798#0" expanded="false" />
-            <element signature="e#139889#142437#0" expanded="false" />
-            <element signature="e#142472#145063#0" expanded="false" />
-            <element signature="e#145100#147805#0" expanded="false" />
-            <element signature="e#147848#148634#0" expanded="false" />
-            <element signature="e#148728#150255#0" expanded="false" />
-            <element signature="e#150301#151725#0" expanded="false" />
-            <element signature="e#151774#152799#0" expanded="false" />
-            <element signature="e#152849#153886#0" expanded="false" />
-            <element signature="e#153935#157301#0" expanded="false" />
-            <element signature="e#157354#160638#0" expanded="false" />
-            <element signature="e#157367#160343#0" expanded="false" />
-            <element signature="e#160690#168296#0" expanded="false" />
-            <element signature="e#168341#170871#0" expanded="false" />
-            <element signature="e#170917#172478#0" expanded="false" />
-            <element signature="e#170930#171945#0" expanded="false" />
-            <element signature="e#172519#194952#0" expanded="false" />
-            <element signature="e#172532#194137#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/CitizenUI/CitizenHome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1921">
-          <caret line="113" column="8" lean-forward="true" selection-start-line="73" selection-start-column="2" selection-end-line="113" selection-end-column="8" />
+        <state relative-caret-position="170">
+          <caret line="19" column="163" lean-forward="false" selection-start-line="19" selection-start-column="163" selection-end-line="19" selection-end-column="163" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/facility_List.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="16" column="163" lean-forward="true" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="163" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.component_master">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.api_component_type">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.auth_user_user_permissions">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.auth_permission">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.auth_group_permissions">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentListDisplay.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="14" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="13" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="77" lean-forward="true" selection-start-line="8" selection-start-column="77" selection-end-line="8" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/component/componentListDisplay.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="4" column="14" lean-forward="false" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Home/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="68" column="3" lean-forward="false" selection-start-line="68" selection-start-column="3" selection-end-line="68" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/facility/facilityListDisplay.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="47" lean-forward="false" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseFacility.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="14" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="6" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseBusiness.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="61" column="145" lean-forward="false" selection-start-line="61" selection-start-column="145" selection-end-line="61" selection-end-column="145" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseForum/forumposts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153">
+          <caret line="24" column="37" lean-forward="false" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseForum/forumhome.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="145" column="0" lean-forward="false" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.facility">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.sites">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseCitizen.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="323">
+          <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RbiCloud/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="69" column="67" lean-forward="false" selection-start-line="69" selection-start-column="67" selection-end-line="69" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17171">
+          <caret line="1108" column="15" lean-forward="false" selection-start-line="1108" selection-start-column="4" selection-end-line="1108" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.z_business">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="3987" column="34" lean-forward="true" selection-start-line="3987" selection-start-column="34" selection-end-line="3987" selection-end-column="34" />
+          <folding>
+            <element signature="e#1791#2045#0" expanded="false" />
+            <element signature="e#2398#2461#0" expanded="false" />
+            <element signature="e#2495#2559#0" expanded="false" />
+            <element signature="e#2593#2657#0" expanded="false" />
+            <element signature="e#2690#2753#0" expanded="false" />
+            <element signature="e#2789#2855#0" expanded="false" />
+            <element signature="e#2890#2955#0" expanded="false" />
+            <element signature="e#2991#3067#0" expanded="false" />
+            <element signature="e#3303#4766#0" expanded="false" />
+            <element signature="e#4806#6060#0" expanded="false" />
+            <element signature="e#6105#7772#0" expanded="false" />
+            <element signature="e#7814#8730#0" expanded="false" />
+            <element signature="e#8770#9570#0" expanded="false" />
+            <element signature="e#8783#9418#0" expanded="false" />
+            <element signature="e#9617#10690#0" expanded="false" />
+            <element signature="e#10733#11668#0" expanded="false" />
+            <element signature="e#11710#12420#0" expanded="false" />
+            <element signature="e#12470#13381#0" expanded="false" />
+            <element signature="e#13426#14535#0" expanded="false" />
+            <element signature="e#14579#16867#0" expanded="false" />
+            <element signature="e#16913#19837#0" expanded="false" />
+            <element signature="e#19883#21052#0" expanded="false" />
+            <element signature="e#21097#23243#0" expanded="false" />
+            <element signature="e#23289#25230#0" expanded="false" />
+            <element signature="e#25275#28793#0" expanded="false" />
+            <element signature="e#28837#50803#0" expanded="false" />
+            <element signature="e#28850#50582#0" expanded="false" />
+            <element signature="e#50843#71487#0" expanded="false" />
+            <element signature="e#50856#71242#0" expanded="false" />
+            <element signature="e#71531#93999#0" expanded="false" />
+            <element signature="e#71544#93151#0" expanded="false" />
+            <element signature="e#94039#115247#0" expanded="false" />
+            <element signature="e#94052#114384#0" expanded="false" />
+            <element signature="e#115289#116867#0" expanded="false" />
+            <element signature="e#115302#116317#0" expanded="false" />
+            <element signature="e#116916#120221#0" expanded="false" />
+            <element signature="e#116929#119905#0" expanded="false" />
+            <element signature="e#120269#127927#0" expanded="false" />
+            <element signature="e#120296#127893#0" expanded="false" />
+            <element signature="e#127968#130492#0" expanded="false" />
+            <element signature="e#130536#130626#0" expanded="false" />
+            <element signature="e#130660#131397#0" expanded="false" />
+            <element signature="e#131439#132204#0" expanded="false" />
+            <element signature="e#132285#134171#0" expanded="false" />
+            <element signature="e#134197#134320#0" expanded="false" />
+            <element signature="e#134405#135589#0" expanded="false" />
+            <element signature="e#135627#137290#0" expanded="false" />
+            <element signature="e#137377#138664#0" expanded="false" />
+            <element signature="e#138702#140023#0" expanded="false" />
+            <element signature="e#140089#140144#0" expanded="false" />
+            <element signature="e#140235#142783#0" expanded="false" />
+            <element signature="e#142818#145556#0" expanded="false" />
+            <element signature="e#145593#148298#0" expanded="false" />
+            <element signature="e#148341#149127#0" expanded="false" />
+            <element signature="e#150500#152073#0" expanded="false" />
+            <element signature="e#152122#153251#0" expanded="false" />
+            <element signature="e#153301#154497#0" expanded="false" />
+            <element signature="e#154546#158092#0" expanded="false" />
+            <element signature="e#158145#161429#0" expanded="false" />
+            <element signature="e#158158#161134#0" expanded="false" />
+            <element signature="e#161481#169087#0" expanded="false" />
+            <element signature="e#169132#171662#0" expanded="false" />
+            <element signature="e#171708#173269#0" expanded="false" />
+            <element signature="e#171721#172736#0" expanded="false" />
+            <element signature="e#173310#195743#0" expanded="false" />
+            <element signature="e#173323#194928#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b889815b/65b0b78a-a978-4a08-ba9d-b9aaa4611e4b/rbi-cloud.z_user">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/CitizenUI/CitizenHome.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-401">
+          <caret line="35" column="52" lean-forward="false" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#0;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#1;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#2;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#3;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#4;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

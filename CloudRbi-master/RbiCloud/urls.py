@@ -23,6 +23,7 @@ from RbiCloud import settings
 
 urlpatterns = [
     # path('static/(?P<path>.*)$', django.views.static.serve, {'document_root': settings.STATIC_ROOT, 'show_indexes': settings.DEBUG}),
+    ########################## Base ################################
     path('admin/', admin.site.urls),
     path('', views.signin, name='home'),
     path('citizen/', views.citizen_home, name= 'citizenHome'),
@@ -64,18 +65,21 @@ urlpatterns = [
     path('export/<int:index>/<str:type>/', views.ExportExcel, name='exportData'),
     path('site/<int:siteID>/upload/InspectionHistory/', views.uploadInspPlan, name='upload'),
     path('site/<int:siteID>/upload/Plan/', views.upload, name='uploadPlan'),
+    ########################## forum ################################
     path('forum/',views.base_forum,name='forum'),
     path('forum/post/<int:postID>',views.posts_forum,name='posts'),
     path('logout',views.logout,name='logout'),
+    ########################## Massages ################################
     path('massages/',views.MassagesHome,name='massages'),
     path('Massagessent/',views.Email_Massage_sent,name='massagessent'),
-    # path('proposal/<int:proposalID>/dataa/', views.dataa, name='dataa'),
+    ########################## Help ################################
     path('help/',views.Help, name='help'),
+    ########################## Dang ki tai khoan ################################
     path('AccountCitizen/', views.AccountCitizen, name='accountcitizen'),
     path('AccountBusiness/',views.AccountBusiness, name='accountbusiness'),
     path('AccountManagement',views.AccountManagement,name='accountmanagement'),
     path('activate/<slug:uidb64>/<slug:token>/', views.activate, name='activate'),
-    #### manager ####
+    ########################## Manager UI################################
     path('management/<int:siteID>/', views.ManagerHome, name= 'manager'),
     path('facilitiesMana/display/<int:siteID>/', views.ListFacilitiesMana, name='facilitiesDisplayMana'),
     path('equipmentMana/display/<int:facilityID>/', views.ListEquipmentMana, name='equipmentDisplayMana'),

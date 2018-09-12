@@ -1,6 +1,10 @@
 {% extends 'BaseUI/BaseFacility/baseProposal.html' %}
 {% load staticfiles %}
 
+{% block library %}
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
 <!----------BLOCK MENU----------->
 {% block listProposal %}{% url 'proposalDisplay' componentID %}{% endblock %}
 {% block newProposal %}
@@ -16,6 +20,11 @@
 {% block data-content %}
     <form method="post" id="listProposal">
     {% csrf_token %}
+        <div>
+            {% if faci %}<a href="{% url 'equipmentDisplay' faci.facilityid %}">{{ faci.facilityname }}</a>{% endif %} <span class="glyphicon glyphicon-arrow-right"></span>
+            {% if equip %}<a href="{% url 'componentDisplay' equip.equipmentid %}">{{ equip.equipmentname }}</a>{% endif %} <span class="glyphicon glyphicon-arrow-right"></span>
+            {% if comp %}<a href="{% url 'proposalDisplay' comp.componentid %}">{{ comp.componentname }}</a>{% endif %}
+        </div>
         <div style="text-align: center">
             <caption><b>List of Proposals</b></caption>
             <br><br>
