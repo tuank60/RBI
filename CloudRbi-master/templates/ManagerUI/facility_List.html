@@ -1,7 +1,12 @@
 {% extends 'BaseUI/BaseManager/basefacilitymana.html' %}
 
+{% block library %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+{% endblock %}
+
 <!-------------- BLOCK MENU ---------------->
-{% block listfaci %}{% url 'facilitiesDisplay' siteID %}{% endblock %}
+{% block listfaci %}{% url 'facilitiesDisplayMana' siteID %}{% endblock %}
 {#{% block newfaci %}{% url 'facilitiesNew' siteID %}{% endblock %}#}
 {% block design %}{% url 'designcodeDisplay' siteID %}{% endblock %}
 {% block manu %}{% url 'manufactureDisplay' siteID %}{% endblock %}
@@ -14,7 +19,7 @@
     <form method="post">
         {% csrf_token %}
         <div>
-            {% if si %}<a href="{% url 'facilitiesDisplayMana' si.siteid %}">{{ si.sitename }}</a>{% endif %} <span class="glyphicon glyphicon-arrow-right"></span>
+            {% if si %}<a href="{% url 'facilitiesDisplayMana' si.siteid %}">{{ si.sitename }}</a>{% endif %}
         </div>
         <div style="text-align: center">
             <caption><b style="font-size: 22px; color: #444444;">List of Facilities</b></caption>

@@ -26,7 +26,6 @@ urlpatterns = [
     ########################## Base ################################
     path('admin/', admin.site.urls),
     path('', views.signin, name='home'),
-    path('citizen/', views.citizen_home, name= 'citizenHome'),
     path('basecitizen/',views.Base_citizen,name='basecitizen'),
     path('basemanagement/', views.base_manager, name= 'basemanager'),
     path('basebusiness/',views.base_business,name='basebusiness'),
@@ -90,6 +89,14 @@ urlpatterns = [
     path('proposalMana/<int:proposalID>/chart/', views.RiskChartMana, name='riskChartMana'),
     path('proposalMana/<int:proposalID>/risk-matrix/', views.RiskMatrixMana, name='riskMatrixMana'),
     path('proposalMana/<int:proposalID>/fully-consequence/',views.FullyConsequenceMana, name='fullyConsequenceMana'),
+    ######################### Citizen UI ##############################
+    path('citizen/', views.citizen_home, name= 'citizenHome'),
+    path('facilityCitizen/display/<int:siteID>/',views.ListfacilityCitizen, name='facilityCitizen'),
+    path('ListProposalCitizen/display/<int:facilityID>/<int:siteID>/',views.ListProposalCitizen, name='ListProposalCitizen'),
+    path('proposalCitizen/<int:proposalID>/risk-matrix/', views.RiskMatrixCitizen, name='riskMatrixCitizen'),
+    path('proposalCitizen/<int:proposalID>/damage-factor/', views.FullyDamageFactorCitizen, name='damgeFactorCitizen'),
+    path('proposalCitizen/<int:proposalID>/chart/', views.RiskChartCitizen, name='riskChartCitizen'),
+    path('proposalCitizen/<int:proposalID>/fully-consequence/',views.FullyConsequenceCitizen, name='fullyConsequenceCitizen'),
 ]
 handler404 = 'cloud.views.handler404'
 handler500 = 'cloud.views.handler404'

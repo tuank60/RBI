@@ -1,20 +1,33 @@
-{% extends 'BaseUI/BaseFacility/baseRiskSummary.html' %}
+{% extends 'BaseUI/BaseCitizen/baseRiskSummary_Citizen.html' %}
 
 {% load staticfiles %}
+{% load static %}
+
+{% block library %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+{% endblock %}
 
 <!----------------BLOCK MENU--------------->
-{% block pof %}{% url 'damgeFactor' proposalID %}{% endblock %}
-{% block ca%}{% url 'fullyConsequence' proposalID %}{% endblock %}
-{% block matrix %}{% url 'riskMatrix' proposalID %}{% endblock %}
-{% block chart %}{% url 'riskChart' proposalID %}{% endblock %}
-{% block backProposal %}{% url 'proposalDisplay' assess.componentid_id %}{% endblock %}
+{% block pof %}{% url 'damgeFactorCitizen' proposalID %}{% endblock %}
+{% block ca %}{% url 'fullyConsequenceCitizen' proposalID %}{% endblock %}
+{% block matrix %}{% url 'riskMatrixCitizen' proposalID %}{% endblock %}
+{% block chart %}{% url 'riskChartCitizen' proposalID %}{% endblock %}
+{% block backProposal %}{% url 'ListProposalCitizen' faci.facilityid  si.siteid %}{% endblock %}
 <!---------------END BLOCK--------------->
 
 {% block data-content %}
 <form method="post" id="fullDF">
     {% csrf_token %}
+    <div style="text-align: center">
+        <h3>Company Name : {{ si.sitename }} <span class="glyphicon glyphicon-arrow-right" style="color: #333333"></span>
+            {{ faci.facilityname }} <span class="glyphicon glyphicon-arrow-right"></span>
+            {{ equip.equipmentname }} <span class="glyphicon glyphicon-arrow-right"></span>
+            {{ component.componentname }}</h3>
+        <br>
+    </div>
     <div class="input-data">
-        <fieldset class="scheduler-border">
+        <fieldset class="scheduler-border" >
             <!-----------BLOCK DATA GENERAL FACTOR---------->
             <fieldset class="scheduler-border">
                 <legend class="scheduler-border"><b>Initial Factor</b></legend>

@@ -14,7 +14,7 @@
     <form method="post">
     {% csrf_token %}
         <div>
-            {% if faci %}<a href="{% url 'equipmentDisplay' faci.facilityid %}">{{ faci.facilityname }}</a>{% endif %} <span class="glyphicon glyphicon-arrow-right"></span>
+            {% if faci %}<a href="{% url 'equipmentDisplay' faci.facilityid %}">{{ faci.facilityname }}</a>{% endif %} <span class="fa fa-angle-right"></span>
             {% if eq %}<a href="{% url 'componentDisplay' eq.equipmentid %}">{{ eq.equipmentname }}</a>{% endif %}
         </div>
         <div style="text-align: center">

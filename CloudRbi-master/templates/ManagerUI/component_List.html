@@ -1,7 +1,14 @@
 {% extends 'BaseUI/BaseManager/baseComponentMana.html' %}
 
+{% load staticfiles %}
+
+{% block library %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+{% endblock %}
+
 <!--------------- BLOCK MENU ------------>
-{% block listcomp %}{% url 'componentDisplay' equipmentID %}{% endblock %}
+{% block listcomp %}{% url 'componentDisplayMana' equipmentID %}{% endblock %}
 {#{% block newcomp %}{% url 'componentNew' equipmentID %}{% endblock %}#}
 {% block backeq %}{% url 'equipmentDisplayMana' facilityID %}{% endblock %}
 <!-------------- END BLOCK ------------->
@@ -10,8 +17,8 @@
     <form method="post">
     {% csrf_token %}
         <div>
-            {% if si %}<a href="{% url 'facilitiesDisplayMana' si.siteid %}">{{ si.sitename }}</a>{% endif %} <span class="glyphicon glyphicon-arrow-right"></span>
-            {% if faci %}<a href="{% url 'equipmentDisplay' faci.facilityid %}">{{ faci.facilityname }}</a>{% endif %} <span class="glyphicon glyphicon-arrow-right"></span>
+            {% if si %}<a href="{% url 'facilitiesDisplayMana' si.siteid %}">{{ si.sitename }}</a>{% endif %} <span class="fa fa-angle-right"></span>
+            {% if faci %}<a href="{% url 'equipmentDisplay' faci.facilityid %}">{{ faci.facilityname }}</a>{% endif %} <span class="fa fa-angle-right"></span>
             {% if eq %}<a href="{% url 'componentDisplay' eq.equipmentid %}">{{ eq.equipmentname }}</a>{% endif %}
         </div>
         <div style="text-align: center">

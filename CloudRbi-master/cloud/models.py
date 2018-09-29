@@ -699,6 +699,8 @@ class Sites(models.Model):
     sitename = models.CharField(db_column='SiteName', max_length=100, blank=True, null=True)  # Field name made lowercase.
     create = models.DateTimeField(db_column='Create', default= datetime.datetime.now())
     userID = models.ForeignKey('ZUser', on_delete=models.CASCADE, db_column='userID')
+    compainfor = models.TextField(db_column='compa_infor', blank=True, null=False)
+
     def __str__(self):
         return self.sitename
     # def get_absolute_url(self):

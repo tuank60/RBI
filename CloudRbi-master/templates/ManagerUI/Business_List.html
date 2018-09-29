@@ -1,7 +1,7 @@
 {% extends 'ManagerUI/ManagerHome.html' %}
 
 <!-------------- BLOCK MENU ---------------->
-{% block listfaci %}{% url 'facilitiesDisplay' siteID %}{% endblock %}
+{% block listfaci %}{% url 'facilitiesDisplayMana' siteID %}{% endblock %}
 {#{% block newfaci %}{% url 'facilitiesNew' siteID %}{% endblock %}#}
 {% block design %}{% url 'designcodeDisplay' siteID %}{% endblock %}
 {% block manu %}{% url 'manufactureDisplay' siteID %}{% endblock %}
@@ -19,20 +19,14 @@
             <table class="table" id="mytable" >
                 <thead >
                     <tr>
-{#                        <th width="100px" style="text-align: center"><input type="checkbox" id="chkHeader"></th>#}
                         <th width="200px" style="text-align: center"><i class="fa fa-tag"></i>&ensp;Name Company</th>
-{#                        <th width="200px" style="text-align: center"><i class="fa fa-compass"></i>&ensp;Facility Management Factor</th>#}
-{#                        <th width="200px" style="text-align: center"><i class="fa fa-bullseye"></i>&ensp;Facility Risk Target</th>#}
                         <th width="200px" style="text-align: center"><i class="fa fa-bar-chart-o"></i>&ensp;Risk Summary</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for a in obj %}
                     <tr >
-{#                        <td align="center"><input type="checkbox" name="{{ a.ID }}"></td>#}
                         <td align="center"><a href="{% url 'facilitiesDisplayMana' a.ID %}">{{ a.SideName }}</a></td>
-{#                        <td align="center">{{ a.ManagementFactor }}</td>#}
-{#                        <td align="center">{{ a.RiskTarget }}</td>#}
                         <td align="center"><a href="{% url 'exportData' a.ID 'Facility' %}"><i class="fa fa-print" ></i></a></td>
                     </tr>
                     {% endfor %}
@@ -66,10 +60,6 @@
 
 {#        Tool div #}
             <br>
-            <div>
-{#                <button name="_edit" class="btn btn-primary" type="submit"><i class="fa fa-pencil">&emsp;Edit Selected</i></button>#}
-{#                <button type="submit" class="btn btn-warning" id="sub" onclick="Sub()" ><i class="fa fa-trash-o">&emsp;Delete Selected</i></button>#}
-            </div>
         </div>
     </form>
 {% endblock %}

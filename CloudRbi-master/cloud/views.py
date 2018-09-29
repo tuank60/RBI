@@ -74,6 +74,8 @@ def handler404(request):
 ################ Business UI Control ###################
 def ListFacilities(request, siteID):
     count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email), Q(Is_see=0)).count()
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
     try:
         risk = []
 
@@ -106,8 +108,12 @@ def ListFacilities(request, siteID):
             return redirect('facilitiesDisplay', siteID)
     except:
         raise Http404
-    return render(request, 'FacilityUI/facility/facilityListDisplay.html', {'obj': users,'siteID':siteID,'count':count,'info':request.session})
+    return render(request, 'FacilityUI/facility/facilityListDisplay.html', {'obj': users,'siteID':siteID,'count':count,'info':request.session,'noti':noti,'countnoti':countnoti})
 def NewFacilities(request,siteID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         error = {}
         data = {}
@@ -129,8 +135,12 @@ def NewFacilities(request,siteID):
                 return redirect('facilitiesDisplay',siteID=siteID)
     except:
         raise Http404
-    return render(request, 'FacilityUI/facility/facilityNew.html', {'site':site, 'error':error, 'data':data, 'siteID':siteID,'info':request.session})
+    return render(request, 'FacilityUI/facility/facilityNew.html', {'site':site, 'error':error, 'data':data, 'siteID':siteID,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def EditFacilities(request,facilityID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         error = {}
         dataNew = {}
@@ -162,8 +172,12 @@ def EditFacilities(request,facilityID):
                 return redirect('facilitiesDisplay', siteID= dataOld.siteid_id)
     except:
         raise Http404
-    return render(request, 'FacilityUI/facility/facilityEdit.html',{'dataNew': dataNew, 'error':error, 'siteID':dataOld.siteid_id})
+    return render(request, 'FacilityUI/facility/facilityEdit.html',{'dataNew': dataNew, 'error':error, 'siteID':dataOld.siteid_id,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def ListDesignCode(request, siteID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         data = models.DesignCode.objects.filter(siteid= siteID)
         pagiDes = Paginator(data, 25)
@@ -185,8 +199,12 @@ def ListDesignCode(request, siteID):
             return redirect('designcodeDisplay', siteID= siteID)
     except:
         raise Http404
-    return render(request, 'FacilityUI/design_code/designcodeListDisplay.html', {'obj':obj, 'siteID':siteID})
+    return render(request, 'FacilityUI/design_code/designcodeListDisplay.html', {'obj':obj, 'siteID':siteID,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def NewDesignCode(request,siteID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         error = {}
         data = {}
@@ -202,8 +220,12 @@ def NewDesignCode(request,siteID):
                 return redirect('designcodeDisplay', siteID= siteID)
     except:
         raise Http404
-    return render(request, 'FacilityUI/design_code/designcodeNew.html',{'data':data, 'error':error, 'siteID':siteID})
+    return render(request, 'FacilityUI/design_code/designcodeNew.html',{'data':data, 'error':error, 'siteID':siteID,'noti':noti,'countnoti':countnoti,'count':count})
 def EditDesignCode(request,designcodeID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         error = {}
         dataNew = {}
@@ -223,8 +245,12 @@ def EditDesignCode(request,designcodeID):
                 return redirect('designcodeDisplay', siteID=dataOld.siteid_id)
     except:
         raise Http404
-    return render(request, 'FacilityUI/design_code/designcodeEdit.html', {'data':dataNew, 'error':error, 'siteID':dataOld.siteid_id})
+    return render(request, 'FacilityUI/design_code/designcodeEdit.html', {'data':dataNew, 'error':error, 'siteID':dataOld.siteid_id,'noti':noti,'countnoti':countnoti,'count':count})
 def ListManufacture(request, siteID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         data = models.Manufacturer.objects.filter(siteid= siteID)
         pagiManu = Paginator(data, 25)
@@ -246,8 +272,12 @@ def ListManufacture(request, siteID):
             return redirect('manufactureDisplay', siteID= siteID)
     except:
         raise Http404
-    return render(request, 'FacilityUI/manufacture/manufactureListDisplay.html', {'obj':obj, 'siteID':siteID})
+    return render(request, 'FacilityUI/manufacture/manufactureListDisplay.html', {'obj':obj, 'siteID':siteID,'noti':noti,'countnoti':countnoti,'count':count})
 def NewManufacture(request, siteID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         error = {}
         data = {}
@@ -262,8 +292,12 @@ def NewManufacture(request, siteID):
                 return redirect('manufactureDisplay', siteID= siteID)
     except:
         raise Http404
-    return render(request, 'FacilityUI/manufacture/manufactureNew.html', {'data':data, 'error':error, 'siteID':siteID})
+    return render(request, 'FacilityUI/manufacture/manufactureNew.html', {'data':data, 'error':error, 'siteID':siteID,'noti':noti,'countnoti':countnoti,'count':count})
 def EditManufacture(request, manufactureID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         error = {}
         dataNew = {}
@@ -280,8 +314,12 @@ def EditManufacture(request, manufactureID):
                 return redirect('manufactureDisplay', siteID= dataOld.siteid_id)
     except:
         raise Http404
-    return render(request, 'FacilityUI/manufacture/manufactureEdit.html', {'data': dataNew, 'error': error , 'siteID':dataOld.siteid_id})
+    return render(request, 'FacilityUI/manufacture/manufactureEdit.html', {'data': dataNew, 'error': error , 'siteID':dataOld.siteid_id,'noti':noti,'countnoti':countnoti,'count':count})
 def ListEquipment(request, facilityID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         faci = models.Facility.objects.get(facilityid= facilityID)
         data = models.EquipmentMaster.objects.filter(facilityid= facilityID)
@@ -305,8 +343,12 @@ def ListEquipment(request, facilityID):
     except Exception as e:
         print(e)
         raise Http404
-    return render(request, 'FacilityUI/equipment/equipmentListDisplay.html', {'obj':obj, 'facilityID':facilityID, 'siteID':faci.siteid_id,'faci':faci,'info':request.session})
+    return render(request, 'FacilityUI/equipment/equipmentListDisplay.html', {'obj':obj, 'facilityID':facilityID, 'siteID':faci.siteid_id,'faci':faci,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def NewEquipment(request, facilityID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         data = {}
         error = {}
@@ -335,8 +377,12 @@ def NewEquipment(request, facilityID):
                 return redirect('equipmentDisplay', facilityID= facilityID)
     except:
         raise Http404
-    return render(request, 'FacilityUI/equipment/equipmentNew.html', {'data':data, 'equipmenttype': equipmenttype, 'designcode':designcode, 'manufacture':manufacture, 'facilityID':facilityID, 'siteID':faci.siteid_id,'info':request.session})
+    return render(request, 'FacilityUI/equipment/equipmentNew.html', {'data':data, 'equipmenttype': equipmenttype, 'designcode':designcode, 'manufacture':manufacture, 'facilityID':facilityID, 'siteID':faci.siteid_id,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def EditEquipment(request, equipmentID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         error = {}
         dataNew = {}
@@ -377,8 +423,12 @@ def EditEquipment(request, equipmentID):
                 return redirect('equipmentDisplay', facilityID=dataOld.facilityid_id)
     except:
         raise Http404
-    return render(request, 'FacilityUI/equipment/equipmentEdit.html', {'data': dataNew, 'error':error, 'designcode':designcode, 'manufacture':manufacture, 'facilityID':dataOld.facilityid_id, 'siteID':dataOld.siteid_id,'info':request.session})
+    return render(request, 'FacilityUI/equipment/equipmentEdit.html', {'data': dataNew, 'error':error, 'designcode':designcode, 'manufacture':manufacture, 'facilityID':dataOld.facilityid_id, 'siteID':dataOld.siteid_id,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def ListComponent(request, equipmentID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         eq = models.EquipmentMaster.objects.get(equipmentid= equipmentID)
         faci = models.Facility.objects.get(facilityid=eq.facilityid_id)
@@ -402,8 +452,12 @@ def ListComponent(request, equipmentID):
             return  redirect('componentDisplay', equipmentID= equipmentID)
     except:
         raise Http404
-    return render(request, 'FacilityUI/component/componentListDisplay.html', {'obj':obj, 'equipmentID':equipmentID, 'facilityID': eq.facilityid_id,'eq':eq,'faci':faci,'info':request.session})
+    return render(request, 'FacilityUI/component/componentListDisplay.html', {'obj':obj, 'equipmentID':equipmentID, 'facilityID': eq.facilityid_id,'eq':eq,'faci':faci,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def NewComponent(request, equipmentID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         eq = models.EquipmentMaster.objects.get(equipmentid= equipmentID)
         data = {}
@@ -437,8 +491,12 @@ def NewComponent(request, equipmentID):
                 return redirect('componentDisplay', equipmentID= equipmentID)
     except:
         raise Http404
-    return render(request, 'FacilityUI/component/componentNew.html', {'error':error, 'componenttype': componentType, 'api':apicomponentType,'other':other, 'data':data, 'equipmentID':equipmentID, 'facilityID': eq.facilityid_id})
+    return render(request, 'FacilityUI/component/componentNew.html', {'error':error, 'componenttype': componentType, 'api':apicomponentType,'other':other, 'data':data, 'equipmentID':equipmentID, 'facilityID': eq.facilityid_id,'noti':noti,'countnoti':countnoti,'count':count})
 def EditComponent(request, componentID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         dataNew = {}
         error = {}
@@ -469,8 +527,12 @@ def EditComponent(request, componentID):
                 return redirect('componentDisplay', equipmentID= dataOld.equipmentid_id)
     except:
         raise Http404
-    return render(request, 'FacilityUI/component/componentEdit.html', {'data':dataNew, 'error':error, 'equipmentID':dataOld.equipmentid_id, 'facilityID': models.EquipmentMaster.objects.get(equipmentid= dataOld.equipmentid_id).facilityid_id})
+    return render(request, 'FacilityUI/component/componentEdit.html', {'data':dataNew, 'error':error, 'equipmentID':dataOld.equipmentid_id,'noti':noti,'countnoti':countnoti,'count':count, 'facilityID': models.EquipmentMaster.objects.get(equipmentid= dataOld.equipmentid_id).facilityid_id})
 def ListProposal(request, componentID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         rwass = models.RwAssessment.objects.filter(componentid= componentID)
         data = []
@@ -546,8 +608,12 @@ def ListProposal(request, componentID):
         raise Http404
     return render(request, 'FacilityUI/proposal/proposalListDisplay.html', {'obj':obj, 'istank': istank, 'isshell':isshell,
                                                                             'componentID':componentID,
-                                                                            'equipmentID':comp.equipmentid_id,'comp':comp,'equip':equip,'faci':faci,'info':request.session})
+                                                                            'equipmentID':comp.equipmentid_id,'comp':comp,'equip':equip,'faci':faci,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def NewProposal(request, componentID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         Fluid = ["Acid", "AlCl3", "C1-C2", "C13-C16", "C17-C25", "C25+", "C3-C4", "C5", "C6-C8", "C9-C12", "CO", "DEE",
              "EE", "EEA", "EG", "EO", "H2", "H2S", "HCl", "HF", "Methanol", "Nitric Acid", "NO2", "Phosgene", "PO",
@@ -986,8 +1052,12 @@ def NewProposal(request, componentID):
             return redirect('damgeFactor', proposalID= rwassessment.id)
     except Exception as e:
         raise Http404
-    return render(request, 'FacilityUI/proposal/proposalNormalNew.html',{'api':Fluid, 'componentID':componentID, 'equipmentID':comp.equipmentid_id,'info':request.session})
+    return render(request, 'FacilityUI/proposal/proposalNormalNew.html',{'api':Fluid, 'componentID':componentID, 'equipmentID':comp.equipmentid_id,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def NewTank(request, componentID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         comp = models.ComponentMaster.objects.get(componentid= componentID)
         eq = models.EquipmentMaster.objects.get(equipmentid= comp.equipmentid_id)
@@ -1415,8 +1485,12 @@ def NewTank(request, componentID):
     except Exception as e:
         # print(e)
         raise Http404
-    return render(request, 'FacilityUI/proposal/proposalTankNew.html', {'isshell':isshell, 'componentID':componentID, 'equipmentID':comp.equipmentid_id,'info':request.session})
+    return render(request, 'FacilityUI/proposal/proposalTankNew.html', {'isshell':isshell, 'componentID':componentID, 'equipmentID':comp.equipmentid_id,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def EditProposal(request, proposalID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         Fluid = ["Acid", "AlCl3", "C1-C2", "C13-C16", "C17-C25", "C25+", "C3-C4", "C5", "C6-C8", "C9-C12", "CO", "DEE",
                  "EE", "EEA", "EG", "EO", "H2", "H2S", "HCl", "HF", "Methanol", "Nitric Acid", "NO2", "Phosgene", "PO",
@@ -1930,8 +2004,12 @@ def EditProposal(request, proposalID):
                                                                            'rwCoat':rwcoat, 'rwMaterial':rwmaterial, 'rwInputCa':rwinputca,
                                                                            'assDate':assDate, 'extDate':extDate,
                                                                            'componentID': rwassessment.componentid_id,
-                                                                           'equipmentID': rwassessment.equipmentid_id,'info':request.session})
+                                                                           'equipmentID': rwassessment.equipmentid_id,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def EditTank(request, proposalID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         rwassessment = models.RwAssessment.objects.get(id=proposalID)
         rwequipment = models.RwEquipment.objects.get(id=proposalID)
@@ -2425,8 +2503,12 @@ def EditTank(request, proposalID):
                                                                          'rwCoat':rwcoat, 'rwMaterial':rwmaterial, 'rwInputCa':rwinputca,
                                                                          'assDate': assDate, 'extDate': extDate,
                                                                          'componentID': comp.componentid,
-                                                                         'equipmentID': comp.equipmentid_id,'info':request.session})
+                                                                         'equipmentID': comp.equipmentid_id,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def RiskMatrix(request, proposalID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         locatAPI1 = {}
         locatAPI2 = {}
@@ -2461,8 +2543,12 @@ def RiskMatrix(request, proposalID):
         raise Http404
     return render(request, 'FacilityUI/risk_summary/riskMatrix.html',{'API1':location.locat(df.totaldfap1, ca.fcofvalue), 'API2':location.locat(df.totaldfap2, ca.fcofvalue),
                                                                       'API3':location.locat(df.totaldfap3, ca.fcofvalue),'DF1': DF1,'DF2': DF2,'DF3': DF3, 'ca':Ca,
-                                                                      'ass':rwAss,'isTank': isTank, 'isShell': isShell, 'df':df, 'proposalID':proposalID,'info':request.session})
+                                                                      'ass':rwAss,'isTank': isTank, 'isShell': isShell, 'df':df, 'proposalID':proposalID,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def FullyDamageFactor(request, proposalID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         df = models.RwFullPof.objects.get(id= proposalID)
         rwAss = models.RwAssessment.objects.get(id= proposalID)
@@ -2521,9 +2607,13 @@ def FullyDamageFactor(request, proposalID):
         print(e)
         raise Http404
     return render(request, 'FacilityUI/risk_summary/dfFull.html', {'obj':data, 'assess': rwAss, 'isTank': isTank,
-                                                                   'isShell': isShell, 'proposalID':proposalID,'info':request.session})
+                                                                   'isShell': isShell, 'proposalID':proposalID,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def FullyConsequence(request, proposalID):
     data = {}
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         rwAss = models.RwAssessment.objects.get(id=proposalID)
         component = models.ComponentMaster.objects.get(componentid=rwAss.componentid_id)
@@ -2564,7 +2654,7 @@ def FullyConsequence(request, proposalID):
             data['business_cost'] = roundData.roundMoney(bottomConsequences.business_cost)
             data['consequence'] = roundData.roundMoney(bottomConsequences.consequence)
             data['consequencecategory'] = bottomConsequences.consequencecategory
-            return render(request, 'FacilityUI/risk_summary/fullyBottomConsequence.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss,'info':request.session})
+            return render(request, 'FacilityUI/risk_summary/fullyBottomConsequence.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
         elif isShell:
             shellConsequences = models.RwCaTank.objects.get(id=proposalID)
             data['flow_rate_d1'] = roundData.roundFC(shellConsequences.flow_rate_d1)
@@ -2596,7 +2686,7 @@ def FullyConsequence(request, proposalID):
             data['business_cost'] = roundData.roundMoney(shellConsequences.business_cost)
             data['consequence'] = roundData.roundMoney(shellConsequences.consequence)
             data['consequencecategory'] = shellConsequences.consequencecategory
-            return render(request, 'FacilityUI/risk_summary/fullyShellConsequence.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss,'info':request.session})
+            return render(request, 'FacilityUI/risk_summary/fullyShellConsequence.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
         else:
             ca = models.RwCaLevel1.objects.get(id= proposalID)
             inputCa = models.RwInputCaLevel1.objects.get(id= proposalID)
@@ -2613,10 +2703,14 @@ def FullyConsequence(request, proposalID):
             data['fc_envi'] = roundData.roundMoney(ca.fc_envi)
             data['fc_total'] = roundData.roundMoney(ca.fc_total)
             data['fcof_category'] = ca.fcof_category
-            return render(request, 'FacilityUI/risk_summary/fullyNormalConsequence.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss,'info':request.session})
+            return render(request, 'FacilityUI/risk_summary/fullyNormalConsequence.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
     except:
         raise Http404
 def RiskChart(request, proposalID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         rwAssessment = models.RwAssessment.objects.get(id= proposalID)
         print(rwAssessment)
@@ -2641,7 +2735,7 @@ def RiskChart(request, proposalID):
                       chart.risktarget,chart.risktarget,chart.risktarget,chart.risktarget]
         endLabel = date2Str.date2str(date2Str.dateFuture(assessmentDate, 15))
         content = {'label': dataLabel, 'data':dataChart, 'target':dataTarget, 'endLabel':endLabel, 'proposalname':rwAssessment.proposalname,
-                   'proposalID':rwAssessment.id, 'componentID':rwAssessment.componentid_id}
+                   'proposalID':rwAssessment.id, 'componentID':rwAssessment.componentid_id,'noti':noti,'countnoti':countnoti,'count':count}
         return render(request, 'FacilityUI/risk_summary/riskChart.html', content)
     except:
         raise Http404
@@ -2651,6 +2745,10 @@ def ExportExcel(request, index, type):
     except:
         raise Http404
 def upload(request, siteID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         showcontent = "Choose plan process file"
         if request.method =='POST' and request.FILES['myexcelFile']:
@@ -2666,8 +2764,12 @@ def upload(request, siteID):
                 pass
     except:
         raise Http404
-    return render(request, 'FacilityUI/facility/uploadData.html', {'siteID': siteID, 'showcontent': showcontent})
+    return render(request, 'FacilityUI/facility/uploadData.html', {'siteID': siteID, 'showcontent': showcontent,'noti':noti,'countnoti':countnoti,'count':count,'info':request.session})
 def uploadInspPlan(request, siteID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         showcontent = "Choose inspection history file"
         if request.method == 'POST' and request.FILES['myexcelFile']:
@@ -2684,7 +2786,7 @@ def uploadInspPlan(request, siteID):
     except Exception as e:
         print(e)
         raise Http404
-    return render(request, 'FacilityUI/facility/uploadData.html' ,{'siteID': siteID, 'showcontent': showcontent})
+    return render(request, 'FacilityUI/facility/uploadData.html' ,{'siteID': siteID, 'showcontent': showcontent,'noti':noti,'countnoti':countnoti,'count':count,'info':request.session})
 
 ############### Dang Nhap Dang Suat #################
 def signin(request):
@@ -2757,7 +2859,7 @@ def base_forum(request):
             mang.append(posts)
         noti=models.ZNotification.objects.all().filter(id_user=request.session['id'])
         countnoti=noti.filter(state=0).count()
-        return render(request,'BaseUI/BaseForum/forumhome.html',{'data':mang, 'noti':noti, 'countnoti':countnoti})
+        return render(request,'BaseUI/BaseForum/forumhome.html',{'data':mang, 'noti':noti, 'countnoti':countnoti,'info':request.session})
     else:
         return redirect('home')
 def posts_forum(request,postID):
@@ -2790,11 +2892,15 @@ def posts_forum(request,postID):
         datacmt.append(cmt)#mang chua Du lieu cac comment
     noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
     countnoti = noti.filter(state=0).count()
-    return render(request,'BaseUI/BaseForum/forumposts.html',{'data':a,'nameuserpost':nameuserpost,'datacmt':datacmt,'session':request.session,'noti':noti, 'countnoti':countnoti})
+    return render(request,'BaseUI/BaseForum/forumposts.html',{'data':a,'nameuserpost':nameuserpost,'datacmt':datacmt,'session':request.session,'noti':noti, 'countnoti':countnoti,'info':request.session})
 
 ################## Tin nhan Email ###################
 def MassagesHome(request):
     datacontent = models.Emailto.objects.filter(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email)
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         if 'post' in request.POST:
             data={}
@@ -2815,12 +2921,20 @@ def MassagesHome(request):
                     email1=models.Emailto.objects.get(id=data1.id)
                     email1.delete()
                     return redirect('massages')
+        acti = models.Emailto.objects.filter(Emailt = request.session['email'])
+        for acti in acti:
+            acti.Is_see=1
+            acti.save()
     except Exception as e:
         print(e)
         Http404
-    return render(request,'BaseUI/BaseMassages/BaseMassages.html',{'datacontent':datacontent})
+    return render(request,'BaseUI/BaseMassages/BaseMassages.html',{'datacontent':datacontent,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def Email_Massage_sent(request):
     datacontent = models.Emailsent.objects.filter(Emails=models.ZUser.objects.filter(id=request.session['id'])[0].email)
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         if 'post' in request.POST:
             data = {}
@@ -2844,7 +2958,7 @@ def Email_Massage_sent(request):
     except Exception as e:
         print(e)
         Http404
-    return render(request, 'BaseUI/BaseMassages/Massages_sent.html', {'datacontent':datacontent})
+    return render(request, 'BaseUI/BaseMassages/Massages_sent.html', {'datacontent':datacontent,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 
 ################# Help #################
 def Help(requset):
@@ -3038,6 +3152,8 @@ def activate(request, uidb64, token):
 ################ Manager UI Control ###################
 def ManagerHome(request, siteID):
     count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email), Q(Is_see=0)).count()
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
     try:
         risk = []
 
@@ -3067,8 +3183,10 @@ def ManagerHome(request, siteID):
             return redirect('facilitiesDisplay', siteID)
     except:
         raise Http404
-    return render(request, 'ManagerUI/Business_List.html', {'obj': users,'siteID':siteID,'count':count})
+    return render(request, 'ManagerUI/Business_List.html', {'obj': users,'siteID':siteID,'count':count,'noti':noti,'countnoti':countnoti,'info':request.session})
 def ListFacilitiesMana(request, siteID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
     count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email), Q(Is_see=0)).count()
     try:
         risk = []
@@ -3104,8 +3222,12 @@ def ListFacilitiesMana(request, siteID):
             return redirect('facilitiesDisplay', siteID)
     except:
         raise Http404
-    return render(request, 'ManagerUI/facility_List.html', {'obj': users,'siteID':siteID,'count':count,'si':si})
+    return render(request, 'ManagerUI/facility_List.html', {'obj': users,'siteID':siteID,'count':count,'si':si,'noti':noti,'countnoti':countnoti,'info':request.session})
 def ListEquipmentMana(request, facilityID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         faci = models.Facility.objects.get(facilityid= facilityID)
         # print(faci.si)
@@ -3130,8 +3252,12 @@ def ListEquipmentMana(request, facilityID):
             return redirect('equipmentDisplay' , facilityID= facilityID)
     except:
         raise Http404
-    return render(request, 'ManagerUI/Equipment_List.html', {'obj':obj, 'facilityID':facilityID, 'siteID':faci.siteid_id,'faci':faci,'si':si})
+    return render(request, 'ManagerUI/Equipment_List.html', {'obj':obj, 'facilityID':facilityID, 'siteID':faci.siteid_id,'faci':faci,'si':si,'count':count,'noti':noti,'countnoti':countnoti,'info':request.session})
 def ListComponentMana(request, equipmentID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         eq = models.EquipmentMaster.objects.get(equipmentid= equipmentID)
         faci = models.Facility.objects.get(facilityid=eq.facilityid_id)
@@ -3156,8 +3282,12 @@ def ListComponentMana(request, equipmentID):
             return  redirect('componentDisplay', equipmentID= equipmentID)
     except:
         raise Http404
-    return render(request, 'ManagerUI/component_List.html', {'obj':obj, 'equipmentID':equipmentID, 'facilityID': eq.facilityid_id,'eq':eq,'faci':faci,'si':si})
+    return render(request, 'ManagerUI/component_List.html', {'obj':obj, 'equipmentID':equipmentID, 'facilityID': eq.facilityid_id,'eq':eq,'faci':faci,'si':si,'count':count,'noti':noti,'countnoti':countnoti,'info':request.session})
 def ListProposalMana(request, componentID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         rwass = models.RwAssessment.objects.filter(componentid= componentID)
         data = []
@@ -3234,8 +3364,12 @@ def ListProposalMana(request, componentID):
         raise Http404
     return render(request, 'ManagerUI/proposal_List.html', {'obj':obj, 'istank': istank, 'isshell':isshell,
                                                                             'componentID':componentID,
-                                                                            'equipmentID':comp.equipmentid_id,'comp':comp,'equip':equip,'faci':faci,'si':si})
+                                                                            'equipmentID':comp.equipmentid_id,'comp':comp,'equip':equip,'faci':faci,'si':si,'count':count,'noti':noti,'countnoti':countnoti,'info':request.session})
 def FullyDamageFactorMana(request, proposalID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         df = models.RwFullPof.objects.get(id= proposalID)
         rwAss = models.RwAssessment.objects.get(id= proposalID)
@@ -3294,9 +3428,13 @@ def FullyDamageFactorMana(request, proposalID):
         print(e)
         raise Http404
     return render(request, 'ManagerUI/RiskSummaryMana/FullDF.html', {'obj':data, 'assess': rwAss, 'isTank': isTank,
-                                                                   'isShell': isShell, 'proposalID':proposalID})
+                                                                   'isShell': isShell, 'proposalID':proposalID,'count':count,'noti':noti,'countnoti':countnoti,'info':request.session})
 def FullyConsequenceMana(request, proposalID):
     data = {}
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         rwAss = models.RwAssessment.objects.get(id=proposalID)
         component = models.ComponentMaster.objects.get(componentid=rwAss.componentid_id)
@@ -3337,7 +3475,7 @@ def FullyConsequenceMana(request, proposalID):
             data['business_cost'] = roundData.roundMoney(bottomConsequences.business_cost)
             data['consequence'] = roundData.roundMoney(bottomConsequences.consequence)
             data['consequencecategory'] = bottomConsequences.consequencecategory
-            return render(request, 'ManagerUI/RiskSummaryMana/fullyBottomConsequenceMana.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss})
+            return render(request, 'ManagerUI/RiskSummaryMana/fullyBottomConsequenceMana.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss,'count':count,'noti':noti,'countnoti':countnoti,'info':request.session})
         elif isShell:
             shellConsequences = models.RwCaTank.objects.get(id=proposalID)
             data['flow_rate_d1'] = roundData.roundFC(shellConsequences.flow_rate_d1)
@@ -3369,7 +3507,7 @@ def FullyConsequenceMana(request, proposalID):
             data['business_cost'] = roundData.roundMoney(shellConsequences.business_cost)
             data['consequence'] = roundData.roundMoney(shellConsequences.consequence)
             data['consequencecategory'] = shellConsequences.consequencecategory
-            return render(request, 'ManagerUI/RiskSummaryMana/fullySellConsequenceMana.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss})
+            return render(request, 'ManagerUI/RiskSummaryMana/fullySellConsequenceMana.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss,'count':count,'noti':noti,'countnoti':countnoti,'info':request.session})
         else:
             ca = models.RwCaLevel1.objects.get(id= proposalID)
             inputCa = models.RwInputCaLevel1.objects.get(id= proposalID)
@@ -3386,10 +3524,14 @@ def FullyConsequenceMana(request, proposalID):
             data['fc_envi'] = roundData.roundMoney(ca.fc_envi)
             data['fc_total'] = roundData.roundMoney(ca.fc_total)
             data['fcof_category'] = ca.fcof_category
-            return render(request, 'ManagerUI/RiskSummaryMana/fullyNormalConsequenceMana.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss})
+            return render(request, 'ManagerUI/RiskSummaryMana/fullyNormalConsequenceMana.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss,'count':count,'noti':noti,'countnoti':countnoti,'info':request.session})
     except:
         raise Http404
 def RiskChartMana(request, proposalID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         rwAssessment = models.RwAssessment.objects.get(id= proposalID)
         print(rwAssessment)
@@ -3414,11 +3556,15 @@ def RiskChartMana(request, proposalID):
                       chart.risktarget,chart.risktarget,chart.risktarget,chart.risktarget]
         endLabel = date2Str.date2str(date2Str.dateFuture(assessmentDate, 15))
         content = {'label': dataLabel, 'data':dataChart, 'target':dataTarget, 'endLabel':endLabel, 'proposalname':rwAssessment.proposalname,
-                   'proposalID':rwAssessment.id, 'componentID':rwAssessment.componentid_id}
+                   'proposalID':rwAssessment.id, 'componentID':rwAssessment.componentid_id,'count':count,'noti':noti,'countnoti':countnoti,'info':request.session}
         return render(request, 'ManagerUI/RiskSummaryMana/riskChartMana.html', content)
     except:
         raise Http404
 def RiskMatrixMana(request, proposalID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
     try:
         locatAPI1 = {}
         locatAPI2 = {}
@@ -3453,7 +3599,7 @@ def RiskMatrixMana(request, proposalID):
         raise Http404
     return render(request, 'ManagerUI/RiskSummaryMana/RiskMatrixMana.html',{'API1':location.locat(df.totaldfap1, ca.fcofvalue), 'API2':location.locat(df.totaldfap2, ca.fcofvalue),
                                                                       'API3':location.locat(df.totaldfap3, ca.fcofvalue),'DF1': DF1,'DF2': DF2,'DF3': DF3, 'ca':Ca,
-                                                                      'ass':rwAss,'isTank': isTank, 'isShell': isShell, 'df':df, 'proposalID':proposalID})
+                                                                      'ass':rwAss,'isTank': isTank, 'isShell': isShell, 'df':df, 'proposalID':proposalID,'count':count,'noti':noti,'countnoti':countnoti,'info':request.session})
 def Inputdata(request, proposalID):
     try:
         Fluid = ["Acid", "AlCl3", "C1-C2", "C13-C16", "C17-C25", "C25+", "C3-C4", "C5", "C6-C8", "C9-C12", "CO", "DEE",
@@ -3974,6 +4120,8 @@ def Inputdata(request, proposalID):
 def citizen_home(request):
     try:
         risk = []
+        noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+        countnoti = noti.filter(state=0).count()
         count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),Q(Is_see=0)).count()
         com = models.Zbusiness.objects.all()
         for c in com :
@@ -3986,10 +4134,343 @@ def citizen_home(request):
             dataF['email']=us.email
             dataF['name']=us.name
             dataF['add']=us.adress
+            si = models.Sites.objects.get(sitename=dataF['namecompany'])
+            dataF['siteID']=si.siteid
             risk.append(dataF)
         if request.session['kind']=='citizen':
-            return render(request, 'CitizenUI/CitizenHome.html',{'info':request.session,'count':count,'risk':risk})
+            return render(request, 'CitizenUI/CitizenHome.html',{'info':request.session,'count':count,'risk':risk,'noti':noti,'countnoti':countnoti})
     except Exception as e:
         print(e)
+def ListfacilityCitizen(request,siteID):
+    try:
+        risk = []
+        count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                              Q(Is_see=0)).count()
+        noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+        countnoti = noti.filter(state=0).count()
+        site = models.Sites.objects.get(siteid=siteID)
+        faci = models.Facility.objects.filter(siteid=siteID)
+        si = models.Zbusiness.objects.get(namecompany=site.sitename)
+        name = models.ZUser.objects.get(id=site.userID_id)
+    except Exception as e:
+        print(e)
+    return render(request,'CitizenUI/infor_facility.html',{'info':request.session,'site':site, 'faci':faci,'si':si,'count':count,'name':name,'noti':noti,'countnoti':countnoti})
+def ListProposalCitizen(request,facilityID,siteID):
+    try:
+        data = []
+        count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                              Q(Is_see=0)).count()
+        noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+        countnoti = noti.filter(state=0).count()
+        site = models.Sites.objects.get(siteid=siteID)
+        faci = models.Facility.objects.filter(siteid=siteID)
+        eq = models.EquipmentMaster.objects.filter(facilityid=facilityID)
+        for eq in eq:
+            com = models.ComponentMaster.objects.filter(equipmentid=eq.equipmentid)
+            for com in com:
+                # print(com.componentid)
 
+                rwass = models.RwAssessment.objects.filter(componentid=com.componentid)
+                comp = models.ComponentMaster.objects.get(componentid=com.componentid)
+                equip = models.EquipmentMaster.objects.get(equipmentid=comp.equipmentid_id)
+                tank = [8, 12, 14, 15]
+                for a in rwass:
+                    df = models.RwFullPof.objects.filter(id=a.id)
+                    fc = models.RwFullFcof.objects.filter(id=a.id)
+                    dm = models.RwDamageMechanism.objects.filter(id_dm=a.id)
+                    obj1 = {}
+                    obj1['id'] = a.id
+                    obj1['name'] = a.proposalname
+                    obj1['lastinsp'] = a.assessmentdate.strftime('%Y-%m-%d')
+                    if df.count() != 0:
+                        obj1['df'] = round(df[0].totaldfap1, 2)
+                        obj1['gff'] = df[0].gfftotal
+                        obj1['fms'] = df[0].fms
+                    else:
+                        obj1['df'] = 0
+                        obj1['gff'] = 0
+                        obj1['fms'] = 0
+                    if fc.count() != 0:
+                        obj1['fc'] = round(fc[0].fcofvalue, 2)
+                    else:
+                        obj1['fc'] = 0
+                    if dm.count() != 0:
+                        obj1['duedate'] = dm[0].inspduedate.date().strftime('%Y-%m-%d')
+                    else:
+                        obj1['duedate'] = (a.assessmentdate.date() + relativedelta(years=15)).strftime('%Y-%m-%d')
+                        obj1['lastinsp'] = equip.commissiondate.date().strftime('%Y-%m-%d')
+                    obj1['risk'] = round(obj1['df'] * obj1['gff'] * obj1['fms'] * obj1['fc'], 2)
+                    data.append(obj1)
+                pagidata = Paginator(data, 25)
+                pagedata = request.GET.get('page', 1)
+                try:
+                    obj = pagidata.page(pagedata)
+                except PageNotAnInteger:
+                    obj = pagidata.page(1)
+                except EmptyPage:
+                    obj = pagedata.page(pagidata.num_pages)
 
+                if comp.componenttypeid_id in tank:
+                    istank = 1
+                else:
+                    istank = 0
+                if comp.componenttypeid_id == 8 or comp.componenttypeid_id == 14:
+                    isshell = 1
+                else:
+                    isshell = 0
+    except Exception as e:
+        print(e)
+    return render(request,'CitizenUI/ListProposalCitizen.html',{'info':request.session,'site':site,'faci':faci,'obj':obj,'noti':noti,'countnoti':countnoti,'count':count})
+def RiskMatrixCitizen(request, proposalID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
+    try:
+        locatAPI1 = {}
+        locatAPI2 = {}
+        locatAPI3 = {}
+        locatAPI1['x'] = 0
+        locatAPI1['y'] = 500
+
+        locatAPI2['x'] = 0
+        locatAPI2['y'] = 500
+
+        locatAPI3['x'] = 0
+        locatAPI3['y'] = 500
+
+        df = models.RwFullPof.objects.get(id=proposalID)
+        ca = models.RwFullFcof.objects.get(id=proposalID)
+        rwAss = models.RwAssessment.objects.get(id=proposalID)
+        component = models.ComponentMaster.objects.get(componentid=rwAss.componentid_id)
+        equip = models.EquipmentMaster.objects.get(equipmentid=component.equipmentid_id)
+        faci = models.Facility.objects.get(facilityid=equip.facilityid_id)
+        si = models.Sites.objects.get(siteid=faci.siteid_id)
+        if component.componenttypeid_id == 8 or component.componenttypeid_id == 12 or component.componenttypeid_id == 14 or component.componenttypeid_id == 15:
+            isTank = 1
+        else:
+            isTank = 0
+
+        if component.componenttypeid_id == 8 or component.componenttypeid_id == 14:
+            isShell = 1
+        else:
+            isShell = 0
+        Ca = round(ca.fcofvalue, 2)
+        DF1 = round(df.totaldfap1, 2)
+        DF2 = round(df.totaldfap2, 2)
+        DF3 = round(df.totaldfap3, 2)
+    except:
+        raise Http404
+    return render(request, 'CitizenUI/risk_summary_Citizen/riskMatrix_Citizen.html',{'API1':location.locat(df.totaldfap1, ca.fcofvalue), 'API2':location.locat(df.totaldfap2, ca.fcofvalue),
+                                                                      'API3':location.locat(df.totaldfap3, ca.fcofvalue),'DF1': DF1,'DF2': DF2,'DF3': DF3, 'ca':Ca,
+                                                                      'ass':rwAss,'isTank': isTank, 'isShell': isShell, 'df':df, 'proposalID':proposalID,'info':request.session,
+                                                                     'component':component,'equip':equip,'faci':faci,'si':si,'noti':noti,'countnoti':countnoti,'count':count})
+def FullyDamageFactorCitizen(request, proposalID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
+    try:
+        df = models.RwFullPof.objects.get(id= proposalID)
+        rwAss = models.RwAssessment.objects.get(id= proposalID)
+        data={}
+        component = models.ComponentMaster.objects.get(componentid=rwAss.componentid_id)
+        equip = models.EquipmentMaster.objects.get(equipmentid=component.equipmentid_id)
+        faci = models.Facility.objects.get(facilityid=equip.facilityid_id)
+        si = models.Sites.objects.get(siteid=faci.siteid_id)
+        if component.componenttypeid_id == 8 or component.componenttypeid_id == 12 or component.componenttypeid_id == 14 or component.componenttypeid_id == 15:
+            isTank = 1
+        else:
+            isTank = 0
+        if component.componenttypeid_id == 8 or component.componenttypeid_id == 14:
+            isShell = 1
+        else:
+            isShell = 0
+        data['thinningType'] = df.thinningtype
+        data['gfftotal'] = df.gfftotal
+        data['fms'] = df.fms
+        data['thinningap1'] = roundData.roundDF(df.thinningap1)
+        data['thinningap2'] = roundData.roundDF(df.thinningap2)
+        data['thinningap3'] = roundData.roundDF(df.thinningap3)
+        data['sccap1'] = roundData.roundDF(df.sccap1)
+        data['sccap2'] = roundData.roundDF(df.sccap2)
+        data['sccap3'] = roundData.roundDF(df.sccap3)
+        data['externalap1'] = roundData.roundDF(df.externalap1)
+        data['externalap2'] = roundData.roundDF(df.externalap2)
+        data['externalap3'] = roundData.roundDF(df.externalap3)
+        data['htha_ap1'] = roundData.roundDF(df.htha_ap1)
+        data['htha_ap2'] = roundData.roundDF(df.htha_ap2)
+        data['htha_ap3'] = roundData.roundDF(df.htha_ap3)
+        data['brittleap1'] = roundData.roundDF(df.brittleap1)
+        data['brittleap2'] = roundData.roundDF(df.brittleap2)
+        data['brittleap3'] = roundData.roundDF(df.brittleap3)
+        data['fatigueap1'] = roundData.roundDF(df.fatigueap1)
+        data['fatigueap2'] = roundData.roundDF(df.fatigueap2)
+        data['fatigueap3'] = roundData.roundDF(df.fatigueap3)
+        data['thinninggeneralap1'] = roundData.roundDF(df.thinninggeneralap1)
+        data['thinninggeneralap2'] = roundData.roundDF(df.thinninggeneralap2)
+        data['thinninggeneralap3'] = roundData.roundDF(df.thinninggeneralap3)
+        data['thinninglocalap1'] = roundData.roundDF(df.thinninglocalap1)
+        data['thinninglocalap2'] = roundData.roundDF(df.thinninglocalap2)
+        data['thinninglocalap3'] = roundData.roundDF(df.thinninglocalap3)
+        data['totaldfap1'] = roundData.roundDF(df.totaldfap1)
+        data['totaldfap2'] = roundData.roundDF(df.totaldfap2)
+        data['totaldfap3'] = roundData.roundDF(df.totaldfap3)
+        data['pofap1'] = roundData.roundPoF(df.pofap1)
+        data['pofap2'] = roundData.roundPoF(df.pofap2)
+        data['pofap3'] = roundData.roundPoF(df.pofap3)
+        data['pofap1category'] = df.pofap1category
+        data['pofap2category'] = df.pofap2category
+        data['pofap3category'] = df.pofap3category
+        if request.method == 'POST':
+            df.thinningtype = request.POST.get('thinningType')
+            df.save()
+            ReCalculate.ReCalculate(proposalID)
+            return redirect('damgeFactor', proposalID)
+    except Exception as e:
+        print(e)
+        raise Http404
+    return render(request, 'CitizenUI/risk_summary_Citizen/dfFull_Citizen.html', {'obj':data, 'assess': rwAss, 'isTank': isTank,
+                                                                   'isShell': isShell, 'proposalID':proposalID,'info':request.session,
+                                                                  'component':component,'equip':equip,'faci':faci,'si':si,'noti':noti,'countnoti':countnoti,'count':count})
+def FullyConsequenceCitizen(request, proposalID):
+    data = {}
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
+    try:
+        rwAss = models.RwAssessment.objects.get(id=proposalID)
+        component = models.ComponentMaster.objects.get(componentid=rwAss.componentid_id)
+        equip = models.EquipmentMaster.objects.get(equipmentid=component.equipmentid_id)
+        faci = models.Facility.objects.get(facilityid=equip.facilityid_id)
+        si = models.Sites.objects.get(siteid=faci.siteid_id)
+        if component.componenttypeid_id == 12 or component.componenttypeid_id == 15:
+            isBottom = 1
+        else:
+            isBottom = 0
+        if component.componenttypeid_id == 8 or component.componenttypeid_id == 14:
+            isShell = 1
+        else:
+            isShell = 0
+        if isBottom:
+            bottomConsequences = models.RwCaTank.objects.get(id=proposalID)
+            data['hydraulic_water'] = roundData.roundFC(bottomConsequences.hydraulic_water)
+            data['hydraulic_fluid'] = roundData.roundFC(bottomConsequences.hydraulic_fluid)
+            data['seepage_velocity'] = roundData.roundFC(bottomConsequences.seepage_velocity)
+            data['flow_rate_d1'] = roundData.roundFC(bottomConsequences.flow_rate_d1)
+            data['flow_rate_d4'] = roundData.roundFC(bottomConsequences.flow_rate_d4)
+            data['leak_duration_d1'] = roundData.roundFC(bottomConsequences.leak_duration_d1)
+            data['leak_duration_d4'] = roundData.roundFC(bottomConsequences.leak_duration_d4)
+            data['release_volume_leak_d1'] = roundData.roundFC(bottomConsequences.release_volume_leak_d1)
+            data['release_volume_leak_d4'] = roundData.roundFC(bottomConsequences.release_volume_leak_d4)
+            data['release_volume_rupture'] = roundData.roundFC(bottomConsequences.release_volume_rupture)
+            data['time_leak_ground'] = roundData.roundFC(bottomConsequences.time_leak_ground)
+            data['volume_subsoil_leak_d1'] = roundData.roundFC(bottomConsequences.volume_subsoil_leak_d1)
+            data['volume_subsoil_leak_d4'] = roundData.roundFC(bottomConsequences.volume_subsoil_leak_d4)
+            data['volume_ground_water_leak_d1'] = roundData.roundFC(bottomConsequences.volume_ground_water_leak_d1)
+            data['volume_ground_water_leak_d4'] = roundData.roundFC(bottomConsequences.volume_ground_water_leak_d4)
+            data['barrel_dike_rupture'] = roundData.roundFC(bottomConsequences.barrel_dike_rupture)
+            data['barrel_onsite_rupture'] = roundData.roundFC(bottomConsequences.barrel_onsite_rupture)
+            data['barrel_offsite_rupture'] = roundData.roundFC(bottomConsequences.barrel_offsite_rupture)
+            data['barrel_water_rupture'] = roundData.roundFC(bottomConsequences.barrel_water_rupture)
+            data['fc_environ_leak'] = roundData.roundMoney(bottomConsequences.fc_environ_leak)
+            data['fc_environ_rupture'] = roundData.roundMoney(bottomConsequences.fc_environ_rupture)
+            data['fc_environ'] = roundData.roundMoney(bottomConsequences.fc_environ)
+            data['material_factor'] = bottomConsequences.material_factor
+            data['component_damage_cost'] = roundData.roundMoney(bottomConsequences.component_damage_cost)
+            data['business_cost'] = roundData.roundMoney(bottomConsequences.business_cost)
+            data['consequence'] = roundData.roundMoney(bottomConsequences.consequence)
+            data['consequencecategory'] = bottomConsequences.consequencecategory
+            return render(request, 'CitizenUI/risk_summary_Citizen/fullyBottomConsequence_Citizen.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss,'info':request.session,'component':component,
+                                                                                                          'equip':equip,'faci':faci,'si':si,'noti':noti,'countnoti':countnoti,'count':count})
+        elif isShell:
+            shellConsequences = models.RwCaTank.objects.get(id=proposalID)
+            data['flow_rate_d1'] = roundData.roundFC(shellConsequences.flow_rate_d1)
+            data['flow_rate_d2'] = roundData.roundFC(shellConsequences.flow_rate_d2)
+            data['flow_rate_d3'] = roundData.roundFC(shellConsequences.flow_rate_d3)
+            data['flow_rate_d4'] = roundData.roundFC(shellConsequences.flow_rate_d4)
+            data['leak_duration_d1'] = roundData.roundFC(shellConsequences.leak_duration_d1)
+            data['leak_duration_d2'] = roundData.roundFC(shellConsequences.leak_duration_d2)
+            data['leak_duration_d3'] = roundData.roundFC(shellConsequences.leak_duration_d3)
+            data['leak_duration_d4'] = roundData.roundFC(shellConsequences.leak_duration_d4)
+            data['release_volume_leak_d1'] = roundData.roundFC(shellConsequences.release_volume_leak_d1)
+            data['release_volume_leak_d2'] = roundData.roundFC(shellConsequences.release_volume_leak_d2)
+            data['release_volume_leak_d3'] = roundData.roundFC(shellConsequences.release_volume_leak_d3)
+            data['release_volume_leak_d4'] = roundData.roundFC(shellConsequences.release_volume_leak_d4)
+            data['release_volume_rupture'] = roundData.roundFC(shellConsequences.release_volume_rupture)
+            data['time_leak_ground'] = roundData.roundFC(shellConsequences.time_leak_ground)
+            data['volume_subsoil_leak_d1'] = roundData.roundFC(shellConsequences.volume_subsoil_leak_d1)
+            data['volume_subsoil_leak_d4'] = roundData.roundFC(shellConsequences.volume_subsoil_leak_d4)
+            data['volume_ground_water_leak_d1'] = roundData.roundFC(shellConsequences.volume_ground_water_leak_d1)
+            data['volume_ground_water_leak_d4'] = roundData.roundFC(shellConsequences.volume_ground_water_leak_d4)
+            data['barrel_dike_rupture'] = roundData.roundFC(shellConsequences.barrel_dike_rupture)
+            data['barrel_onsite_rupture'] = roundData.roundFC(shellConsequences.barrel_onsite_rupture)
+            data['barrel_offsite_rupture'] = roundData.roundFC(shellConsequences.barrel_offsite_rupture)
+            data['barrel_water_rupture'] = roundData.roundFC(shellConsequences.barrel_water_rupture)
+            data['fc_environ_leak'] = roundData.roundMoney(shellConsequences.fc_environ_leak)
+            data['fc_environ_rupture'] = roundData.roundMoney(shellConsequences.fc_environ_rupture)
+            data['fc_environ'] = roundData.roundMoney(shellConsequences.fc_environ)
+            data['component_damage_cost'] = roundData.roundMoney(shellConsequences.component_damage_cost)
+            data['business_cost'] = roundData.roundMoney(shellConsequences.business_cost)
+            data['consequence'] = roundData.roundMoney(shellConsequences.consequence)
+            data['consequencecategory'] = shellConsequences.consequencecategory
+            return render(request, 'CitizenUI/risk_summary_Citizen/fullyShellConsequence_Citizen.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss,'info':request.session,
+                                                                                                         'component':component,'equip':equip,'faci':faci,'si':si,'noti':noti,'countnoti':countnoti,'count':count})
+        else:
+            ca = models.RwCaLevel1.objects.get(id= proposalID)
+            inputCa = models.RwInputCaLevel1.objects.get(id= proposalID)
+            data['production_cost'] = roundData.roundMoney(inputCa.production_cost)
+            data['equipment_cost'] = roundData.roundMoney(inputCa.equipment_cost)
+            data['personal_density'] = inputCa.personal_density
+            data['evironment_cost'] = roundData.roundMoney(inputCa.evironment_cost)
+            data['ca_cmd'] = roundData.roundFC(ca.ca_cmd)
+            data['ca_inj_flame'] = roundData.roundFC(ca.ca_inj_flame)
+            data['fc_cmd'] = roundData.roundMoney(ca.fc_cmd)
+            data['fc_affa'] = roundData.roundMoney(ca.fc_affa)
+            data['fc_prod'] = roundData.roundMoney(ca.fc_prod)
+            data['fc_inj'] = roundData.roundMoney(ca.fc_inj)
+            data['fc_envi'] = roundData.roundMoney(ca.fc_envi)
+            data['fc_total'] = roundData.roundMoney(ca.fc_total)
+            data['fcof_category'] = ca.fcof_category
+            return render(request, 'CitizenUI/risk_summary_Citizen/fullyNormalConsequence_Citizen.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss,'info':request.session,
+                                                                                                          'component':component,'equip':equip,'faci':faci,'si':si,'noti':noti,'countnoti':countnoti,'count':count})
+    except:
+        raise Http404
+def RiskChartCitizen(request, proposalID):
+    try:
+        count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                              Q(Is_see=0)).count()
+        noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+        countnoti = noti.filter(state=0).count()
+        rwAssessment = models.RwAssessment.objects.get(id= proposalID)
+        component = models.ComponentMaster.objects.get(componentid=rwAssessment.componentid_id)
+        equip = models.EquipmentMaster.objects.get(equipmentid=component.equipmentid_id)
+        faci = models.Facility.objects.get(facilityid=equip.facilityid_id)
+        si = models.Sites.objects.get(siteid=faci.siteid_id)
+        print(rwAssessment)
+        rwFullpof = models.RwFullPof.objects.get(id= proposalID)
+        rwFullcof = models.RwFullFcof.objects.get(id= proposalID)
+        risk = rwFullpof.pofap1 * rwFullcof.fcofvalue
+        chart = models.RwDataChart.objects.get(id= proposalID)
+        assessmentDate = rwAssessment.assessmentdate
+        dataChart = [risk, chart.riskage1, chart.riskage2, chart.riskage3, chart.riskage4, chart.riskage5, chart.riskage6,
+                     chart.riskage7, chart.riskage8, chart.riskage9, chart.riskage9, chart.riskage10, chart.riskage11,
+                     chart.riskage12, chart.riskage13, chart.riskage14, chart.riskage15]
+        dataLabel = [date2Str.date2str(assessmentDate), date2Str.date2str(date2Str.dateFuture(assessmentDate,1)),
+                     date2Str.date2str(date2Str.dateFuture(assessmentDate, 2)),date2Str.date2str(date2Str.dateFuture(assessmentDate,3)),
+                     date2Str.date2str(date2Str.dateFuture(assessmentDate, 4)),date2Str.date2str(date2Str.dateFuture(assessmentDate,5)),
+                     date2Str.date2str(date2Str.dateFuture(assessmentDate, 6)),date2Str.date2str(date2Str.dateFuture(assessmentDate,7)),
+                     date2Str.date2str(date2Str.dateFuture(assessmentDate, 8)),date2Str.date2str(date2Str.dateFuture(assessmentDate,9)),
+                     date2Str.date2str(date2Str.dateFuture(assessmentDate, 10)),date2Str.date2str(date2Str.dateFuture(assessmentDate,11)),
+                     date2Str.date2str(date2Str.dateFuture(assessmentDate, 12)),date2Str.date2str(date2Str.dateFuture(assessmentDate,13)),
+                     date2Str.date2str(date2Str.dateFuture(assessmentDate, 14))]
+        dataTarget = [chart.risktarget,chart.risktarget,chart.risktarget,chart.risktarget,chart.risktarget,chart.risktarget,
+                      chart.risktarget,chart.risktarget,chart.risktarget,chart.risktarget,chart.risktarget,chart.risktarget,
+                      chart.risktarget,chart.risktarget,chart.risktarget,chart.risktarget]
+        endLabel = date2Str.date2str(date2Str.dateFuture(assessmentDate, 15))
+        content = {'label': dataLabel, 'data':dataChart, 'target':dataTarget, 'endLabel':endLabel, 'proposalname':rwAssessment.proposalname,
+                   'proposalID':rwAssessment.id, 'componentID':rwAssessment.componentid_id,'info':request.session,'component':component,'equip':equip,'faci':faci,'si':si,'noti':noti,'countnoti':countnoti,'count':count}
+        return render(request, 'CitizenUI/risk_summary_Citizen/riskChart_Citizen.html', content)
+    except:
+        raise Http404
