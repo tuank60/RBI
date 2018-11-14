@@ -129,6 +129,27 @@
                     <div class="col-md-4"><b>{{ data.consequencecategory }}</b></div>
                 </div>
             </fieldset>
+            <<br>
+            <div class="row">
+                <div class="col-md-12" style="text-align: right"><button type="submit" class="btn btn-primary" id="changeThinning" onclick="btnChangeClick()">Verification Requirements</button></div>
+            </div>
         </div>
+        <script>
+        function btnChangeClick() {
+            document.getElementById("fullDF").submit();
+            ShowLoading();
+            return false;
+        }
+        function ShowLoading() {
+            var div = document.createElement('div');
+            var img = document.createElement('img');
+            img.src = '{% static 'image/loading/Pacman-1s-100px.gif' %}';
+            div.style.cssText = "position: fixed;left: 50%; top: 30%; width: 300px; text-align: center; background: rgba(54, 25, 25, .00004); border: 0px solid #000;";
+            div.appendChild(img);
+            document.body.appendChild(div);
+            $("#changeThinning").attr('disabled',true);
+            return true;
+        }
+    </script>
     </form>
 {% endblock %}

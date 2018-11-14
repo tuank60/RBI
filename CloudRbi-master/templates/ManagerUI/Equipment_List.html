@@ -18,7 +18,7 @@
     {% csrf_token %}
         <div>
             {% if si %}<a href="{% url 'facilitiesDisplayMana' si.siteid %}">{{ si.sitename }}</a>{% endif %} <span class="fa fa-angle-right"></span>
-            {% if faci %}<a href="{% url 'equipmentDisplay' faci.facilityid %}">{{ faci.facilityname }}</a>{% endif %}
+            {% if faci %}<a href="{% url 'equipmentDisplayMana' faci.facilityid %}">{{ faci.facilityname }}</a>{% endif %}
         </div>
         <div style="text-align: center">
             <caption><b style="font-size: 22px;color: #444444">List of Equipments</b></caption>

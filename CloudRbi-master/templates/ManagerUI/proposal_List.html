@@ -18,9 +18,9 @@
     {% csrf_token %}
         <div>
             {% if si %}<a href="{% url 'facilitiesDisplayMana' si.siteid %}">{{ si.sitename }}</a>{% endif %} <span class="fa fa-angle-right"></span>
-            {% if faci %}<a href="{% url 'equipmentDisplay' faci.facilityid %}">{{ faci.facilityname }}</a>{% endif %} <span class="fa fa-angle-right"></span>
-            {% if equip %}<a href="{% url 'componentDisplay' equip.equipmentid %}">{{ equip.equipmentname }}</a>{% endif %} <span class="fa fa-angle-right"></span>
-            {% if comp %}<a href="{% url 'proposalDisplay' comp.componentid %}">{{ comp.componentname }}</a>{% endif %}
+            {% if faci %}<a href="{% url 'equipmentDisplayMana' faci.facilityid %}">{{ faci.facilityname }}</a>{% endif %} <span class="fa fa-angle-right"></span>
+            {% if equip %}<a href="{% url 'componentDisplayMana' equip.equipmentid %}">{{ equip.equipmentname }}</a>{% endif %} <span class="fa fa-angle-right"></span>
+            {% if comp %}<a href="{% url 'proposalDisplayMana' comp.componentid %}">{{ comp.componentname }}</a>{% endif %}
         </div>
         <div style="text-align: center">
             <caption><b>List of Proposals</b></caption>

@@ -1,0 +1,61 @@
+{% extends 'ManagerUI/verification_requirments/VerificationHome.html' %}
+{% load staticfiles %}
+{% load static %}
+
+{% block library %}
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}Verification_requirments{% endblock %}
+
+{% block content %}
+    <form method="post" style="padding-top: 90px">
+        {% csrf_token %}
+        <div class="container" style="width: 1000px;background-color: #d9d9d9">
+            <header>
+                <h3 style="text-align: center">YÊU CẦU KIỂM ĐỊNH</h3>
+                <br>
+            </header>
+            <body style="padding-left: 10px">
+                <div style="padding-left: 30px">
+                    <p>Manager requirments:<a>{{ veri.manager }}</a></p>
+                    <p>DATE:{{ veri.date }}</p>
+                    TO:<br>
+                    <table style="width: 500px;padding-left: 5px">
+                        <tr>
+                            <td>&emsp;Proposal:</td>
+                            <td>&emsp;Component:</td>
+                            <td>&emsp;Equipment:</td>
+                            <td>&emsp;Facility:</td>
+                        </tr>
+                        <tr>
+                            <td>&emsp;<a>{{ rwass.proposalname }}</a></td>
+                            <td>&emsp;<a>{{ com.componentname }}</a></td>
+                            <td>&emsp;<a>{{ eq.equipmentname }}</a></td>
+                            <td>&emsp;<a>{{ faci.facilityname }}</a></td>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+                <div style="border-top: 1px solid #5a6268">
+                    <div style="padding-left: 30px">
+                        <br>
+                        <p>YẾU TỐ CẦN KIỂM DỊNH CHO <a>{{ rwass.proposalname }}</a> CỦA NHA MÁY <a>{{ faci.facilityname }}</a> LÀ:</p>
+                        <div style="padding-left: 50px">
+                            <p>+ Financial Consequence Area of Component Damage Flamable, m</p>
+                            <p>+ Cost of lost production due to downtime to repair equipment, $/day</p>
+                            <p>+ Factor of Management System</p>
+                        </div>
+                    </div>
+                </div>
+            </body>
+            <footer>
+                <div style="text-align: right;padding-bottom: 20px">
+{#                    <button name="_edit" class="btn btn-primary" type="submit"><i class="fa fa-pencil">&emsp;Edit Selected</i></button>#}
+                    <button type="submit" class="btn btn-warning" id="sub"><i class="fa fa-trash-o">&emsp;Delete Selected</i></button>
+                </div>
+            </footer>
+
+        </div>
+    </form>
+{% endblock %}

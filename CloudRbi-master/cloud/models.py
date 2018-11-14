@@ -1114,3 +1114,25 @@ class Zbusiness(models.Model):
     class Meta:
         managed = False
         db_table = 'z_business'
+
+class Verification(models.Model):
+    id = models.AutoField(primary_key=True,blank=True,null=False,db_column='id')
+    proposal = models.IntegerField(db_column='proposal',blank=True,null=False)
+    date = models.DateTimeField(db_column='date',default=datetime.datetime.now())
+    Is_active = models.IntegerField(db_column='Is_active',blank=True,null=False)
+    manager = models.TextField(db_column='manager',blank=True,null=False)
+    facility = models.IntegerField(db_column='facility',blank=True,null=False)
+
+    class Meta:
+        managed = False
+        db_table = 'verifacation'
+
+class VeriContent(models.Model):
+    id = models.AutoField(primary_key=True,blank=True,null=False,db_column='id')
+    Verification = models.ForeignKey('Verification',db_column='VeriID',blank=True,null=False,on_delete=models.CASCADE)
+    YeuCau = models.TextField(db_column='YeuCau',blank=True,null=False)
+    date = models.DateTimeField(db_column='date',default=datetime.datetime.now())
+
+    class Meta:
+        managed = False
+        db_table = 'vericontent'
