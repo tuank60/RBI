@@ -1,5 +1,6 @@
 import os
 from django.core.wsgi import get_wsgi_application
+from numpy.lib.function_base import vectorize
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'RbiCloud.settings'
 application = get_wsgi_application()
@@ -73,6 +74,8 @@ def handler404(request):
 
 ################ Business UI Control ###################
 def ListFacilities(request, siteID):
+    faci = models.Facility.objects.get(siteid=siteID)
+    veri = models.Verification.objects.filter(Q(facility=faci.facilityid), Q(Is_active=0)).count()
     count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email), Q(Is_see=0)).count()
     noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
     countnoti = noti.filter(state=0).count()
@@ -108,7 +111,7 @@ def ListFacilities(request, siteID):
             return redirect('facilitiesDisplay', siteID)
     except:
         raise Http404
-    return render(request, 'FacilityUI/facility/facilityListDisplay.html', {'obj': users,'siteID':siteID,'count':count,'info':request.session,'noti':noti,'countnoti':countnoti})
+    return render(request, 'FacilityUI/facility/facilityListDisplay.html', {'obj': users,'siteID':siteID,'count':count,'info':request.session,'noti':noti,'countnoti':countnoti,'veri':veri})
 def NewFacilities(request,siteID):
     noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
     countnoti = noti.filter(state=0).count()
@@ -2918,7 +2921,6 @@ def MassagesHome(request):
         if request.method=='POST':
             for data1 in datacontent:
                 if request.POST.get('%d' %data1.id):
-                    print(data1.id)
                     email1=models.Emailto.objects.get(id=data1.id)
                     email1.delete()
                     return redirect('massages')
@@ -3478,9 +3480,9 @@ def FullyDamageFactorMana(request, proposalID):
         data['pofap2category'] = df.pofap2category
         data['pofap3category'] = df.pofap3category
         if request.method == 'POST':
-            df.thinningtype = request.POST.get('thinningType')
-            df.save()
-            ReCalculate.ReCalculate(proposalID)
+            # df.thinningtype = request.POST.get('thinningType')
+            # df.save()
+            # ReCalculate.ReCalculate(proposalID)
             return redirect('veridamgeFactorMana', proposalID)
     except Exception as e:
         print(e)
@@ -4241,12 +4243,12 @@ def VeriFullyDamageFactorMana(request, proposalID):
         #     ReCalculate.ReCalculate(proposalID)
         #     return redirect('veridamgeFactorMana', proposalID)
         if 'Verifica' in request.POST:
-            veri = models.Verification(proposal=proposalID, Is_active=0,manager=request.session['name'],facility=equip.facilityid_id)
+            veri = models.Verification(proposal=rwAss.proposalname, Is_active=0,manager=request.session['name'],facility=equip.facilityid_id,com=component.componentname,eq=equip.equipmentname)
             veri.save()
             some_var = request.POST.getlist('check')
             for some_var in some_var:
                 print(some_var)
-                vericontent=models.VeriContent(Verification_id=veri.id,YeuCau=some_var)
+                vericontent=models.VeriContent(Verification_id=veri.id,content=some_var)
                 vericontent.save()
             return HttpResponse("Bạn đã yêu cầu kiểm định thành công")
 
@@ -4303,12 +4305,14 @@ def VeriFullyConsequenceMana(request, proposalID):
             data['consequence'] = roundData.roundMoney(bottomConsequences.consequence)
             data['consequencecategory'] = bottomConsequences.consequencecategory
             if 'Verifica' in request.POST:
-                veri = models.Verification(proposal=proposalID, Is_active=0,manager=request.session['name'],facility=equip.facilityid_id)
+                veri = models.Verification(proposal=rwAss.proposalname, Is_active=0, manager=request.session['name'],
+                                           facility=equip.facilityid_id, com=component.componentname,
+                                           eq=equip.equipmentname)
                 veri.save()
                 some_var = request.POST.getlist('check')
                 for some_var in some_var:
                     print(some_var)
-                    vericontent = models.VeriContent(Verification_id=veri.id, YeuCau=some_var)
+                    vericontent = models.VeriContent(Verification_id=veri.id, content=some_var)
                     vericontent.save()
                 return HttpResponse("Bạn đã yêu cầu kiểm định thành công")
             return render(request, 'ManagerUI/verification_requirments/fullyBottomConsequenVerification.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss,'count':count,'noti':noti,'countnoti':countnoti,'info':request.session})
@@ -4344,12 +4348,14 @@ def VeriFullyConsequenceMana(request, proposalID):
             data['consequence'] = roundData.roundMoney(shellConsequences.consequence)
             data['consequencecategory'] = shellConsequences.consequencecategory
             if 'Verifica' in request.POST:
-                veri = models.Verification(proposal=proposalID, Is_active=0,manager=request.session['name'],facility=equip.facilityid_id)
+                veri = models.Verification(proposal=rwAss.proposalname, Is_active=0, manager=request.session['name'],
+                                           facility=equip.facilityid_id, com=component.componentname,
+                                           eq=equip.equipmentname)
                 veri.save()
                 some_var = request.POST.getlist('check')
                 for some_var in some_var:
                     print(some_var)
-                    vericontent = models.VeriContent(Verification_id=veri.id, YeuCau=some_var)
+                    vericontent = models.VeriContent(Verification_id=veri.id, content=some_var)
                     vericontent.save()
                 return HttpResponse("Bạn đã yêu cầu kiểm định thành công")
             return render(request, 'ManagerUI/verification_requirments/fullySellConsequenceVerification.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss,'count':count,'noti':noti,'countnoti':countnoti,'info':request.session})
@@ -4370,12 +4376,14 @@ def VeriFullyConsequenceMana(request, proposalID):
             data['fc_total'] = roundData.roundMoney(ca.fc_total)
             data['fcof_category'] = ca.fcof_category
             if 'Verifica' in request.POST:
-                veri = models.Verification(proposal=proposalID, Is_active=0,manager=request.session['name'],facility=equip.facilityid_id)
+                veri = models.Verification(proposal=rwAss.proposalname, Is_active=0, manager=request.session['name'],
+                                           facility=equip.facilityid_id, com=component.componentname,
+                                           eq=equip.equipmentname)
                 veri.save()
                 some_var = request.POST.getlist('check')
                 for some_var in some_var:
                     print(some_var)
-                    vericontent = models.VeriContent(Verification_id=veri.id, YeuCau=some_var)
+                    vericontent = models.VeriContent(Verification_id=veri.id, content=some_var)
                     vericontent.save()
                 return HttpResponse("Bạn đã yêu cầu kiểm định thành công")
             return render(request, 'ManagerUI/verification_requirments/fullyNormalConsequenceVericification.html', {'data': data, 'proposalID':proposalID, 'ass':rwAss,'count':count,'noti':noti,'countnoti':countnoti,'info':request.session})
@@ -4384,11 +4392,23 @@ def VeriFullyConsequenceMana(request, proposalID):
 def VerificationHome(request):
     siteid = models.Sites.objects.filter(userID_id=request.session['id'])[0].siteid
     faci = models.Facility.objects.get(siteid=siteid)
-    veri = models.Verification.objects.get(facility=faci.facilityid)
-    rwass=models.RwAssessment.objects.get(id=veri.proposal)
-    com=models.ComponentMaster.objects.get(componentid=rwass.componentid_id)
-    eq=models.EquipmentMaster.objects.get(equipmentid=com.equipmentid_id)
-    return render(request,'ManagerUI/verification_requirments/VerificationContent.html',{'veri':veri,'faci':faci,'rwass':rwass,'com':com,'eq':eq})
+    veri = models.Verification.objects.filter(facility=faci.facilityid)
+    delete = models.Verification.objects.all()
+    array=[]
+    for verifi in veri:
+        cont = models.VeriContent.objects.filter(Verification=verifi.id)
+        array.append(cont)
+    if request.method == 'POST':
+        for dele in delete:
+            if request.POST.get('%d' %dele.id):
+                print(dele.id)
+                de=models.Verification.objects.get(id=dele.id)
+                de.delete()
+                return redirect('VerificationHome')
+    for ve in veri:
+        ve.Is_active=1
+        ve.save()
+    return render(request,'ManagerUI/verification_requirments/VerificationContent.html',{'veri':veri,'faci':faci,'arr':array})
 
 
 ################ Citizen UI control ###################
