@@ -74,7 +74,7 @@ def handler404(request):
 
 ################ Business UI Control ###################
 def ListFacilities(request, siteID):
-    faci = models.Facility.objects.get(siteid=siteID)
+    faci = models.Facility.objects.filter(siteid=siteID)[0]
     veri = models.Verification.objects.filter(Q(facility=faci.facilityid), Q(Is_active=0)).count()
     count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email), Q(Is_see=0)).count()
     noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
@@ -91,7 +91,6 @@ def ListFacilities(request, siteID):
             dataF['ManagementFactor'] = a.managementfactor
             dataF['RiskTarget'] = risTarget.risktarget_fc
             risk.append(dataF)
-
         pagiFaci = Paginator(risk, 25)
         pageFaci = request.GET.get('page',1)
         try:
@@ -109,7 +108,8 @@ def ListFacilities(request, siteID):
                 if(request.POST.get('%d' %a.facilityid)):
                     a.delete()
             return redirect('facilitiesDisplay', siteID)
-    except:
+    except Exception as e:
+        print(e)
         raise Http404
     return render(request, 'FacilityUI/facility/facilityListDisplay.html', {'obj': users,'siteID':siteID,'count':count,'info':request.session,'noti':noti,'countnoti':countnoti,'veri':veri})
 def NewFacilities(request,siteID):
@@ -4391,7 +4391,7 @@ def VeriFullyConsequenceMana(request, proposalID):
         raise Http404
 def VerificationHome(request):
     siteid = models.Sites.objects.filter(userID_id=request.session['id'])[0].siteid
-    faci = models.Facility.objects.get(siteid=siteid)
+    faci = models.Facility.objects.filter(siteid=siteid)[0]
     veri = models.Verification.objects.filter(facility=faci.facilityid)
     delete = models.Verification.objects.all()
     array=[]
